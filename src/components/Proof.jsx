@@ -161,27 +161,27 @@ export function Ecosystem() {
         </div>
         <div className="eco-grid">
           <div className="pill hubme">
-            <span className="badge" style={{ background: 'var(--navy)' }}>{t('TOP · You are here', 'TOP · 現在地')}</span>
+            <span className="badge" style={{ background: 'var(--fo-solid)' }}>{t('TOP · You are here', 'TOP · 現在地')}</span>
             <h3>{t('Family Office', 'ファミリーオフィス')}</h3>
             <p>{t('Japan Worldlink DWC-LLC — inheritance, succession, tax strategy, asset protection, wealth consulting.',
                   'Japan Worldlink DWC-LLC — 相続、承継、税務戦略、資産保護、ウェルスコンサルティング。')}</p>
             <span className="go">{t('The central hub', '中核ハブ')}</span>
           </div>
           <a className="pill" href="#" target="_blank" rel="noreferrer">
-            <span className="badge" style={{ background: '#0097a7' }}>Investment</span>
+            <span className="badge" style={{ background: 'var(--inv-solid)' }}>Investment</span>
             <h3>{t('JWD Investment', 'JWDインベストメント')}</h3>
             <p>{t('Wealth management & advisory — Equiti and AIX investment platforms.',
                   '資産運用・アドバイザリー — Equiti・AIX投資プラットフォーム。')}</p>
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
           </a>
           <a className="pill" href="#" target="_blank" rel="noreferrer">
-            <span className="badge" style={{ background: 'linear-gradient(90deg,#3a3d42,var(--gold))' }}>Real Estate</span>
+            <span className="badge" style={{ background: 'var(--ana-solid)' }}>Real Estate</span>
             <h3>ANAWAK Real Estate L.L.C</h3>
             <p>{t('Dubai property investment, acquisition and management.', 'ドバイ不動産の投資・取得・管理。')}</p>
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
           </a>
           <a className="pill" href="#" target="_blank" rel="noreferrer">
-            <span className="badge" style={{ background: '#2f7d80' }}>Travel</span>
+            <span className="badge" style={{ background: 'var(--luna-solid)' }}>Travel</span>
             <h3>JWD Luna Travel &amp; Tourism LLC</h3>
             <p>{t("Licensed by Dubai's Department of Economy & Tourism — property tours, investment tours, luxury travel.",
                   'ドバイ政府観光局認可 — 物件ツアー、投資ツアー、ラグジュアリートラベル。')}</p>

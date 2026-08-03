@@ -16,6 +16,16 @@
     --tint-2:#efede8;
     --shadow:0 24px 60px -30px rgba(32,33,37,.35);
     --radius:16px;
+
+    /* ── Group brand colours (JWD Home Page 改訂ポイント ③, the four petals) ──
+       Each company owns a hue. Two weights per brand: a soft fill that carries
+       dark text (petals), and a solid that carries white text (badges). */
+    /* The -solid weights are darkened until white badge text clears WCAG AA
+       4.5:1 — the badges are 12px bold, which does not qualify as large text. */
+    --fo:#efe9d8;    --fo-bd:#d9d0b4;   --fo-solid:#8a7433;  /* Family Office — cream   (4.5:1) */
+    --inv:#5fe1e8;   --inv-bd:#2aa9b4;  --inv-solid:#0b7f8a; /* Investment — turquoise  (4.8:1) */
+    --ana:#8f8fd0;   --ana-bd:#6b6bc4;  --ana-solid:#5757b0; /* ANAWAK — indigo         (6.2:1) */
+    --luna:#f5919d;  --luna-bd:#e8677a; --luna-solid:#c53f54;/* Luna Travel — coral     (5.0:1) */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -610,16 +620,20 @@
 /* ── JWD group flower ── */
 .flower-sec{background:var(--tint)}
 .flower{position:relative;width:100%;max-width:660px;margin:22px auto 0;aspect-ratio:1 / .84}
-.petal{position:absolute;display:flex;flex-direction:column;text-align:center;border:1px solid rgba(184,145,47,.32);
-  border-radius:50%;transition:background .3s,border-color .3s}
+/* Each petal wears its company's colour; dark text stays legible on all four. */
+.petal{position:absolute;display:flex;flex-direction:column;text-align:center;
+  background:var(--petal);border:1px solid var(--petal-bd);
+  /* multiply lets the four petals blend where they overlap, as in the mock */
+  mix-blend-mode:multiply;
+  border-radius:50%;transition:filter .3s,box-shadow .3s}
 .petal-l{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.01em;color:var(--navy-ink);
   font-size:clamp(15px,2.3vw,21px);line-height:1.05}
-.petal-s{font-size:clamp(10px,1.4vw,12px);color:var(--muted);margin-top:4px;letter-spacing:.06em}
-.petal-fo  {width:60%;height:49%;left:20%;top:0;      background:rgba(184,145,47,.10);align-items:center;justify-content:flex-start;padding-top:6%}
-.petal-luna{width:60%;height:49%;left:20%;bottom:0;   background:rgba(43,45,49,.06);  align-items:center;justify-content:flex-end;  padding-bottom:6%}
-.petal-inv {width:58%;height:46%;left:0;  top:27%;     background:rgba(43,45,49,.05);  align-items:flex-start;justify-content:center;padding-left:5%}
-.petal-ana {width:58%;height:46%;right:0; top:27%;     background:rgba(184,145,47,.15);align-items:flex-end;  justify-content:center;padding-right:5%}
-.petal:hover{background:rgba(184,145,47,.2);border-color:var(--gold)}
+.petal-s{font-size:clamp(10px,1.4vw,12px);color:var(--navy-ink);opacity:.66;margin-top:4px;letter-spacing:.06em}
+.petal-fo  {--petal:var(--fo);  --petal-bd:var(--fo-bd);  width:60%;height:49%;left:20%;top:0;    align-items:center;justify-content:flex-start;padding-top:6%}
+.petal-luna{--petal:var(--luna);--petal-bd:var(--luna-bd);width:60%;height:49%;left:20%;bottom:0; align-items:center;justify-content:flex-end;  padding-bottom:6%}
+.petal-inv {--petal:var(--inv); --petal-bd:var(--inv-bd); width:58%;height:46%;left:0;  top:27%;  align-items:flex-start;justify-content:center;padding-left:5%}
+.petal-ana {--petal:var(--ana); --petal-bd:var(--ana-bd); width:58%;height:46%;right:0; top:27%;  align-items:flex-end;  justify-content:center;padding-right:5%}
+.petal:hover{filter:brightness(.95);box-shadow:0 14px 34px -18px rgba(32,33,37,.5)}
 .flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;gap:12px;
   justify-content:center;width:37%;min-width:190px;padding:15px 20px;background:#fff;border:1px solid var(--line);
   border-radius:18px;box-shadow:var(--shadow)}

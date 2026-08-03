@@ -24,6 +24,7 @@ export default function App() {
         <Question />
         <President />
         <License />
+        <EcosystemFlower /> {/* the four-company flower belongs to the DWC-LLC block */}
         <GenerationalWealth />
         <WhoWeServe />
         <Services />
@@ -34,7 +35,6 @@ export default function App() {
         <Ecosystem />
         <HeartOfEurope />
         <Insights />
-        <EcosystemFlower />
         <ContactForm />
       </main>
       <Footer />

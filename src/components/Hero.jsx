@@ -28,9 +28,9 @@ export function Hero() {
           </div>
           <div className="portals">
             <span className="plab">{t('Group sites', 'グループサイト')}</span>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: '#0097a7' }} />JWD Investment ↗</a>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'linear-gradient(135deg,#3a3d42,#b8912f)' }} />{t('ANAWAK Real Estate', 'ANAWAK不動産')} ↗</a>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: '#2f7d80' }} />{t('Luna Travel', 'ルナトラベル')} ↗</a>
+            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--inv-solid)' }} />JWD Investment ↗</a>
+            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--ana-solid)' }} />{t('ANAWAK Real Estate', 'ANAWAK不動産')} ↗</a>
+            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--luna-solid)' }} />{t('Luna Travel', 'ルナトラベル')} ↗</a>
           </div>
         </div>
         <div className="hcard">
