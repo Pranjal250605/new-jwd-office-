@@ -4,7 +4,7 @@ import { useSmoothScroll } from './smoothScroll.jsx';
 import { UtilBar, Header, ContactForm, Footer } from './components/Chrome.jsx';
 import { Hero, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
-import { President, License, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
+import { President, License, Seminar, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights, EcosystemFlower } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 
@@ -24,6 +24,7 @@ export default function App() {
         <Question />
         <President />
         <License />
+        <Seminar /> {/* seminar photos — the licensed entity in public practice */}
         <EcosystemFlower /> {/* the four-company flower belongs to the DWC-LLC block */}
         <GenerationalWealth />
         <WhoWeServe />

@@ -118,6 +118,49 @@ export function License() {
   );
 }
 
+/** Dubai Financial Seminar — the licensed entity in public practice.
+ *  Sits directly below the Japan Worldlink DWC-LLC block. */
+export function Seminar() {
+  const { t } = useLang();
+  const shots = [
+    [
+      '/img/seminar-speaker.jpg',
+      t('Hamit Gurbuz, CEO of Japan Worldlink DWC-LLC, delivering the keynote at the Dubai Financial Seminar',
+        'ドバイ・ファイナンシャル・セミナーで基調講演を行う Japan Worldlink DWC-LLC CEO ハミット・ギュルビュズ'),
+      t('Dubai Financial Seminar · Keynote', 'ドバイ・ファイナンシャル・セミナー · 基調講演'),
+    ],
+    [
+      '/img/seminar-hall.jpg',
+      t('Delegates filling the hall at the Dubai Financial Seminar',
+        'ドバイ・ファイナンシャル・セミナーの満席の会場'),
+      t('Dubai Financial Seminar · Dubai', 'ドバイ・ファイナンシャル・セミナー · ドバイ'),
+    ],
+  ];
+  return (
+    <section className="blk seminar" id="seminar">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('On the ground in Dubai', 'ドバイの現場から')}</div>
+          <h2 className="sec">{t('Speaking where Dubai’s financial community meets',
+                                  'ドバイの金融コミュニティが集う場で')}</h2>
+          <p className="lead center">{t(
+            'Our representative is invited to address the Dubai Financial Seminar — the same standing that backs the structures we build for your family.',
+            '当社代表はドバイ・ファイナンシャル・セミナーに登壇者として招かれています。皆さまのご家族のために設計するストラクチャーは、この信頼の上に築かれます。',
+          )}</p>
+        </div>
+        <div className="seminar-grid">
+          {shots.map(([src, alt, cap]) => (
+            <figure className="seminar-shot" key={src}>
+              <img src={src} alt={alt} loading="lazy" />
+              <figcaption>{cap}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function GenerationalWealth() {
   const { t } = useLang();
   const pts = [
