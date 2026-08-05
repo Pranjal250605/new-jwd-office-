@@ -1,6 +1,40 @@
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 
+/** "What are your concerns?" — the seven entry points a visitor can pick from,
+ *  each routed to the section that answers it. Hero links straight here. */
+export function Concerns() {
+  const { t } = useLang();
+  const items = [
+    ['#compare',        'I am worried about inheritance tax',        '相続税に不安がある'],
+    ['#strategies',     'I want to invest my assets overseas',        '海外で資産運用をしたい'],
+    ['#services',       'I want an overseas bank account',            '海外に銀行口座を持ちたい'],
+    ['#approach',       'I want to live overseas',                    '海外に住みたい'],
+    ['#heart-of-europe','I want to own overseas property',            '海外に不動産を持ちたい'],
+    ['#services',       'I want my children educated overseas',       '子供に海外で教育を受けさせたい'],
+    ['#ecosystem',      'I want to set up an overseas company',       '海外に法人を作りたい'],
+  ];
+  return (
+    <section className="blk concerns" id="concerns">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('Start here', 'ここから')}</div>
+          <h2 className="sec">{t('What are your concerns?', '貴方のお悩みは何ですか？')}</h2>
+        </div>
+        <div className="concern-grid">
+          {items.map(([href, en, ja], i) => (
+            <a className="concern" href={href} key={i}>
+              <span className="concern-n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="concern-t">{t(en, ja)}</span>
+              <span className="concern-ar">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Hero() {
   const { t } = useLang();
   return (
@@ -17,15 +51,25 @@ export function Hero() {
             "For Japan's affluent families and business owners — a Dubai-based family office that answers one question first: how do you keep what you've built, across generations?",
             '日本の富裕層とオーナー経営者のために。「築いた資産を、いかに世代を超えて守り抜くか」——その問いにまず答える、ドバイ拠点のファミリーオフィスです。',
           )}</p>
-          <div className="cta">
-            <a href="#contact" className="btn btn-gold">{t('Book a Consultation →', '無料相談を予約 →')}</a>
-            <a href="#approach" className="btn btn-ghost">{t('How it works', '仕組みを見る')}</a>
-          </div>
-          <div className="assure">
-            <span>✓ {t('Licensed in Dubai since ', 'ドバイでライセンス保有 ')}<b>2013</b>{t(' · Reg. No. 937', '年〜 · 登録番号937')}</span>
-            <span>✓ {t('International tax & succession', '国際税務・資産承継')}</span>
-            <span>✓ {t('Japanese-language advisory', '日本語での対応')}</span>
-          </div>
+          {/* The journey starts from the visitor's own concern, not from the
+              company introduction — per the 2026.08.03 revision points. */}
+          <button
+            type="button"
+            className="hero-ai"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-advisor-chat'))}
+          >
+            <b>AI</b><span>{t('Consulting', 'コンサルティング')}</span>
+          </button>
+          <p className="hero-ai-note">{t(
+            'For a sound succession — and for the family who matters most.',
+            '健全な資産継承のために、大切なご家族のために',
+          )}</p>
+          <a href="#concerns" className="hero-ask">
+            <span className="hero-ask-q">
+              {t('What are ', '貴方の')}<em>{t('your concerns', 'お悩みは')}</em>{t('?', '何ですか？')}
+            </span>
+            <span className="hero-ask-btn">{t('Click here', 'ココをクリック')}</span>
+          </a>
           <div className="portals">
             <span className="plab">{t('Group sites', 'グループサイト')}</span>
             <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--inv-solid)' }} />JWD Investment ↗</a>

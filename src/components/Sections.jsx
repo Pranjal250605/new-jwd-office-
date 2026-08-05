@@ -88,10 +88,17 @@ export function License() {
             'The Family Office hub is a formally licensed company in Dubai — not an introduction desk. Your structure is built on a regulated foundation.',
             'ファミリーオフィスの中核は、ドバイで正式にライセンスを受けた本陣です。単なる紹介窓口ではなく、規制された基盤の上にストラクチャーを構築します。',
           )}</p>
-          <figure className="lic-photo">
-            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz at the UAE Innovation Symposium — Shaping the Future', 'UAEイノベーション・シンポジウムに登壇するハミット・ギュルビュズ')} loading="lazy" />
-            <figcaption>{t('UAE Innovation Symposium · Shaping the Future', 'UAEイノベーション・シンポジウム · Shaping the Future')}</figcaption>
-          </figure>
+          {/* Three shots of the entity in practice. Per the 2026.08.03 revision
+              points these carry no explanatory captions — only the
+              representative is named, on his own photo. */}
+          <div className="lic-shots">
+            <img src="/img/seminar-hall.jpg" alt="" loading="lazy" />
+            <img src="/img/seminar-speaker.jpg" alt="" loading="lazy" />
+            <figure className="lic-shot-lead">
+              <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')} loading="lazy" />
+              <figcaption>{t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')}</figcaption>
+            </figure>
+          </div>
         </div>
         <div className="lic">
           <div className="main2">
@@ -112,49 +119,6 @@ export function License() {
             <span className="ok"><i />{t('License active — issued March 2013, valid to March 2027',
                                           'ライセンス有効中 — 2013年3月発行 → 2027年3月まで有効')}</span>
           </aside>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/** Dubai Financial Seminar — the licensed entity in public practice.
- *  Sits directly below the Japan Worldlink DWC-LLC block. */
-export function Seminar() {
-  const { t } = useLang();
-  const shots = [
-    [
-      '/img/seminar-speaker.jpg',
-      t('Hamit Gurbuz, CEO of Japan Worldlink DWC-LLC, delivering the keynote at the Dubai Financial Seminar',
-        'ドバイ・ファイナンシャル・セミナーで基調講演を行う Japan Worldlink DWC-LLC CEO ハミット・ギュルビュズ'),
-      t('Dubai Financial Seminar · Keynote', 'ドバイ・ファイナンシャル・セミナー · 基調講演'),
-    ],
-    [
-      '/img/seminar-hall.jpg',
-      t('Delegates filling the hall at the Dubai Financial Seminar',
-        'ドバイ・ファイナンシャル・セミナーの満席の会場'),
-      t('Dubai Financial Seminar · Dubai', 'ドバイ・ファイナンシャル・セミナー · ドバイ'),
-    ],
-  ];
-  return (
-    <section className="blk seminar" id="seminar">
-      <div className="wrap">
-        <div className="head center">
-          <div className="ey">{t('On the ground in Dubai', 'ドバイの現場から')}</div>
-          <h2 className="sec">{t('Speaking where Dubai’s financial community meets',
-                                  'ドバイの金融コミュニティが集う場で')}</h2>
-          <p className="lead center">{t(
-            'Our representative is invited to address the Dubai Financial Seminar — the same standing that backs the structures we build for your family.',
-            '当社代表はドバイ・ファイナンシャル・セミナーに登壇者として招かれています。皆さまのご家族のために設計するストラクチャーは、この信頼の上に築かれます。',
-          )}</p>
-        </div>
-        <div className="seminar-grid">
-          {shots.map(([src, alt, cap]) => (
-            <figure className="seminar-shot" key={src}>
-              <img src={src} alt={alt} loading="lazy" />
-              <figcaption>{cap}</figcaption>
-            </figure>
-          ))}
         </div>
       </div>
     </section>

@@ -162,7 +162,7 @@ export function Ecosystem() {
         <div className="eco-grid">
           <div className="pill hubme">
             <span className="badge" style={{ background: 'var(--fo-solid)' }}>{t('TOP · You are here', 'TOP · 現在地')}</span>
-            <h3>{t('Family Office', 'ファミリーオフィス')}</h3>
+            <h3>Japan Worldlink DWC-LLC</h3>
             <p>{t('Japan Worldlink DWC-LLC — inheritance, succession, tax strategy, asset protection, wealth consulting.',
                   'Japan Worldlink DWC-LLC — 相続、承継、税務戦略、資産保護、ウェルスコンサルティング。')}</p>
             <span className="go">{t('The central hub', '中核ハブ')}</span>
@@ -336,13 +336,14 @@ export function EcosystemFlower() {
           )}</p>
         </div>
 
+        {/* Petals carry each company's formal name, per the revision points. */}
         <div className="flower" role="img"
-          aria-label={t('JWD Group: Family Office at the centre, with Investment, ANAWAK and Luna Travel.',
-                        'JWDグループ：ファミリーオフィスを中心に、インベストメント、ANAWAK、ルナトラベル。')}>
-          <div className="petal petal-fo"><span className="petal-l">Family Office</span><span className="petal-s">ファミリーオフィス</span></div>
-          <div className="petal petal-inv"><span className="petal-l">Investment</span><span className="petal-s">インベストメント</span></div>
-          <div className="petal petal-ana"><span className="petal-l">ANAWAK</span><span className="petal-s">不動産</span></div>
-          <div className="petal petal-luna"><span className="petal-l">Luna Travel</span><span className="petal-s">トラベル</span></div>
+          aria-label={t('JWD Group: Japan Worldlink DWC-LLC at the centre, with JWD Investment, ANAWAK Real Estate L.L.C and JWD Luna Travel & Tourism LLC.',
+                        'JWDグループ：Japan Worldlink DWC-LLC を中心に、JWDインベストメント、ANAWAK Real Estate L.L.C、JWD Luna Travel & Tourism LLC。')}>
+          <div className="petal petal-fo"><span className="petal-l">Japan Worldlink DWC-LLC</span><span className="petal-s">{t('Family Office', 'ファミリーオフィス')}</span></div>
+          <div className="petal petal-inv"><span className="petal-l">{t('JWD Investment', 'JWDインベストメント')}</span><span className="petal-s">{t('Investment', 'インベストメント')}</span></div>
+          <div className="petal petal-ana"><span className="petal-l">ANAWAK Real Estate L.L.C</span><span className="petal-s">{t('Real Estate', '不動産')}</span></div>
+          <div className="petal petal-luna"><span className="petal-l">JWD Luna Travel &amp; Tourism LLC</span><span className="petal-s">{t('Travel', 'トラベル')}</span></div>
           <div className="flower-core">
             <img src="/img/jwd-star.png" alt="JWD" />
             <span className="flower-core-tx"><b>JWD</b><small>Japan Worldlink DWC Group</small></span>

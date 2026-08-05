@@ -106,15 +106,15 @@ export function Header() {
   }, [open]);
 
   const links = [
+    ['#ecosystem', 'Company', '会社概要'],
     ['#clients', 'Clients', '顧客層'],
     ['#services', 'Services', 'サービス'],
     ['#approach', 'Approach', 'アプローチ'],
     ['#strategies', 'Strategies', '戦略'],
-    ['#simulator', 'Simulator', 'シミュレーター'],
+    ['#simulator', 'Simulator', 'シュミレーター'],
     ['#cases', 'Case Studies', '事例'],
-    ['#ecosystem', 'Ecosystem', 'グループ'],
-    ['#heart-of-europe', 'Villas', 'ヴィラ'],
-    ['#insights', 'Insights', 'インサイト'],
+    ['#heart-of-europe', 'Properties', '物件'],
+    ['#insights', 'Video Library', 'ビデオ解説'],
   ];
 
   return (
@@ -124,8 +124,7 @@ export function Header() {
           <a href="#top" className="logo">
             <img src="/img/jwd-star.png" alt="JWD" className="logo-star" />
             <span className="logo-txt">
-              <span className="mk">JWD <b>family office</b></span>
-              <span className="sb">{t('Japan · Dubai · Wealth Preservation', '日本 · ドバイ · 資産保全')}</span>
+              <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
             </span>
           </a>
           <div className="navlinks">
@@ -147,7 +146,7 @@ export function Header() {
         <div className="mmenu" onClick={() => setOpen(false)}>
           <div className="mmenu-panel" onClick={(e) => e.stopPropagation()}>
             <div className="mmenu-top">
-              <span className="mk">JWD <b>family office</b></span>
+              <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
               <button className="mmenu-x" aria-label={t('Close', '閉じる')} onClick={() => setOpen(false)}>✕</button>
             </div>
             <nav className="mmenu-links">
@@ -212,7 +211,7 @@ export function Footer() {
           <div>
             <div className="fmark">
               <img src="/img/jwd-star.png" alt="JWD" className="fmark-star" />
-              <div className="mk">JWD <b>family office</b></div>
+              <div className="mk">Japan Worldlink <b>DWC-LLC</b></div>
             </div>
             <p style={{ marginTop: 14, maxWidth: 300 }}>{t(
               'The bridge between Japan and Dubai — protecting and transferring family wealth across generations. Japan WorldLink DWC.',
@@ -234,7 +233,7 @@ export function Footer() {
               <li><a href="#ecosystem">{t('JWD Investment (Equiti · AIX)', 'JWDインベストメント（Equiti · AIX）')}</a></li>
               <li><a href="#ecosystem">ANAWAK Real Estate L.L.C</a></li>
               <li><a href="#ecosystem">JWD Luna Travel &amp; Tourism LLC</a></li>
-              <li><a href="#insights">{t('Insights', 'インサイト')}</a></li>
+              <li><a href="#insights">{t('Video Library', 'ビデオ解説')}</a></li>
             </ul>
           </div>
           <div>
