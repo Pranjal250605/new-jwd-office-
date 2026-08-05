@@ -112,9 +112,9 @@ export function Header() {
     ['#approach', 'Approach', 'アプローチ'],
     ['#strategies', 'Strategies', '戦略'],
     ['#simulator', 'Simulator', 'シュミレーター'],
-    ['#cases', 'Case Studies', '事例'],
+    ['#cases', 'Cases', '事例'],
     ['#heart-of-europe', 'Properties', '物件'],
-    ['#insights', 'Video Library', 'ビデオ解説'],
+    ['#insights', 'Videos', 'ビデオ解説'],
   ];
 
   return (
