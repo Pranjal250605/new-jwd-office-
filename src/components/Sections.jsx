@@ -88,17 +88,15 @@ export function License() {
             'The Family Office hub is a formally licensed company in Dubai — not an introduction desk. Your structure is built on a regulated foundation.',
             'ファミリーオフィスの中核は、ドバイで正式にライセンスを受けた本陣です。単なる紹介窓口ではなく、規制された基盤の上にストラクチャーを構築します。',
           )}</p>
-          {/* Three shots of the entity in practice. Per the 2026.08.03 revision
-              points these carry no explanatory captions — only the
-              representative is named, on his own photo. */}
-          <div className="lic-shots">
-            <img src="/img/seminar-hall.jpg" alt="" loading="lazy" />
-            <img src="/img/seminar-speaker.jpg" alt="" loading="lazy" />
-            <figure className="lic-shot-lead">
-              <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')} loading="lazy" />
-              <figcaption>{t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')}</figcaption>
-            </figure>
-          </div>
+          {/* Copy sits top-left with the two seminar shots beneath it, while the
+              representative's photo runs full height down the right (2026.08.04).
+              No explanatory captions — only he is named, on his own photo. */}
+          <img className="lic-shot" src="/img/seminar-hall.jpg" alt="" loading="lazy" />
+          <img className="lic-shot" src="/img/seminar-speaker.jpg" alt="" loading="lazy" />
+          <figure className="lic-shot-lead">
+            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')} loading="lazy" />
+            <figcaption>{t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')}</figcaption>
+          </figure>
         </div>
         <div className="lic">
           <div className="main2">

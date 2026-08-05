@@ -282,6 +282,17 @@ export function ChatPanel() {
     return () => window.removeEventListener('advisor-new-chat', handler);
   }, [resetChat]);
 
+  /* Lets the page hand the advisor a question to answer — the concern tiles
+     dispatch this so a visitor's pick is asked for them. */
+  useEffect(() => {
+    const handler = (e) => {
+      const q = e?.detail?.question;
+      if (q) sendMessage(q);
+    };
+    window.addEventListener('advisor-ask', handler);
+    return () => window.removeEventListener('advisor-ask', handler);
+  }, [sendMessage]);
+
   return (
     <div className="advp">
       {/* Messages */}

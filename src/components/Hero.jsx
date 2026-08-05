@@ -6,14 +6,22 @@ import { useVideo } from '../videos.jsx';
 export function Concerns() {
   const { t } = useLang();
   const items = [
-    ['#compare',        'I am worried about inheritance tax',        '相続税に不安がある'],
-    ['#strategies',     'I want to invest my assets overseas',        '海外で資産運用をしたい'],
-    ['#services',       'I want an overseas bank account',            '海外に銀行口座を持ちたい'],
-    ['#approach',       'I want to live overseas',                    '海外に住みたい'],
-    ['#heart-of-europe','I want to own overseas property',            '海外に不動産を持ちたい'],
-    ['#services',       'I want my children educated overseas',       '子供に海外で教育を受けさせたい'],
-    ['#ecosystem',      'I want to set up an overseas company',       '海外に法人を作りたい'],
+    ['Japan vs UAE — inheritance tax rates compared', '日本とUAEの相続税税率比較'],
+    ['Japan vs UAE — tax on profits', '日本とUAEの利益に対する税率'],
+    ['Japan vs UAE — ordinary and fixed deposit interest rates', '日本とUAEの普通預金金利と定期金利の比較'],
+    ['UAE safety rankings, and cost of living against Japan', 'UAEの治安の良さのランキング表や、日本との物価の比較'],
+    ['Japan vs UAE — tax on selling property', '日本とUAEの不動産売却した時の税率比較'],
+    ['Japanese international school fees vs ordinary UAE primary school fees',
+     '日本のインターナショナルスクールの学費とUAEの一般的な小学校の学費の比較'],
+    ['How to set up a company in the UAE', 'UAEに法人を作成するシステム'],
   ];
+  /* Each concern is put straight to the AI advisor: these are comparison
+     questions the site has no dedicated section for, and the advisor answers
+     from JWD's own knowledge base. */
+  const ask = (q) => {
+    window.dispatchEvent(new CustomEvent('open-advisor-chat'));
+    window.dispatchEvent(new CustomEvent('advisor-ask', { detail: { question: q } }));
+  };
   return (
     <section className="blk concerns" id="concerns">
       <div className="wrap">
@@ -22,12 +30,12 @@ export function Concerns() {
           <h2 className="sec">{t('What are your concerns?', '貴方のお悩みは何ですか？')}</h2>
         </div>
         <div className="concern-grid">
-          {items.map(([href, en, ja], i) => (
-            <a className="concern" href={href} key={i}>
+          {items.map(([en, ja], i) => (
+            <button type="button" className="concern" key={i} onClick={() => ask(t(en, ja))}>
               <span className="concern-n">{String(i + 1).padStart(2, '0')}</span>
               <span className="concern-t">{t(en, ja)}</span>
               <span className="concern-ar">→</span>
-            </a>
+            </button>
           ))}
         </div>
       </div>
@@ -41,7 +49,6 @@ export function Hero() {
     <section className="hero" id="top">
       <div className="wrap">
         <div>
-          <span className="kick"><span className="dot" /> {t('The center of the JWD ecosystem', 'JWDエコシステムの中心')}</span>
           <h1>
             {t('Protect, grow, and ', '一族の資産を、守り、育て、')}
             <em>{t('pass on', '次世代へ。')}</em>
