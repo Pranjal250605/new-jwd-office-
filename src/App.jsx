@@ -17,8 +17,8 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Concerns /> {/* the seven entry points the hero question leads to */}
         <VideoPromo />
+        <Concerns /> {/* the seven entry points the hero question leads to */}
         <QuickTiles />
         <Simulator />
         <StatBand />
