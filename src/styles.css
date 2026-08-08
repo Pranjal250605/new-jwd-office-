@@ -205,6 +205,13 @@
   .lic .rowli .k2{color:var(--muted)}
   .lic .rowli .k2 small{display:block;font-size:11.5px;color:var(--muted);opacity:.8}
   .lic .rowli .v2{color:var(--navy-ink);font-weight:600;text-align:right}
+  /* Registered address closes the company-information plate. */
+  .lic-addr{display:flex;justify-content:space-between;gap:18px;padding:16px 0 0;
+    border-top:1px solid var(--line);margin-top:3px;font-size:15px}
+  .lic-addr .k2{color:var(--muted);flex:none}
+  .lic-addr .k2 small{display:block;font-size:11.5px;color:var(--muted);opacity:.8}
+  .lic-addr address{font-style:normal;color:var(--navy-ink);font-weight:600;text-align:right;line-height:1.7}
+  @media(max-width:560px){.lic-addr{flex-direction:column;gap:8px}.lic-addr address{text-align:left}}
   .lic aside{background:var(--gold-soft);padding:44px 36px;display:flex;flex-direction:column;gap:20px;justify-content:center}
   .lic aside .seal{width:74px;height:74px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;background:#fff;
     font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--gold);font-size:13px;letter-spacing:.08em;text-align:center;line-height:1.2}
@@ -398,6 +405,12 @@
   footer h5{color:#fff;font-size:14px;letter-spacing:.06em;margin-bottom:16px;font-weight:600}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
   footer ul a:hover{color:#fff}
+  /* Registered addresses sit between the link columns and the copyright. */
+  .faddr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px;
+    padding:30px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .faddr h5{margin-bottom:10px}
+  .faddr address{font-style:normal;font-size:14px;line-height:1.85;color:#9fb2cf}
+  @media(max-width:620px){.faddr{grid-template-columns:1fr;gap:22px}}
   footer .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:#6d84a6;flex-wrap:wrap;gap:10px}
   footer .disc{max-width:520px;font-size:12.5px;line-height:1.7;color:#6d84a6}
 

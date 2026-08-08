@@ -245,6 +245,26 @@ export function Footer() {
             </ul>
           </div>
         </div>
+        {/* Registered addresses, as supplied by the client 2026.08.07. */}
+        <div className="faddr">
+          <div>
+            <h5>Japan Worldlink DWC-LLC</h5>
+            <address>
+              DWC Business Center<br />
+              Level -3, Building - A3<br />
+              Dubai South Business Park<br />
+              P.O. Box 390667 Dubai, U.A.E.
+            </address>
+          </div>
+          <div>
+            <h5>JWD Investment LLC</h5>
+            <address>
+              Property Investment Office 4 - G01<br />
+              Dubai investment park first 516-0<br />
+              P.O. Box 676-598 Dubai, U.A.E.
+            </address>
+          </div>
+        </div>
         <div className="bottom">
           <span>© {new Date().getFullYear()} JWD Family Office · Japan WorldLink DWC</span>
           <span className="disc">{t(
