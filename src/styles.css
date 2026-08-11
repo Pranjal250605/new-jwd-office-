@@ -657,6 +657,7 @@
   line-height:1;color:var(--navy-ink);letter-spacing:-.02em}
 .hero-ai span{font-size:clamp(19px,2.4vw,27px);font-weight:600;color:var(--navy-ink)}
 .hero-ai-note{margin:14px 0;font-size:15.5px;color:var(--muted)}
+.hero-jp{margin:-8px 0 20px;font-size:14.5px;line-height:1.8;color:var(--muted);max-width:480px}
 
 .hero-ask{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
   padding:26px 30px;background:#fff;border:1px solid var(--line);border-radius:18px;
@@ -697,6 +698,16 @@
   .lic-intro .lead{grid-column:1/-1}
   .lic-shot-lead{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:16/9}
 }
+
+/* ── 豊かな次世代を創造するために — between the company plate and the group
+      explanation. A single quiet panel; the text carries the section. ── */
+.nextgen{padding-top:0}
+.nextgen-card{background:var(--tint);border:1px solid var(--line);border-radius:22px;
+  padding:clamp(30px,4.4vw,60px)}
+.nextgen-card h2.sec{margin-top:0}
+.nextgen-lead{margin:6px 0 26px;font-size:clamp(15.5px,1.6vw,17.5px);font-weight:600;color:var(--navy-ink)}
+.nextgen-body{display:flex;flex-direction:column;gap:18px;max-width:74ch}
+.nextgen-body p{font-size:15.5px;line-height:2.05;color:var(--ink)}
 
 /* ── JWD group flower ──
    Saturated fills under multiply turned every overlap muddy, so the petals are

@@ -7,7 +7,7 @@ export function Concerns() {
   const { t } = useLang();
   const items = [
     ['Japan vs UAE — inheritance tax rates compared', '日本とUAEの相続税税率比較'],
-    ['Japan vs UAE — tax on profits', '日本とUAEの利益に対する税率'],
+    ['Japan vs UAE — rates on the various forms of profit', '日本とUAEの各種利益に対する利率'],
     ['Japan vs UAE — ordinary and fixed deposit interest rates', '日本とUAEの普通預金金利と定期金利の比較'],
     ['UAE safety rankings, and cost of living against Japan', 'UAEの治安の良さのランキング表や、日本との物価の比較'],
     ['Japan vs UAE — tax on selling property', '日本とUAEの不動産売却した時の税率比較'],
@@ -57,6 +57,11 @@ export function Hero() {
           <p className="sub">{t(
             "For Japan's affluent families and business owners — a Dubai-based family office that answers one question first: how do you keep what you've built, across generations?",
             '日本の富裕層とオーナー経営者のために。「築いた資産を、いかに世代を超えて守り抜くか」——その問いにまず答える、ドバイ拠点のファミリーオフィスです。',
+          )}</p>
+          {/* Japanese-language support reassurance (2026.08.11). */}
+          <p className="hero-jp">{t(
+            '※ Our Japanese staff provide support in Japanese, so you can proceed with complete confidence.',
+            '※弊社は日本人スタッフによる日本語サポートにも対応しておりますので、ご安心ください。',
           )}</p>
           {/* The journey starts from the visitor's own concern, not from the
               company introduction — per the 2026.08.03 revision points. */}

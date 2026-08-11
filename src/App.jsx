@@ -4,7 +4,7 @@ import { useSmoothScroll } from './smoothScroll.jsx';
 import { UtilBar, Header, ContactForm, Footer } from './components/Chrome.jsx';
 import { Hero, Concerns, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
-import { President, License, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
+import { President, License, NextGeneration, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights, EcosystemFlower } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 
@@ -25,6 +25,7 @@ export default function App() {
         <Question />
         <President />
         <License />
+        <NextGeneration /> {/* sits between 会社概要 and the group explanation */}
         {/* 会社概要 — the hub-and-three-companies card set, then the group
             flower directly after it, per the 2026.08.03 revision points. */}
         <Ecosystem />

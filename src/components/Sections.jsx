@@ -131,6 +131,54 @@ export function License() {
   );
 }
 
+/** 豊かな次世代を創造するために — sits between the company information plate
+ *  and the group-company explanation (2026.08.11). */
+export function NextGeneration() {
+  const { t } = useLang();
+  const paras = [
+    [
+      'The global economy is transforming at a speed and scale it has never seen before. Much of the innovation rewriting the world from its foundations — AI, biotechnology, sustainable energy — comes from bold companies that work across borders.',
+      '現代のグローバル経済は、これまでにないスピードと規模で変革を続けています。AI、バイオテクノロジー、持続可能なエネルギーなど、世界を根本から書き換えるイノベーションの多くは、国境を越えた挑戦的な企業から生まれています。',
+    ],
+    [
+      'Our family office is not merely an organization that preserves and manages assets. We seek out the founders who hold a next-generation vision for humanity’s future, support that ambition with the force of long-term capital, and take pride in being true comrades who open the future alongside them.',
+      '私たちファミリーオフィスは、単なる資産の保全・運用を行う組織ではありません。人類の未来を形作る次世代のビジョンを持った経営者たちを見出し、その志を長期的な資本の力で支え、共に未来を切り拓く「真の同志」であると自負しています。',
+    ],
+    [
+      'Today, many of the portfolio companies we are deeply involved with are advancing toward a monumental milestone: listing on NASDAQ, the world’s foremost innovation market.',
+      'いま、私たちが深く関与し、伴走しているポートフォリオ企業の多くが、世界最高峰のイノベーション市場である「米国ナスダック（NASDAQ）」への上場という壮大なマイルストーンに向かって歩みを進めています。',
+    ],
+    [
+      'A NASDAQ listing is the winning of global trust, and a powerful engine for connecting the world’s wisdom with its capital. We support that steep but glorious road with deep experience, a global network, and above all an unshakeable long-term perspective.',
+      'ナスダックへの上場は、グローバルな信頼の獲得であり、世界中の英知と資本を結びつけるための強力なエンジンです。その険しくも栄光に満ちた道のりを、私たちは豊富な経験とグローバルネットワーク、そして何より揺るぎない長期的な視点をもって支え抜きます。',
+    ],
+    [
+      'What we aim for does not stop at economic return. On the greatest stage of all — the world market — we support the birth of companies that leave a lasting impact on society, and carry abundant value through to future generations. That is our mission.',
+      '私たちが目指すのは、単なる経済的なリターンにとどまりません。世界市場という最大の舞台で、社会に永続的なインパクトを残す企業の誕生を支援し、未来の世代へ豊かな価値をつなぐこと――それが私たちの使命です。',
+    ],
+    [
+      'Together with entrepreneurs who carry an overwhelming will to change the world, and with every stakeholder who shares that resolve, we are genuinely proud to be able to open the door on a new chapter of history.',
+      '世界を変える圧倒的な熱量を持つ起業家、そして志を共にするすべてのステークホルダーの皆様と共に、新たな歴史の扉を開くことができることを、心より誇りに思います。',
+    ],
+  ];
+  return (
+    <section className="blk nextgen" id="next-generation">
+      <div className="wrap">
+        <div className="nextgen-card">
+          <h2 className="sec">{t('Creating an abundant next generation', '豊かな次世代を創造するために')}</h2>
+          <p className="nextgen-lead">{t(
+            'Creating the abundance of the next generation, together with partners who take on the world market',
+            '次世代の豊かさを創造し、世界市場へと挑むパートナーと共に',
+          )}</p>
+          <div className="nextgen-body">
+            {paras.map(([en, ja], i) => <p key={i}>{t(en, ja)}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function GenerationalWealth() {
   const { t } = useLang();
   const pts = [
