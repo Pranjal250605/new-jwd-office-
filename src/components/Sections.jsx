@@ -24,10 +24,11 @@ export function President() {
         </div>
         <div className="prez-grid">
           <figure className="prez-photo">
-            <img src="/img/president.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役 ハミット・ギュルビュズ')} />
+            <img src="/img/president.jpg" alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）ハミット・ギュルビュズ')} />
+            {/* Name and title per the 2026.08.13 revision points. */}
             <figcaption>
-              <b>Hamit Gurbuz</b>
-              <span>{t('Representative Director · Japan Worldlink DWC-LLC', '代表取締役 · Japan Worldlink DWC-LLC')}</span>
+              <b>{t('Hamit Gurbuz', 'Hamit Gurbuz（ハミット・ギュルビュズ）')}</b>
+              <span>{t('President & CEO · Japan Worldlink DWC-LLC', '代表取締役社長（CEO）・Japan Worldlink DWC-LLC')}</span>
             </figcaption>
           </figure>
           <div className="prez-body">
@@ -58,7 +59,7 @@ export function President() {
             )}</p>
             <div className="prez-sign">
               <span>Japan Worldlink DWC-LLC</span>
-              <b>{t('Hamit Gurbuz — Representative Director', '代表取締役　ハミット・ギュルビュズ')}</b>
+              <b>{t('Hamit Gurbuz — President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')}</b>
             </div>
           </div>
         </div>
@@ -94,8 +95,8 @@ export function License() {
           <img className="lic-shot" src="/img/seminar-hall.jpg" alt="" loading="lazy" />
           <img className="lic-shot" src="/img/seminar-speaker.jpg" alt="" loading="lazy" />
           <figure className="lic-shot-lead">
-            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')} loading="lazy" />
-            <figcaption>{t('Hamit Gurbuz, Representative Director', '代表取締役社長 ハミッド・ギュルビュズ')}</figcaption>
+            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')} loading="lazy" />
+            <figcaption>{t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')}</figcaption>
           </figure>
         </div>
         <div className="lic">
