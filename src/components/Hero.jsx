@@ -1,5 +1,6 @@
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
+import { CONCERN_ANSWERS } from '../concernAnswers.js';
 
 /** "What are your concerns?" — the seven entry points a visitor can pick from,
  *  each routed to the section that answers it. Hero links straight here. */
@@ -14,13 +15,16 @@ export function Concerns() {
     ['Japanese international school fees vs ordinary UAE primary school fees',
      '日本のインターナショナルスクールの学費とUAEの一般的な小学校の学費の比較'],
     ['How to set up a company in the UAE', 'UAEに法人を作成するシステム'],
+    ['I want to grow my assets', '資産を増やしたい'],
   ];
-  /* Each concern is put straight to the AI advisor: these are comparison
-     questions the site has no dedicated section for, and the advisor answers
-     from JWD's own knowledge base. */
-  const ask = (q) => {
+  /* Each tile now serves the answer the business authored (2026.08.14) rather
+     than asking the model, so the figures shown are the approved ones. */
+  const ask = (n, q) => {
+    const answer = CONCERN_ANSWERS[n];
     window.dispatchEvent(new CustomEvent('open-advisor-chat'));
-    window.dispatchEvent(new CustomEvent('advisor-ask', { detail: { question: q } }));
+    window.dispatchEvent(new CustomEvent(answer ? 'advisor-answer' : 'advisor-ask', {
+      detail: { question: q, answer },
+    }));
   };
   return (
     <section className="blk concerns" id="concerns">
@@ -31,7 +35,7 @@ export function Concerns() {
         </div>
         <div className="concern-grid">
           {items.map(([en, ja], i) => (
-            <button type="button" className="concern" key={i} onClick={() => ask(t(en, ja))}>
+            <button type="button" className="concern" key={i} onClick={() => ask(String(i + 1).padStart(2, '0'), t(en, ja))}>
               <span className="concern-n">{String(i + 1).padStart(2, '0')}</span>
               <span className="concern-t">{t(en, ja)}</span>
               <span className="concern-ar">→</span>

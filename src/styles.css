@@ -499,7 +499,8 @@
 .advp-msgrow{display:flex;justify-content:flex-start}
 .advp-msgrow.user{justify-content:flex-end}
 .advp-avatar-sm{width:28px;height:28px;border-radius:50%;background:#2b2d31;display:flex;align-items:center;justify-content:center;margin:4px 8px 0 0;flex:none}
-.advp-bubble{max-width:80%;border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.6}
+/* pre-wrap so the authored concern answers keep their line and table breaks */
+.advp-bubble{max-width:80%;border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.6;white-space:pre-wrap}
 .advp-bubble.user{background:#2b2d31;color:#ffffff;border-bottom-right-radius:6px}
 .advp-bubble.user p{margin:0}
 .advp-bubble.assistant{background:#efede8;color:#2b2d31;border:1px solid rgba(32,33,37,.05);border-bottom-left-radius:6px}

@@ -293,6 +293,23 @@ export function ChatPanel() {
     return () => window.removeEventListener('advisor-ask', handler);
   }, [sendMessage]);
 
+  /* Serves a pre-authored answer verbatim, with no model call, so the reply is
+     exactly the text the business approved (2026.08.14 revision points). */
+  useEffect(() => {
+    const handler = (e) => {
+      const { question, answer } = e?.detail ?? {};
+      if (!question || !answer) return;
+      const t = Date.now();
+      setMessages((prev) => [
+        ...prev,
+        { id: `u-${t}`, role: 'user', content: question },
+        { id: `a-${t}`, role: 'assistant', content: answer },
+      ]);
+    };
+    window.addEventListener('advisor-answer', handler);
+    return () => window.removeEventListener('advisor-answer', handler);
+  }, []);
+
   return (
     <div className="advp">
       {/* Messages */}
