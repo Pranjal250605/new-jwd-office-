@@ -1,6 +1,35 @@
+import { useState, useEffect } from 'react';
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
+
+/** The answer panel — a single question and its answer in its own rectangle,
+ *  always opening at the top (2026.08.14 revision points). */
+function ConcernModal({ title, answer, onClose }) {
+  const { t } = useLang();
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+  return (
+    <div className="cmodal" onClick={onClose} role="dialog" aria-modal="true" aria-label={title}>
+      <div className="cmodal-box" onClick={(e) => e.stopPropagation()}>
+        <div className="cmodal-head">
+          <h3>{title}</h3>
+          <button className="cmodal-x" onClick={onClose} aria-label={t('Close', '閉じる')}>✕</button>
+        </div>
+        {/* key on the title remounts the scroller, so a new pick starts at the top */}
+        <div className="cmodal-body" key={title}>{answer}</div>
+      </div>
+    </div>
+  );
+}
 
 /** "What are your concerns?" — the seven entry points a visitor can pick from,
  *  each routed to the section that answers it. Hero links straight here. */
@@ -17,14 +46,14 @@ export function Concerns() {
     ['How to set up a company in the UAE', 'UAEに法人を作成するシステム'],
     ['I want to grow my assets', '資産を増やしたい'],
   ];
-  /* Each tile now serves the answer the business authored (2026.08.14) rather
-     than asking the model, so the figures shown are the approved ones. */
+  const [open, setOpen] = useState(null);
+  /* Each tile opens its authored answer in its own panel. Anything without an
+     authored answer still falls back to asking the advisor. */
   const ask = (n, q) => {
     const answer = CONCERN_ANSWERS[n];
+    if (answer) { setOpen({ title: q, answer }); return; }
     window.dispatchEvent(new CustomEvent('open-advisor-chat'));
-    window.dispatchEvent(new CustomEvent(answer ? 'advisor-answer' : 'advisor-ask', {
-      detail: { question: q, answer },
-    }));
+    window.dispatchEvent(new CustomEvent('advisor-ask', { detail: { question: q } }));
   };
   return (
     <section className="blk concerns" id="concerns">
@@ -43,6 +72,7 @@ export function Concerns() {
           ))}
         </div>
       </div>
+      {open && <ConcernModal title={open.title} answer={open.answer} onClose={() => setOpen(null)} />}
     </section>
   );
 }

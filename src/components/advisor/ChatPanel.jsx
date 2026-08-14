@@ -147,16 +147,10 @@ export function ChatPanel() {
     } catch { /* ignore */ }
   }, [messages]);
 
-  /* Chat normally pins to the newest line. An authored concern answer is a
-     document rather than a reply, so it opens at the top to be read down. */
-  const pinTopRef = useRef(false);
   useEffect(() => {
-    const pin = () => {
-      if (!scrollRef.current) return;
-      scrollRef.current.scrollTop = pinTopRef.current ? 0 : scrollRef.current.scrollHeight;
-    };
+    const pin = () => { if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight; };
     pin();
-    const id = requestAnimationFrame(() => { pin(); pinTopRef.current = false; });
+    const id = requestAnimationFrame(pin);
     return () => cancelAnimationFrame(id);
   }, [messages, streaming, limitReached]);
 
@@ -299,28 +293,6 @@ export function ChatPanel() {
     return () => window.removeEventListener('advisor-ask', handler);
   }, [sendMessage]);
 
-  /* Serves a pre-authored answer verbatim, with no model call, so the reply is
-     exactly the text the business approved (2026.08.14 revision points). */
-  useEffect(() => {
-    const handler = (e) => {
-      const { question, answer } = e?.detail ?? {};
-      if (!question || !answer) return;
-      const t = Date.now();
-      /* Replaces the thread rather than appending: picking a tile shows that
-         one answer on its own, with no earlier questions above it. */
-      abortRef.current?.abort();
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      setStreaming(false);
-      setError('');
-      pinTopRef.current = true;
-      setMessages([
-        { id: `u-${t}`, role: 'user', content: question },
-        { id: `a-${t}`, role: 'assistant', content: answer },
-      ]);
-    };
-    window.addEventListener('advisor-answer', handler);
-    return () => window.removeEventListener('advisor-answer', handler);
-  }, []);
 
   return (
     <div className="advp">
