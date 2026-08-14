@@ -147,10 +147,16 @@ export function ChatPanel() {
     } catch { /* ignore */ }
   }, [messages]);
 
+  /* Chat normally pins to the newest line. An authored concern answer is a
+     document rather than a reply, so it opens at the top to be read down. */
+  const pinTopRef = useRef(false);
   useEffect(() => {
-    const pin = () => { if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight; };
+    const pin = () => {
+      if (!scrollRef.current) return;
+      scrollRef.current.scrollTop = pinTopRef.current ? 0 : scrollRef.current.scrollHeight;
+    };
     pin();
-    const id = requestAnimationFrame(pin);
+    const id = requestAnimationFrame(() => { pin(); pinTopRef.current = false; });
     return () => cancelAnimationFrame(id);
   }, [messages, streaming, limitReached]);
 
@@ -300,8 +306,14 @@ export function ChatPanel() {
       const { question, answer } = e?.detail ?? {};
       if (!question || !answer) return;
       const t = Date.now();
-      setMessages((prev) => [
-        ...prev,
+      /* Replaces the thread rather than appending: picking a tile shows that
+         one answer on its own, with no earlier questions above it. */
+      abortRef.current?.abort();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      setStreaming(false);
+      setError('');
+      pinTopRef.current = true;
+      setMessages([
         { id: `u-${t}`, role: 'user', content: question },
         { id: `a-${t}`, role: 'assistant', content: answer },
       ]);
