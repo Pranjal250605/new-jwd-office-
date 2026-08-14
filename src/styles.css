@@ -710,6 +710,26 @@
 .nextgen-body{display:flex;flex-direction:column;gap:18px;max-width:74ch}
 .nextgen-body p{font-size:15.5px;line-height:2.05;color:var(--ink)}
 
+/* ── JWD Jewelry showroom gallery (last section before the CTA) ── */
+/* Insights above is tinted and the CTA band below carries its own fill, so
+   this sits white and the alternation through the page is preserved. */
+.jewelry{background:var(--bg)}
+.jewel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.jewel-shot{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 20px 48px -32px rgba(32,33,37,.55);background:#fff}
+.jewel-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.jewel-shot:hover img{transform:scale(1.04)}
+.jewel-tall{grid-row:span 2;aspect-ratio:3/4}
+.jewel-wide{aspect-ratio:4/3}
+@media(max-width:900px){
+  .jewel-grid{grid-template-columns:repeat(2,1fr)}
+  .jewel-tall{grid-row:span 2}
+}
+@media(max-width:560px){
+  .jewel-grid{grid-template-columns:1fr}
+  .jewel-tall{grid-row:auto;aspect-ratio:4/3}
+}
+
 /* ── JWD group flower ──
    Saturated fills under multiply turned every overlap muddy, so the petals are
    pale washes instead: the blend then deepens into soft secondary tints rather

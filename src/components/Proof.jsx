@@ -353,3 +353,37 @@ export function EcosystemFlower() {
     </section>
   );
 }
+
+/** JWD Jewelry — the Dubai showroom, shown as a gallery. Sits last in main,
+ *  immediately before the contact CTA (2026.08.14). */
+export function Jewelry() {
+  const { t } = useLang();
+  const shots = [
+    ['/img/jewelry-entrance.jpg', t('The showroom entrance', 'ショールームのエントランス'), 'tall'],
+    ['/img/jewelry-hall-1.jpg', t('Display halls', '展示ホール'), 'wide'],
+    ['/img/jewelry-hall-2.jpg', t('Display halls', '展示ホール'), 'wide'],
+    ['/img/jewelry-building.jpg', t('The building, Dubai', 'ドバイの店舗ビル'), 'tall'],
+    ['/img/jewelry-hall-3.jpg', t('Display halls', '展示ホール'), 'wide'],
+  ];
+  return (
+    <section className="blk jewelry" id="jewelry">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('JWD Jewelry', 'JWDジュエリー')}</div>
+          <h2 className="sec">{t('A Dubai showroom of our own', 'ドバイのジュエリーショールーム')}</h2>
+          <p className="lead center">{t(
+            'Diamonds sourced at cost through our own route — see them in person at the showroom in Dubai.',
+            '独自のルートで原価水準にて仕入れるダイヤモンド。ドバイのショールームで、実物をご覧いただけます。',
+          )}</p>
+        </div>
+        <div className="jewel-grid">
+          {shots.map(([src, alt, shape]) => (
+            <figure className={`jewel-shot jewel-${shape}`} key={src}>
+              <img src={src} alt={alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
