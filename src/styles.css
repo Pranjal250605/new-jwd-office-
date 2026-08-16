@@ -731,6 +731,7 @@
 .cmodal-x:hover{color:var(--navy-ink)}
 .cmodal-body{padding:24px 26px 30px;overflow-y:auto;white-space:pre-wrap;
   font-size:15px;line-height:1.95;color:var(--ink);overscroll-behavior:contain}
+.cmodal-body strong{font-weight:700;color:var(--navy-ink)}
 @media(max-width:560px){
   .cmodal{padding:14px}
   .cmodal-box{max-height:90vh;border-radius:18px}

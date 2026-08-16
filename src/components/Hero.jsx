@@ -3,6 +3,15 @@ import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
 
+/** Section titles are marked **like this** in the answer text and set bold,
+ *  per the 08.16 sheet. Everything else renders as written. */
+function renderAnswer(text) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**')
+      ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : part);
+}
+
 /** The answer panel — a single question and its answer in its own rectangle,
  *  always opening at the top (2026.08.14 revision points). */
 function ConcernModal({ title, answer, onClose }) {
@@ -25,7 +34,7 @@ function ConcernModal({ title, answer, onClose }) {
           <button className="cmodal-x" onClick={onClose} aria-label={t('Close', '閉じる')}>✕</button>
         </div>
         {/* key on the title remounts the scroller, so a new pick starts at the top */}
-        <div className="cmodal-body" key={title}>{answer}</div>
+        <div className="cmodal-body" key={title}>{renderAnswer(answer)}</div>
       </div>
     </div>
   );
