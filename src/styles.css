@@ -14,6 +14,8 @@
     --bg:#ffffff;
     --tint:#f6f5f2;          /* off-white section (Family Office key colour) */
     --tint-2:#efede8;
+    --cream:#faf5f2;         /* warm cream — sampled from the 08.19 sheet's
+                                comparison panel; warmer than --tint */
     --shadow:0 24px 60px -30px rgba(32,33,37,.35);
     --radius:16px;
 
@@ -723,7 +725,7 @@
   background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
   box-shadow:0 40px 100px -30px rgba(32,33,37,.55)}
 .cmodal-head{display:flex;align-items:flex-start;gap:16px;padding:24px 26px 16px;
-  border-bottom:1px solid var(--line);background:var(--tint)}
+  border-bottom:1px solid var(--line);background:var(--cream)}
 .cmodal-head h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(17px,2.1vw,21px);
   font-weight:700;color:var(--navy-ink);line-height:1.4;flex:1}
 .cmodal-x{flex:none;background:none;border:none;font-size:19px;line-height:1;cursor:pointer;
@@ -731,7 +733,7 @@
 .cmodal-x:hover{color:var(--navy-ink)}
 .cmodal-body{padding:24px 26px 30px;overflow-y:auto;white-space:pre-wrap;
   font-size:15px;line-height:1.95;color:var(--ink);overscroll-behavior:contain;
-  background:var(--tint)}
+  background:var(--cream)}
 .cmodal-body strong{font-weight:700;color:var(--navy-ink)}
 
 /* ── Japan ↔ Dubai comparison boxes (2026.08.19 sheet) — white boxes on the
