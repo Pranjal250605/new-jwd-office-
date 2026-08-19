@@ -1,5 +1,6 @@
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
+import { FlagJP, FlagAE } from './Flags.jsx';
 
 const STRATEGIES = [
   ['01', 'Art. 22 · Inheritance Tax Act', '相続税法 第22条', 'Asset Valuation Optimization', '資産評価の最適化',
@@ -75,8 +76,9 @@ export function Compare() {
         <div className="compare">
           <div className="rw hd2">
             <div>{t('Tax (individual)', '税目（個人）')}</div>
-            <div className="c jp">{t('Japan', '日本')}</div>
-            <div className="c ae">{t('Dubai · UAE', 'ドバイ · UAE')}</div>
+            {/* flags beside each country, per the 08.19 sheet */}
+            <div className="c jp"><FlagJP /><span>{t('Japan', '日本')}</span></div>
+            <div className="c ae"><FlagAE /><span>{t('Dubai · UAE', 'ドバイ · UAE')}</span></div>
           </div>
           {TAX_ROWS.map(([en, ja, jp, ae]) => (
             <div className="rw" key={en}>

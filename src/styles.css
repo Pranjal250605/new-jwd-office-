@@ -267,7 +267,7 @@
   .compare .rw{display:grid;grid-template-columns:1.5fr 1fr 1fr}
   .compare .hd2{background:var(--tint-2);color:var(--navy-ink);border-bottom:1px solid var(--line)}
   .compare .hd2 div{padding:18px 22px;font-weight:600;font-size:15.5px}
-  .compare .hd2 .c{text-align:center}
+  .compare .hd2 .c{display:flex;align-items:center;justify-content:center;gap:9px}
   .compare .hd2 .jp{color:var(--muted)}
   .compare .hd2 .ae{color:var(--gold)}
   .compare .rw:not(.hd2){border-top:1px solid var(--line)}
@@ -730,13 +730,36 @@
   color:var(--muted);padding:4px;transition:.2s;font-family:inherit}
 .cmodal-x:hover{color:var(--navy-ink)}
 .cmodal-body{padding:24px 26px 30px;overflow-y:auto;white-space:pre-wrap;
-  font-size:15px;line-height:1.95;color:var(--ink);overscroll-behavior:contain}
+  font-size:15px;line-height:1.95;color:var(--ink);overscroll-behavior:contain;
+  background:var(--tint)}
 .cmodal-body strong{font-weight:700;color:var(--navy-ink)}
+
+/* ── Japan ↔ Dubai comparison boxes (2026.08.19 sheet) — white boxes on the
+      tinted panel, each country's rate beside its own flag. Used wherever the
+      answers compare the two, i.e. across tiles 01-08. ── */
+.cmp{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:8px 20px;
+  align-items:center;margin:10px 0;padding:15px 18px;white-space:normal;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 1px 2px rgba(32,33,37,.05)}
+.cmp-solo{grid-template-columns:1fr}
+.cmp+.cmp{margin-top:8px}
+.cmp-k{font-weight:600;color:var(--navy-ink);font-size:15px;line-height:1.65}
+.cmp-v{display:flex;flex-direction:column;gap:9px;min-width:0}
+.cmp-side{display:flex;flex-direction:column;gap:5px;min-width:0}
+.cmp-row{display:flex;align-items:flex-start;gap:10px;line-height:1.65}
+.cmp-row>span{min-width:0}
+.cmp-row .flag{margin-top:4px}
+.cmp-detail{padding-left:32px;color:var(--muted);font-size:14px;line-height:1.85}
+.cmp-detail div:empty{height:.7em}   /* keep the authored paragraph breaks */
+.flag{flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(32,33,37,.16)}
+
 @media(max-width:560px){
   .cmodal{padding:14px}
   .cmodal-box{max-height:90vh;border-radius:18px}
   .cmodal-head{padding:18px 18px 13px}
   .cmodal-body{padding:18px;font-size:14.5px;line-height:1.9}
+  .cmp{grid-template-columns:1fr;gap:10px;padding:13px 15px}
+  .cmp-detail{padding-left:0}
 }
 
 /* ── JWD Jewelry showroom gallery (last section before the CTA) ── */

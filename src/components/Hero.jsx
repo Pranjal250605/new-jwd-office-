@@ -2,14 +2,47 @@ import { useState, useEffect } from 'react';
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
+import { FlagJP, FlagAE } from './Flags.jsx';
+import { parseAnswer } from '../concernBoxes.js';
 
 /** Section titles are marked **like this** in the answer text and set bold,
  *  per the 08.16 sheet. Everything else renders as written. */
-function renderAnswer(text) {
+function renderInline(text) {
   return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
     part.startsWith('**') && part.endsWith('**')
       ? <strong key={i}>{part.slice(2, -2)}</strong>
       : part);
+}
+
+/** One country's side of a comparison: flag, its line, then any detail lines. */
+function Side({ Flag, lines }) {
+  return (
+    <div className="cmp-side">
+      <div className="cmp-row">
+        <Flag />
+        <span>{renderInline(lines[0].trim())}</span>
+      </div>
+      {lines.length > 1 && (
+        <div className="cmp-detail">
+          {lines.slice(1).map((l, i) => <div key={i}>{renderInline(l.trim())}</div>)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function renderAnswer(text) {
+  return parseAnswer(text).map((n, i) => (n.type === 'text'
+    ? <span key={i}>{renderInline(n.text)}</span>
+    : (
+      <div className={n.label ? 'cmp' : 'cmp cmp-solo'} key={i}>
+        {n.label && <div className="cmp-k">{renderInline(n.label)}</div>}
+        <div className="cmp-v">
+          <Side Flag={FlagJP} lines={n.jp} />
+          <Side Flag={FlagAE} lines={n.ae} />
+        </div>
+      </div>
+    )));
 }
 
 /** The answer panel — a single question and its answer in its own rectangle,
