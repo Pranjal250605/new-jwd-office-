@@ -129,13 +129,6 @@
   .hcard{position:relative}
   .hcard .img{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;
     background:#e4e2dd center/cover no-repeat}
-  .hcard .float{position:absolute;left:-34px;bottom:34px;background:#fff;border:1px solid var(--line);
-    border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);width:330px}
-  .hcard .float .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .hcard .float .v{font-family:'Plus Jakarta Sans',sans-serif;font-size:31px;font-weight:600;color:var(--navy-ink);line-height:1.1;margin:6px 0;white-space:nowrap;letter-spacing:-.02em}
-  .hcard .float .v small{color:var(--gold);font-size:19px;margin-right:1px}
-  .hcard .float .row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
-  .hcard .float .row b{color:#1f9d6b;font-weight:600}
 
   /* ── stat band ── */
   .stats{background:var(--tint);color:var(--navy-ink);border-block:1px solid var(--line)}
@@ -737,16 +730,20 @@
 .cmodal-body strong{font-weight:700;color:var(--navy-ink)}
 
 /* ── Japan ↔ Dubai comparison boxes (2026.08.19 sheet) — white boxes on the
-      tinted panel, each country's rate beside its own flag. Used wherever the
-      answers compare the two, i.e. across tiles 01-08. ── */
+      cream panel, each country's rate beside its own flag. Used wherever the
+      answers compare the two, i.e. across tiles 01-08.
+
+      The white box starts where the flags start (2026.08.21): the bracket
+      label sits on the panel's own cream, so the box reads as the comparison
+      itself rather than as a row containing it. ── */
 .cmp{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:8px 20px;
-  align-items:center;margin:10px 0;padding:15px 18px;white-space:normal;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:0 1px 2px rgba(32,33,37,.05)}
+  align-items:center;margin:14px 0;white-space:normal}
 .cmp-solo{grid-template-columns:1fr}
-.cmp+.cmp{margin-top:8px}
+.cmp+.cmp{margin-top:10px}
 .cmp-k{font-weight:600;color:var(--navy-ink);font-size:15px;line-height:1.65}
-.cmp-v{display:flex;flex-direction:column;gap:9px;min-width:0}
+.cmp-v{display:flex;flex-direction:column;gap:9px;min-width:0;
+  padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 1px 2px rgba(32,33,37,.05)}
 .cmp-side{display:flex;flex-direction:column;gap:5px;min-width:0}
 .cmp-row{display:flex;align-items:flex-start;gap:10px;line-height:1.65}
 .cmp-row>span{min-width:0}
@@ -760,7 +757,8 @@
   .cmodal-box{max-height:90vh;border-radius:18px}
   .cmodal-head{padding:18px 18px 13px}
   .cmodal-body{padding:18px;font-size:14.5px;line-height:1.9}
-  .cmp{grid-template-columns:1fr;gap:10px;padding:13px 15px}
+  .cmp{grid-template-columns:1fr;gap:8px}
+  .cmp-v{padding:13px 15px}
   .cmp-detail{padding-left:0}
 }
 
@@ -893,7 +891,6 @@
   .hcard{max-width:none}
   .hcard .img{aspect-ratio:4/3}
   /* the ¥ net-worth card no longer overlaps — it sits under the photo */
-  .hcard .float{position:static;left:auto;bottom:auto;width:100%;margin-top:14px}
 
   /* quick action tiles — one clean row each (fixes stacked JP text) */
   .quick .wrap{grid-template-columns:1fr}

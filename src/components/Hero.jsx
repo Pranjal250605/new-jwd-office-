@@ -167,12 +167,6 @@ export function Hero() {
         </div>
         <div className="hcard">
           <div className="img" style={{ backgroundImage: "url('/img/new-couple.jpg')", backgroundPosition: 'center 22%' }} />
-          <div className="float">
-            <div className="t">{t('Consolidated Net Worth', '統合純資産')}</div>
-            <div className="v"><small>¥</small>2,847,500,000</div>
-            <div className="row"><span>{t('YTD return', '年初来リターン')}</span><b>+9.7%</b></div>
-            <div className="row"><span>{t('Overseas inheritance tax', '海外資産の相続税')}</span><b>→ 0%</b></div>
-          </div>
         </div>
       </div>
     </section>
