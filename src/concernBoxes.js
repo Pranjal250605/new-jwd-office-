@@ -20,6 +20,21 @@ export const isBoldOnly = (s) => /^\*\*[^*]+\*\*$/.test(s.trim());
 const JP_SIDE = /^日本[^：:。]{0,30}[：:]/;
 const AE_SIDE = /^(?:ドバイ|UAE|アラブ首長国連邦)[^：:。]{0,30}[：:]/;
 
+/* Some comparisons name no country in the copy at all — the 08.22 sheet's
+   property-sale table shows a flag beside a bare rate. Those lines are tagged
+   [JP] / [AE] in concernAnswers.js: an authoring mark like ** , stripped
+   before display, so the client's figures stay verbatim and the side is
+   declared rather than guessed at. */
+const MARK = /^\s*\[(JP|AE)\]\s?/;
+export const stripMark = (s) => s.replace(MARK, '');
+const tagged = (line, tag) => new RegExp('^\\s*\\[' + tag + '\\]').test(line ?? '');
+/** End of a run of consecutively tagged lines. */
+function markEnd(lines, from, tag) {
+  let k = from;
+  while (k < lines.length && tagged(lines[k], tag)) k++;
+  return k;
+}
+
 /** End of one country's run: stops at the next side, a heading or a blank line,
  *  so copy wrapped over several lines (the 04 answer wraps Dubai across three)
  *  stays with its own country instead of being dropped. */
@@ -33,6 +48,19 @@ function sideEnd(lines, from) {
 /** Does a comparison box start at line i? Returns the box and where to resume. */
 function matchBox(lines, i) {
   const at = (k) => (k >= 0 && k < lines.length ? bare(lines[k]) : '');
+  /* Explicitly tagged: an optional label, then the [JP] run, then the [AE] run. */
+  const labelled = at(i) && !isBoldOnly(lines[i]) && !tagged(lines[i], 'JP') && !tagged(lines[i], 'AE');
+  const jpStart = labelled ? i + 1 : i;
+  if (tagged(lines[jpStart], 'JP')) {
+    const jpEnd = markEnd(lines, jpStart, 'JP');
+    if (tagged(lines[jpEnd], 'AE')) {
+      const aeEnd = markEnd(lines, jpEnd, 'AE');
+      return {
+        box: { label: labelled ? lines[i].trim() : null, jp: lines.slice(jpStart, jpEnd), ae: lines.slice(jpEnd, aeEnd) },
+        next: aeEnd,
+      };
+    }
+  }
   /* Bracket table (tiles 01/05/08): a label, its Japan rate, its Dubai rate —
      the exact shape drawn in the 08.19 mockup. */
   if (at(i) && !isBoldOnly(lines[i]) && !JP_SIDE.test(at(i)) && !AE_SIDE.test(at(i))

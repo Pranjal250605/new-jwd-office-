@@ -6,8 +6,12 @@
  * 07 were unchanged there (the apparent differences were only the PDF's line
  * wrapping). **...** marks a section title, rendered bold.
  *
- * NOTE 05 repeats 01's inheritance table under a property-sale question. The
- * 08.16 sheet states "Same revision as the page (1)", so this is intentional.
+ * NOTE 05 used to repeat 01's inheritance table, which the 08.16 sheet had
+ * asked for. The 08.22 sheet replaces it with the property-sale rates that
+ * actually answer that tile's question, so the duplication is now gone.
+ *
+ * [JP] / [AE] tag which country a line belongs to where the copy names no
+ * country itself; the tag is stripped before display (see concernBoxes.js).
  */
 export const CONCERN_ANSWERS = {
   '01': `* 自分がいなくなった後、誰が資産を管理するのか
@@ -143,41 +147,15 @@ UAE（ドバイやアブダビなど）：「厳罰化」と「徹底した監�
 ます。街中には多数の防犯カメラ（AIカメラ等）が設置されており、警察の取り締まりも非常に厳
 格です。犯罪者に対する刑罰が重いため、犯罪を抑止する力が非常に強いのが特徴です。`,
 
-  '05': `**相続税の速算表**
+  '05': `**不動産の売却益にかかる基本の税率**
 
-**法定相続分に応ずる取得**
+長期譲渡所得５年超
+[JP] 20.315% 所得税15% + 住民税5％ ＋復興特別所得税0.315%
+[AE] 0%
 
-1,000万円以下
-日本の税率： 10%
-ドバイの税率： 0%
-
-1,000万円超〜3,000万円以下
-日本の税率： 15%
-ドバイの税率： 0%
-
-3,000万円超〜 5,000万円以下
-日本の税率： 20%
-ドバイの税率： 0%
-
-5,000万円超〜 1億円以下
-日本の税率： 30%
-ドバイの税率： 0%
-
-1億円超〜2億円以下
-日本の税率： 40%
-ドバイの税率： 0%
-
-2億円超〜3億円以下
-日本の税率： 45%
-ドバイの税率： 0%
-
-3億円超〜6億円以下
-日本の税率： 50%
-ドバイの税率： 0%
-
-6億円超
-日本の税率： 55%
-ドバイの税率： 0%`,
+短期譲渡所得５年以下
+[JP] 39.63% 所得税30% + 住民税9％ ＋復興特別所得税0.63%
+[AE] 0%`,
 
   '06': `**「学費について」**
 日本のインターナショナルスクールの学費とUAEの一般的な小学校の学費の比較は？

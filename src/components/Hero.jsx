@@ -3,7 +3,7 @@ import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
 import { FlagJP, FlagAE } from './Flags.jsx';
-import { parseAnswer } from '../concernBoxes.js';
+import { parseAnswer, stripMark } from '../concernBoxes.js';
 
 /** Section titles are marked **like this** in the answer text and set bold,
  *  per the 08.16 sheet. Everything else renders as written. */
@@ -20,11 +20,11 @@ function Side({ Flag, lines }) {
     <div className="cmp-side">
       <div className="cmp-row">
         <Flag />
-        <span>{renderInline(lines[0].trim())}</span>
+        <span>{renderInline(stripMark(lines[0]).trim())}</span>
       </div>
       {lines.length > 1 && (
         <div className="cmp-detail">
-          {lines.slice(1).map((l, i) => <div key={i}>{renderInline(l.trim())}</div>)}
+          {lines.slice(1).map((l, i) => <div key={i}>{renderInline(stripMark(l).trim())}</div>)}
         </div>
       )}
     </div>
