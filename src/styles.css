@@ -91,13 +91,13 @@
      Japanese and were overrunning the 1240px wrap. */
   nav.main{display:flex;align-items:center;gap:16px;height:74px}
   .logo{display:flex;flex-direction:row;align-items:center;gap:9px;line-height:1;flex:none}
-  .logo-star{height:30px;width:auto;flex:none}
+  .logo-star{height:39px;width:auto;flex:none}
   .logo-txt{display:flex;flex-direction:column}
   .fmark{display:flex;align-items:center;gap:11px}
   .fmark-star{height:38px;width:auto;flex:none}
-  .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy);letter-spacing:0;white-space:nowrap}
+  .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:23.5px;color:var(--navy);letter-spacing:0;white-space:nowrap}
   .logo .mk b{color:var(--gold)}
-  .logo .sb{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .logo .sb{font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
   .navlinks{display:flex;gap:13px;align-items:center;justify-content:center;flex:1 1 auto;min-width:0}
   .navlinks a{font-size:13.5px;font-weight:500;color:#4a4d54;position:relative;padding:4px 0;white-space:nowrap}
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--gold);transition:.3s}
@@ -647,6 +647,20 @@
 .hoe-ihg-note{display:block;margin:18px auto 0;max-width:660px;font-size:13.5px;line-height:1.65;letter-spacing:.02em;color:var(--muted)}
 @media(max-width:560px){.hoe-ihg{padding:24px 20px}}
 
+/* IHG, explained — 08.25 sheet item 4-②. Sits directly under the brand strip
+   it talks about and above the Seahorse photograph, on the same cream the
+   answer panels use, so it reads as one statement rather than a new section. */
+.hoe-ihg-say{max-width:1040px;margin:14px auto 30px;padding:34px 44px 36px;
+  background:var(--cream);border:1px solid var(--line);border-radius:20px;text-align:center}
+.hoe-ihg-say h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+  font-size:clamp(20px,2.4vw,27px);line-height:1.5;color:var(--navy-ink);margin-top:10px}
+.hoe-ihg-say-body{max-width:800px;margin:18px auto 0;font-size:15.5px;
+  line-height:2.05;color:var(--ink)}
+@media(max-width:560px){
+  .hoe-ihg-say{padding:24px 20px 26px;border-radius:16px;margin:12px auto 24px}
+  .hoe-ihg-say-body{font-size:14.5px;line-height:1.95}
+}
+
 /* ── Hero: AI consulting + "What are your concerns?" ──
    These two cards replace the old CTA pair, so the visitor enters through
    their own question rather than through the company introduction. */
@@ -868,9 +882,9 @@
 
   header{border-bottom:1px solid var(--line)}
   nav.main{height:64px;gap:12px}
-  .logo-star{height:32px}
-  .logo .mk{font-size:19px}
-  .logo .sb{font-size:8px;letter-spacing:.22em}
+  .logo-star{height:41.5px}
+  .logo .mk{font-size:24.5px}
+  .logo .sb{font-size:10.5px;letter-spacing:.22em}
 
   /* section rhythm */
   section.blk{padding:56px 0}

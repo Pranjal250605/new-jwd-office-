@@ -224,6 +224,21 @@ export function HeartOfEurope() {
           <span className="hoe-ihg-note">{t('IHG Hotels & Resorts — one of the world’s leading hotel groups, 6,000+ hotels across 100+ countries. ↗', '世界有数のホテルグループ IHG Hotels & Resorts — 100か国以上・6,000軒超のホテルネットワーク。↗')}</span>
         </a>
 
+        {/* IHG, explained — 08.25 sheet item 4-②: "For DWC Website: add section
+            between IHG and Sea Horse". Japanese is the client's, verbatim from
+            the sheet; the English is ours and still needs their approval. */}
+        <div className="hoe-ihg-say">
+          <div className="ey">{t('For those who know the very best', '一流を知る人のために')}</div>
+          <h3>{t(
+            'The assured calm, and the wonder, that only IHG builds',
+            'IHGグループが作り上げた揺るぎない安心と感動の空間',
+          )}</h3>
+          <p className="hoe-ihg-say-body">{t(
+            'IHG commands one of the largest hotel networks on earth and the lasting affection of travellers worldwide. Quality worthy of that name, interiors considered down to the last detail, and the reassurance of a guaranteed return: together they deliver a repose and a confidence without precedent. The exceptional hotel that makes a stay exceptional is now yours to own.',
+            '世界最大級のホテルネットワークを誇り、世界の旅人に愛され続けるIHGグループ。その名にふさわしい品質と細部までこだわり抜いた空間、そして安心の保証制度が、かつてない極上のくつろぎと確かな安心感をお届けします。特別な滞在を叶える特別なホテルが、今、あなたのものになります。',
+          )}</p>
+        </div>
+
         <div className="hoe-hero">
           <img src="/img/hoe-underwater.jpg" alt={t('Floating villa above and beneath the sea', '海上と海中にまたがる浮遊邸宅')} loading="lazy" />
           <span className="hoe-cap">{t('The Floating Seahorse · The World, Dubai', 'フローティング・シーホース · ザ・ワールド、ドバイ')}</span>
