@@ -293,12 +293,17 @@ export function Services() {
           )}</p>
         </div>
         <div className="grid g3">
+          {/* Each service is a way in to the consultation, so the whole card is
+              the link rather than a "contact us" line inside it. The global
+              smooth-scroll picks these up like any other in-page anchor. */}
           {SERVICES.map(([d, en, ja, dEn, dJa, circle]) => (
-            <div className="card" key={en}>
+            <a className="card" href="#contact" key={en}
+               aria-label={t(`${en} — book a consultation`, `${ja} — 無料相談を予約`)}>
               <div className="ic"><svg viewBox="0 0 24 24">{circle && <circle cx="12" cy="12" r="9" />}<path d={d} /></svg></div>
               <h3>{t(en, ja)}</h3>
               <p>{t(dEn, dJa)}</p>
-            </div>
+              <span className="card-go" aria-hidden="true">{t('Book a consultation →', '無料相談を予約 →')}</span>
+            </a>
           ))}
         </div>
       </div>
