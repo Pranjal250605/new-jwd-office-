@@ -33,8 +33,8 @@ export function President() {
           </figure>
           <div className="prez-body">
             <p>{t(
-              'Today, the landscape surrounding wealth management and estate succession has become more complex than ever due to evolving legal frameworks and changing social and economic conditions. In particular, the transfer of assets — including inheritance-tax considerations — is far more than a tax matter. It represents a significant milestone in passing on not only the wealth your family has carefully built over generations, but also the values, aspirations, and legacy that accompany it.',
-              '私たちが直面する現代の資産運用や相続を取り巻く環境は、法制度の複雑化や社会情勢の変化に伴い、かつてないほど多様化しています。特に「相続税」をはじめとする資産の移転は、単なる税務上の手続きではなく、ご家族が長年築き上げてこられた大切な財産と「想い」を、次の世代へとバトンタッチする極めて重要な節目です。',
+              'The landscape around wealth management and succession has entered its most difficult phase yet, as legal frameworks grow more intricate and social conditions shift sharply. The transfer of assets — inheritance tax above all — does not stop at a tax procedure. We see it as a profoundly important juncture: the passing on of the wealth a family has built over many years, and of the intent invested in it, to the next generation.',
+              '現代の資産運用や相続を巡る環境は、法制度の複雑化や社会情勢の激変により、かつてないほど困難な局面を迎えています。特に「相続税」に代表される資産の移転は、単なる税務上の手続きに留まりません。それは、ご家族が長年築き上げてこられた大切な財産と、そこに込められた「想い」を次代へと継承する、極めて重要な節目であると私たちは考えます。',
             )}</p>
             <p>{t(
               'At Japan Worldlink, our role extends well beyond providing tax-efficient solutions. We strive to become a trusted strategic partner who understands each family’s unique goals, values, and long-term vision — a comprehensive compass for preserving, growing, and seamlessly transferring family wealth across generations.',

@@ -4,16 +4,16 @@ import { FlagJP, FlagAE } from './Flags.jsx';
 
 const STRATEGIES = [
   ['01', 'Art. 22 · Inheritance Tax Act', '相続税法 第22条', 'Asset Valuation Optimization', '資産評価の最適化',
-   'Dubai holding structures use valuation differentials so private-company shares can often be valued below market.',
-   'ドバイの持株ストラクチャーと評価差を活用。非上場株式を市場価格より低く評価できる場合があります。',
+   'A Dubai holding structure maximises the valuation differential. Unlisted shares can in some cases be assessed below market value, compressing the taxable valuation by up to 60%.',
+   'ドバイの持株ストラクチャーを活用し、評価差額を最大化。非上場株式の評価額を市場価格より低く算定できるケースがあり、課税対象評価額を最大60%圧縮することが可能です。',
    'Up to 60% reduction in taxable estate valuation', '課税対象評価額を最大60%圧縮'],
   ['02', 'Special Taxation Measures Act · Art. 40-4', '租税特別措置法 第40条の4', 'CFC Optimization via Genuine Substance', '実体を伴うCFC最適化',
    'Real business operations in Dubai — genuine activity, physical office, local management — to satisfy substance requirements.',
    'ドバイに実体ある事業を設立。実際の事業活動・物理的オフィス・現地管理により実体基準を充足します。',
    'Legally defer Japanese tax on overseas business profits', '海外事業利益への日本課税を合法的に繰り延べ'],
   ['03', 'Art. 1-3 · Inheritance Tax Act', '相続税法 第1条の3', 'Next-Generation 10-Year Rule', '次世代・10年ルール',
-   'When both heirs and assets are non-resident for over ten years, inheritance tax on overseas assets can effectively be eliminated.',
-   '相続人と資産の双方が10年超の非居住者となる場合、海外資産への相続税を実質的にゼロにできます。',
+   'Where both the heirs and the assets have genuinely resided outside Japan for more than ten years, inheritance tax on overseas assets can be brought close to zero.',
+   '相続人および資産の双方が10年超の海外居住実態を有する場合、海外資産に係る相続税を実質的にゼロへと近づけることが可能です。',
    'Overseas inheritance tax effectively → 0 after 10 years', '10年経過後、海外資産の相続税は実質ゼロに'],
 ];
 
@@ -157,8 +157,8 @@ export function Ecosystem() {
           <div className="ey">{t('The JWD Group Bridge', 'JWDグループの架け橋')}</div>
           <h2 className="sec">{t('One licensed hub, three specialized companies', 'ひとつのハブと、3つの専門会社')}</h2>
           <p className="lead center">{t(
-            'Every relationship begins here at the Family Office (Japan Worldlink DWC-LLC). From this hub, we bridge you to the specialist company your plan requires — each a separate licensed business.',
-            'すべてのご縁は、このファミリーオフィス（Japan Worldlink DWC-LLC）から始まります。ここをハブに、お客様のプランに必要な専門会社へと橋を架けます——各社はそれぞれ独立したライセンス企業です。',
+            'Every relationship begins here at the Family Office (Japan Worldlink DWC-LLC). From this central hub we bridge you to each specialist company your strategy calls for. Every group company is a licensed specialist entity in its own right. We are not merely an introduction desk: we build the right structure on a firm, regulator-compliant foundation.',
+            'すべてのご縁は、このファミリーオフィス（Japan Worldlink DWC-LLC）から始まります。ここを中核拠点（ハブ）として、お客様の戦略に必要な各専門会社への橋渡しを行います。各グループ会社はそれぞれ独立したライセンスを保有する専門法人です。私たちは単なる紹介窓口ではありません。当局の規制に準拠した強固な基盤の上に、最適なストラクチャーを構築いたします。',
           )}</p>
         </div>
         <div className="eco-grid">
