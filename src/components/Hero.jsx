@@ -256,10 +256,10 @@ export function Question() {
     <section className="q">
       <div className="wrap">
         <div className="ey">{t('The starting point', 'すべての出発点')}</div>
-        <h2>
-          {t('"How can wealthy Japanese families ', '「日本の富裕層は、いかに資産を')}
+        <h2 className="brk">
+          {t('How can wealthy Japanese families ', '日本の富裕層は、いかに資産を\n')}
           <em>{t('protect and transfer', '守り、引き継ぐ')}</em>
-          {t(' their assets?"', 'のか。」')}
+          {t(' their assets?', 'のか？')}
         </h2>
         <p>{t(
           'Everything else — real estate, investment, relocation, travel — becomes a solution that branches from this single question. The Family Office is where the journey begins.',

@@ -195,7 +195,7 @@ export function GenerationalWealth() {
         </div>
         <div>
           <div className="ey">{t('Generational Wealth', '世代を超える資産')}</div>
-          <h2 className="sec">{t('Wealth that outlives the people who built it.', '築いた人より、長く生きる資産を。')}</h2>
+          <h2 className="sec brk">{t('Wealth that outlives the people who built it', '築いた人より\n長く生きる資産を')}</h2>
           <p className="lead">{t(
             "In Japan, up to 55% of a family's wealth can be lost to inheritance tax in a single generation. We build the structures that let you pass it on — intact — to the children and grandchildren who come after.",
             '日本では、相続税により一世代で一族の資産の最大55%が失われることがあります。私たちは、その資産を目減りさせることなく、子へ、孫へと引き継ぐためのストラクチャーを構築します。',
@@ -222,10 +222,10 @@ export function WhoWeServe() {
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('Who We Serve', '顧客層')}</div>
-          <h2 className="sec">{t('Family wealth, beyond generations', '一族の資産を、世代を超えて。')}</h2>
-          <p className="lead center">{t(
+          <h2 className="sec">{t('Family wealth, beyond generations', '一族の資産を、世代を超えて')}</h2>
+          <p className="lead center brk">{t(
             'Cross-border wealth preservation anchored in both Japan and Dubai — comprehensive structuring only JWD can deliver.',
-            '日本とドバイ、二つの拠点を活かしたクロスボーダーの資産保全。JWDだけが提供できる、一族のための包括設計です。',
+            '日本とドバイ、二つの拠点を活かしたクロスボーダーの資産保全\nJWDだけが提供できる一族のための包括設計です。',
           )}</p>
         </div>
         <div className="serve">
@@ -286,7 +286,7 @@ export function Services() {
       <div className="wrap">
         <div className="head">
           <div className="ey">{t('Family Office as a Service', 'ファミリーオフィス・アズ・ア・サービス')}</div>
-          <h2 className="sec">{t('One integrated platform for the whole family balance sheet', '一族のすべてを、ひとつの統合プラットフォームで')}</h2>
+          <h2 className="sec brk">{t('One integrated platform for the whole family balance sheet', '一族のすべてを\nひとつの統合プラットフォームで')}</h2>
           <p className="lead">{t(
             'International tax planning, global asset management, relocation and succession — coordinated as a single whole.',
             '国際税務、グローバル資産運用、移住、事業承継——そのすべてをひとつに統合してご提供します。',

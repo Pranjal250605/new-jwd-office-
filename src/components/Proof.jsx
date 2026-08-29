@@ -67,7 +67,7 @@ export function Compare() {
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('Japan vs Dubai', '日本 vs ドバイ')}</div>
-          <h2 className="sec">{t('Why structure through the UAE', 'なぜUAEでストラクチャーを組むのか')}</h2>
+          <h2 className="sec brk">{t('Why structure through the UAE', 'なぜUAEでストラクチャーを\n組むのか？')}</h2>
           <p className="lead center">{t(
             'The same wealth, under two tax regimes. This gap is the reason families build their structure in Dubai.',
             '同じ資産でも、税制が違えば残る額が変わります。この差こそ、一族がドバイでストラクチャーを組む理由です。',
@@ -211,7 +211,7 @@ export function HeartOfEurope() {
         <div className="head center">
           <div className="ey">{t('Signature Portfolio · Heart of Europe', 'シグネチャー・ポートフォリオ · ハート・オブ・ヨーロッパ')}</div>
           <h2 className="sec">{t('Villas that live on the water', '海に浮かぶ、唯一無二の邸宅')}</h2>
-          <p className="lead center">{t(
+          <p className="lead center balance">{t(
             'On The World islands off Dubai — the Floating Seahorse: a three-level villa above and beneath the sea, with an underwater master bedroom wrapped in living coral gardens. A landmark asset for a family portfolio.',
             'ドバイ沖の人工群島「ザ・ワールド」に浮かぶ、フローティング・シーホース。海上と海中にまたがる3層構造の邸宅で、珊瑚礁に包まれた水中マスターベッドルームを備えます。一族のポートフォリオを象徴する資産です。',
           )}</p>
@@ -233,7 +233,7 @@ export function HeartOfEurope() {
             'The assured calm, and the wonder, that only IHG builds',
             'IHGグループが作り上げた揺るぎない安心と感動の空間',
           )}</h3>
-          <p className="hoe-ihg-say-body">{t(
+          <p className="hoe-ihg-say-body balance">{t(
             'IHG commands one of the largest hotel networks on earth and the lasting affection of travellers worldwide. Quality worthy of that name, interiors considered down to the last detail, and the reassurance of a guaranteed return: together they deliver a repose and a confidence without precedent. The exceptional hotel that makes a stay exceptional is now yours to own.',
             '世界最大級のホテルネットワークを誇り、世界の旅人に愛され続けるIHGグループ。その名にふさわしい品質と細部までこだわり抜いた空間、そして安心の保証制度が、かつてない極上のくつろぎと確かな安心感をお届けします。特別な滞在を叶える特別なホテルが、今、あなたのものになります。',
           )}</p>
@@ -347,9 +347,9 @@ export function EcosystemFlower() {
         <div className="head center">
           <div className="ey">{t('The JWD Group', 'JWDグループ')}</div>
           <h2 className="sec">{t('One group, moving as one', 'ひとつのグループとして')}</h2>
-          <p className="lead center">{t(
+          <p className="lead center brk">{t(
             'The Family Office sits at the hub — investment, real estate and travel companies working together around it.',
-            'ファミリーオフィスを中核に、投資・不動産・旅行の各社がひとつのグループとして連携します。',
+            'ファミリーオフィスを中核に、投資・不動産・旅行の各社が\nひとつのグループとして連携します。',
           )}</p>
         </div>
 

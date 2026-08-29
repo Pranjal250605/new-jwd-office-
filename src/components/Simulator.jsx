@@ -87,8 +87,8 @@ export function Simulator() {
         <div className="ey" style={{ color: 'var(--muted)', fontWeight: 500, letterSpacing: '.08em', textTransform: 'none' }}>
           {t('Wealth Simulator', '資産シミュレーター')}
         </div>
-        <h2 className="sec" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, letterSpacing: '-.02em' }}>
-          {t("Planning your legacy? Estimate what's at stake", '資産承継をお考えですか？失われる額を試算しましょう')}
+        <h2 className="sec brk" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, letterSpacing: '-.02em' }}>
+          {t("Planning your legacy? Estimate what's at stake", '資産承継をお考えですか？\n失われる額を試算しましょう')}
         </h2>
       </div>
       <div className="wrap2">

@@ -257,6 +257,18 @@
   .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;justify-content:center}
   .chips span{border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-size:14.5px;font-weight:500;color:var(--navy);background:#fff}
 
+  /* ── Line breaks the client set (08.29 sheet) ────────────────────────
+     The break points are authored as \n in the copy rather than as <br>,
+     so they stay with the text. Below the desktop measure they collapse
+     back to ordinary spaces, letting narrow screens wrap naturally instead
+     of breaking twice. */
+  .brk{white-space:normal}
+  @media(min-width:900px){.brk{white-space:pre-line}}
+  /* Sheet items 10 and 11: these two paragraphs were breaking mid-word and
+     orphaning a two-character last line. Balanced wrapping fixes both
+     without dictating where each line ends. */
+  .balance{text-wrap:balance}
+
   /* tax comparison */
   .compare{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;max-width:840px;margin:0 auto;box-shadow:var(--shadow)}
   .compare .rw{display:grid;grid-template-columns:1.5fr 1fr 1fr}
