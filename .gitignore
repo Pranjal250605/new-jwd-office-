@@ -1,2 +1,5 @@
 node_modules
 dist
+
+# static export for the WordPress handoff (built on demand)
+dist-static/
