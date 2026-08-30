@@ -71,6 +71,13 @@ function advisorDevApi() {
   };
 }
 
+/* The static export is served from a host whose URL path is not known yet, so
+   its asset links are relative and work at a domain root or in a subfolder
+   alike. The Vercel build keeps absolute '/' paths exactly as before. */
+const STATIC_EXPORT = process.env.STATIC_EXPORT === '1';
+
 export default defineConfig({
+  base: STATIC_EXPORT ? './' : '/',
+  build: STATIC_EXPORT ? { outDir: 'dist-static' } : {},
   plugins: [react(), advisorDevApi()],
 });

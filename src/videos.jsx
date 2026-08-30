@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 import { useLang } from './i18n.jsx';
+import { remoteAsset } from './deploy.js';
 
 /**
  * ─────────────────────────────────────────────────────────────────────────
@@ -31,7 +32,7 @@ function toEmbed(url) {
   if (!url) return { kind: 'none' };
   const yt = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]+)/);
   if (yt) return { kind: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0` };
-  if (/\.mp4($|\?)/i.test(url)) return { kind: 'video', src: url };
+  if (/\.mp4($|\?)/i.test(url)) return { kind: 'video', src: remoteAsset(url) };
   return { kind: 'iframe', src: url }; // HeyGen share / other embeds
 }
 

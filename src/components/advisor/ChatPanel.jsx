@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useLang } from '../../i18n.jsx';
 import { AiSpark } from './AiSpark.jsx';
+import { apiUrl } from '../../deploy.js';
 
 /* ── Ported as-is from the main JWD site's advisor. ──
    In-chat [[GOTO:...]] directives are stripped from display; on this
@@ -169,7 +170,7 @@ export function ChatPanel() {
     try {
       const controller = new AbortController();
       abortRef.current = controller;
-      const res = await fetch('/api/advisor', {
+      const res = await fetch(apiUrl('/api/advisor'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

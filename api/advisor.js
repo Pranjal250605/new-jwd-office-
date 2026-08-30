@@ -34,15 +34,41 @@ ${KNOWLEDGE_BASE}
 - Format numbers clearly: AED 1,850,000 / ¥75,850,000 / 6.8%.`;
 }
 
+/* ── Cross-origin access for the detached static build ────────────────────
+   The WordPress copy of the site is served from another origin, so its
+   advisor calls are cross-origin. Origins are read from ALLOWED_ORIGINS
+   (comma-separated) and echoed back only on an exact match — never "*",
+   and never with credentials, so this endpoint cannot be used to read a
+   logged-in user's data from another site. Same-origin calls from the
+   Vercel site itself send no Origin header and are unaffected. */
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS ?? '')
+  .split(',').map((o) => o.trim().replace(/\/$/, '')).filter(Boolean);
+
+function corsHeaders(request) {
+  const origin = (request.headers.get('origin') ?? '').replace(/\/$/, '');
+  if (!origin || !ALLOWED_ORIGINS.includes(origin)) return {};
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Vary': 'Origin',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400',
+  };
+}
+
 export default async function handler(request) {
+  const cors = corsHeaders(request);
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: cors });
+  }
   if (request.method !== 'POST') {
-    return Response.json({ error: 'Method not allowed.' }, { status: 405 });
+    return Response.json({ error: 'Method not allowed.' }, { status: 405, headers: cors });
   }
   const GROQ_API_KEY = process.env.GROQ_API_KEY ?? '';
   if (!GROQ_API_KEY) {
     return Response.json(
       { error: 'AI advisor is not configured. Please set GROQ_API_KEY in your environment.' },
-      { status: 503 },
+      { status: 503, headers: cors },
     );
   }
 
@@ -50,22 +76,22 @@ export default async function handler(request) {
   try {
     body = await request.json();
   } catch {
-    return Response.json({ error: 'Invalid request body.' }, { status: 400 });
+    return Response.json({ error: 'Invalid request body.' }, { status: 400, headers: cors });
   }
 
   const { messages, locale } = body ?? {};
   if (!Array.isArray(messages) || messages.length === 0) {
-    return Response.json({ error: 'Messages are required.' }, { status: 400 });
+    return Response.json({ error: 'Messages are required.' }, { status: 400, headers: cors });
   }
   if (messages.length > MAX_MESSAGES) {
-    return Response.json({ error: 'Too many messages. Please start a new session.' }, { status: 400 });
+    return Response.json({ error: 'Too many messages. Please start a new session.' }, { status: 400, headers: cors });
   }
   const safeMessages = messages
     .filter((m) => m && typeof m.role === 'string' && VALID_ROLES.has(m.role)
       && typeof m.content === 'string' && m.content.trim().length > 0)
     .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_MSG_CHARS) }));
   if (safeMessages.length === 0) {
-    return Response.json({ error: 'No valid messages.' }, { status: 400 });
+    return Response.json({ error: 'No valid messages.' }, { status: 400, headers: cors });
   }
 
   const localeHint = locale === 'ja'
@@ -96,7 +122,7 @@ export default async function handler(request) {
     let detail = '';
     try { detail = await upstream.text(); } catch { /* ignore */ }
     console.error('Advisor upstream error:', upstream.status, detail.slice(0, 400));
-    return Response.json({ error: 'The advisor hit a problem. Please try again.' }, { status: 502 });
+    return Response.json({ error: 'The advisor hit a problem. Please try again.' }, { status: 502, headers: cors });
   }
 
   // Transform Groq's OpenAI-style SSE into the app's `data:{"text"}` events.
@@ -139,6 +165,7 @@ export default async function handler(request) {
 
   return new Response(readable, {
     headers: {
+      ...cors,
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
       Connection: 'keep-alive',
