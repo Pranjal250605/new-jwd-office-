@@ -4,6 +4,7 @@ import { useVideo } from '../videos.jsx';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
 import { FlagJP, FlagAE } from './Flags.jsx';
 import { parseAnswer, stripMark } from '../concernBoxes.js';
+import { imgUrl } from '../deploy.js';
 
 /** Section titles are marked **like this** in the answer text and set bold,
  *  per the 08.16 sheet. Everything else renders as written. */
@@ -166,7 +167,7 @@ export function Hero() {
           </div>
         </div>
         <div className="hcard">
-          <div className="img" style={{ backgroundImage: "url('/img/new-couple.jpg')", backgroundPosition: 'center 22%' }} />
+          <div className="img" style={{ backgroundImage: `url(${imgUrl('/img/new-couple.jpg')})`, backgroundPosition: 'center 22%' }} />
         </div>
       </div>
     </section>
@@ -184,11 +185,11 @@ export function VideoPromo() {
       <div className="wrap">
         <div className="vthumbs">
           {/* Left: guy video. Right: girl video (Dubai inheritance film). */}
-          <button className="vthumb" style={{ backgroundImage: "url('/img/avatar-face.jpg')" }}
+          <button className="vthumb" style={{ backgroundImage: `url(${imgUrl('/img/avatar-face.jpg')})` }}
              onClick={() => open('hero-2', title)} aria-label="Watch video 2">
             <span className="vplay" />
           </button>
-          <button className="vthumb" style={{ backgroundImage: "url('/img/video-inheritance-thumb.jpg')", backgroundPosition: 'center 22%' }}
+          <button className="vthumb" style={{ backgroundImage: `url(${imgUrl('/img/video-inheritance-thumb.jpg')})`, backgroundPosition: 'center 22%' }}
              onClick={() => open('hero-1', title)} aria-label="Watch video 1">
             <span className="vplay" />
           </button>

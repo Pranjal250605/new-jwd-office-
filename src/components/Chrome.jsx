@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLang } from '../i18n.jsx';
+import { imgUrl } from '../deploy.js';
 
 export function ContactForm() {
   const { t } = useLang();
@@ -122,7 +123,7 @@ export function Header() {
       <div className="wrap">
         <nav className="main">
           <a href="#top" className="logo">
-            <img src="/img/jwd-star.png" alt="JWD" className="logo-star" />
+            <img src={imgUrl('/img/jwd-star.png')} alt="JWD" className="logo-star" />
             <span className="logo-txt">
               <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
             </span>
@@ -210,7 +211,7 @@ export function Footer() {
         <div className="fcols">
           <div>
             <div className="fmark">
-              <img src="/img/jwd-star.png" alt="JWD" className="fmark-star" />
+              <img src={imgUrl('/img/jwd-star.png')} alt="JWD" className="fmark-star" />
               <div className="mk">Japan Worldlink <b>DWC-LLC</b></div>
             </div>
             <p style={{ marginTop: 14, maxWidth: 300 }}>{t(

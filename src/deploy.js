@@ -22,3 +22,14 @@ export const apiUrl = (path) => `${ORIGIN}${path}`;
 
 /** True when this bundle is the detached static export. */
 export const IS_STATIC_EXPORT = ORIGIN !== '';
+
+/**
+ * URL for a file in public/img.
+ *
+ * These are referenced as string literals in JSX and inline styles, which
+ * Vite does not rewrite the way it rewrites imported assets — so an absolute
+ * "/img/x.jpg" 404s the moment the site is served from a subfolder. Going
+ * through BASE_URL keeps them correct at a domain root, in a subfolder, and
+ * on Vercel alike.
+ */
+export const imgUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;

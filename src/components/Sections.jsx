@@ -1,4 +1,5 @@
 import { useLang } from '../i18n.jsx';
+import { imgUrl } from '../deploy.js';
 
 /** Representative's message — sits just before the Japan Worldlink DWC-LLC block. */
 export function President() {
@@ -24,7 +25,7 @@ export function President() {
         </div>
         <div className="prez-grid">
           <figure className="prez-photo">
-            <img src="/img/president.jpg" alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）ハミット・ギュルビュズ')} />
+            <img src={imgUrl('/img/president.jpg')} alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）ハミット・ギュルビュズ')} />
             {/* Name and title per the 2026.08.13 revision points. */}
             <figcaption>
               <b>{t('Hamit Gurbuz', 'Hamit Gurbuz（ハミット・ギュルビュズ）')}</b>
@@ -92,10 +93,10 @@ export function License() {
           {/* Copy sits top-left with the two seminar shots beneath it, while the
               representative's photo runs full height down the right (2026.08.04).
               No explanatory captions — only he is named, on his own photo. */}
-          <img className="lic-shot" src="/img/seminar-hall.jpg" alt="" loading="lazy" />
-          <img className="lic-shot" src="/img/seminar-speaker.jpg" alt="" loading="lazy" />
+          <img className="lic-shot" src={imgUrl('/img/seminar-hall.jpg')} alt="" loading="lazy" />
+          <img className="lic-shot" src={imgUrl('/img/seminar-speaker.jpg')} alt="" loading="lazy" />
           <figure className="lic-shot-lead">
-            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')} loading="lazy" />
+            <img src={imgUrl('/img/symposium.jpg')} alt={t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')} loading="lazy" />
             <figcaption>{t('Hamit Gurbuz, President & CEO', '代表取締役社長（CEO）　ハミット・ギュルビュズ')}</figcaption>
           </figure>
         </div>
@@ -190,7 +191,7 @@ export function GenerationalWealth() {
   return (
     <section className="feature">
       <div className="wrap">
-        <div className="ph" style={{ backgroundImage: "url('/img/generations.jpg')" }}>
+        <div className="ph" style={{ backgroundImage: `url(${imgUrl('/img/generations.jpg')})` }}>
           <div className="tag2">{t('Three generations · one plan', '三世代 · ひとつの設計')}</div>
         </div>
         <div>
@@ -230,7 +231,7 @@ export function WhoWeServe() {
         </div>
         <div className="serve">
           <div className="who">
-            <div className="ph" style={{ backgroundImage: "url('/img/couple-bright.jpg')" }}>
+            <div className="ph" style={{ backgroundImage: `url(${imgUrl('/img/couple-bright.jpg')})` }}>
               <span className="lab">{t('Affluent families', '富裕層ファミリー')}</span>
             </div>
             <div className="bd">
@@ -242,7 +243,7 @@ export function WhoWeServe() {
             </div>
           </div>
           <div className="who">
-            <div className="ph" style={{ backgroundImage: "url('/img/business-owner.jpg')" }}>
+            <div className="ph" style={{ backgroundImage: `url(${imgUrl('/img/business-owner.jpg')})` }}>
               <span className="lab">{t('Business owners', 'オーナー経営者')}</span>
             </div>
             <div className="bd">

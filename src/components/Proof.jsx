@@ -1,6 +1,7 @@
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
 import { FlagJP, FlagAE } from './Flags.jsx';
+import { imgUrl } from '../deploy.js';
 
 const STRATEGIES = [
   ['01', 'Art. 22 · Inheritance Tax Act', '相続税法 第22条', 'Asset Valuation Optimization', '資産評価の最適化',
@@ -220,7 +221,7 @@ export function HeartOfEurope() {
         {/* IHG hospitality brands — credibility band (links to IHG) */}
         <a className="hoe-ihg" href="https://www.ihg.com/" target="_blank" rel="noreferrer" aria-label="IHG Hotels & Resorts">
           <span className="hoe-ihg-cap">{t('Hospitality operated in partnership with', 'ホスピタリティ運営パートナー')}</span>
-          <img src="/img/ihg-brands.png" alt="IHG Hotels & Resorts — Six Senses, Regent, InterContinental, Kimpton, and more" loading="lazy" />
+          <img src={imgUrl('/img/ihg-brands.png')} alt="IHG Hotels & Resorts — Six Senses, Regent, InterContinental, Kimpton, and more" loading="lazy" />
           <span className="hoe-ihg-note">{t('IHG Hotels & Resorts — one of the world’s leading hotel groups, 6,000+ hotels across 100+ countries. ↗', '世界有数のホテルグループ IHG Hotels & Resorts — 100か国以上・6,000軒超のホテルネットワーク。↗')}</span>
         </a>
 
@@ -240,7 +241,7 @@ export function HeartOfEurope() {
         </div>
 
         <div className="hoe-hero">
-          <img src="/img/hoe-underwater.jpg" alt={t('Floating villa above and beneath the sea', '海上と海中にまたがる浮遊邸宅')} loading="lazy" />
+          <img src={imgUrl('/img/hoe-underwater.jpg')} alt={t('Floating villa above and beneath the sea', '海上と海中にまたがる浮遊邸宅')} loading="lazy" />
           <span className="hoe-cap">{t('The Floating Seahorse · The World, Dubai', 'フローティング・シーホース · ザ・ワールド、ドバイ')}</span>
         </div>
 
@@ -302,7 +303,7 @@ export function Insights() {
         {/* Featured — the two films shown on the landing page */}
         <div className="ins-featured">
           <button className="vid vid-feat" onClick={() => open('hero-2', t('JWD Investment — Creating the future through the power of capital', 'JWDインベストメント — 資本の力で、未来を創る'))}>
-            <div className="thumb" style={{ backgroundImage: "url('/img/avatar-face.jpg')" }}>
+            <div className="thumb" style={{ backgroundImage: `url(${imgUrl('/img/avatar-face.jpg')})` }}>
               <div className="play" />
             </div>
             <div className="b">
@@ -311,7 +312,7 @@ export function Insights() {
             </div>
           </button>
           <button className="vid vid-feat" onClick={() => open('hero-1', t('Protecting family wealth through Dubai real estate', 'ファミリー資産継承：ドバイ不動産による価値の守護'))}>
-            <div className="thumb" style={{ backgroundImage: "url('/img/video-inheritance-thumb.jpg')", backgroundPosition: 'center 22%' }}>
+            <div className="thumb" style={{ backgroundImage: `url(${imgUrl('/img/video-inheritance-thumb.jpg')})`, backgroundPosition: 'center 22%' }}>
               <div className="play" />
             </div>
             <div className="b">
@@ -362,7 +363,7 @@ export function EcosystemFlower() {
           <div className="petal petal-ana"><span className="petal-l">ANAWAK Real Estate L.L.C</span><span className="petal-s">{t('Real Estate', '不動産')}</span></div>
           <div className="petal petal-luna"><span className="petal-l">JWD Luna Travel &amp; Tourism LLC</span><span className="petal-s">{t('Travel', 'トラベル')}</span></div>
           <div className="flower-core">
-            <img src="/img/jwd-star.png" alt="JWD" />
+            <img src={imgUrl('/img/jwd-star.png')} alt="JWD" />
             <span className="flower-core-tx"><b>JWD</b><small>Japan Worldlink DWC Group</small></span>
           </div>
         </div>
@@ -396,7 +397,7 @@ export function Jewelry() {
         <div className="jewel-grid">
           {shots.map(([src, alt, shape]) => (
             <figure className={`jewel-shot jewel-${shape}`} key={src}>
-              <img src={src} alt={alt} loading="lazy" />
+              <img src={imgUrl(src)} alt={alt} loading="lazy" />
             </figure>
           ))}
         </div>
