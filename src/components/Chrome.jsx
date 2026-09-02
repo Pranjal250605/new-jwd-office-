@@ -16,7 +16,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\nAsset range: ${form.assets}\n\n${form.message}`,
     );
-    window.location.href = `mailto:contact@jwd.example?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:shiraishi.t@gene-sis.jp?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -192,7 +192,7 @@ export function CtaBand() {
             '現状を正しく把握し、一族の資産を次の地平へ運ぶストラクチャーを設計しましょう。',
           )}</p>
           <div className="cta">
-            <a href="mailto:contact@jwd.example" className="btn btn-gold">{t('Book a Consultation', '無料相談を予約')}</a>
+            <a href="mailto:shiraishi.t@gene-sis.jp" className="btn btn-gold">{t('Book a Consultation', '無料相談を予約')}</a>
             <a href="#services" className="btn btn-ghost">
               {t('Explore services', 'サービスを見る')}
             </a>
