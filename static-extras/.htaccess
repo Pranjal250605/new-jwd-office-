@@ -1,0 +1,81 @@
+# Japan Worldlink DWC-LLC — static site
+#
+# For Apache / LiteSpeed shared hosting (onamae.com, MilesWeb, and most cPanel
+# hosts). Every block is wrapped in <IfModule> on purpose: if a host has the
+# module disabled, the directives are skipped instead of throwing a 500 and
+# taking the whole site down.
+#
+# There is no application here — no PHP, no database, no rewrite rules for
+# routing. It is one HTML page plus assets.
+
+# ── Serve index.html for the site root ──────────────────────────────────
+DirectoryIndex index.html
+
+# ── HTTPS ───────────────────────────────────────────────────────────────
+# Most hosts terminate TLS upstream, so test before relying on this: if the
+# host already redirects, this is harmless; if it double-redirects, comment
+# it out.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ── Compression ─────────────────────────────────────────────────────────
+# The JS bundle is ~248 KB raw and ~82 KB gzipped, so this matters more than
+# anything else here for how fast the page feels.
+# AddOutputFilterByType is provided by mod_filter, not mod_deflate — guarding
+# on mod_deflate alone still 500s the site where mod_filter is absent.
+<IfModule mod_deflate.c>
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    # both spellings: Apache serves .js as text/javascript, older setups as
+    # application/javascript — list only one and the bundle ships uncompressed
+    AddOutputFilterByType DEFLATE text/javascript application/javascript
+    AddOutputFilterByType DEFLATE application/json image/svg+xml
+  </IfModule>
+</IfModule>
+
+# ── Caching ─────────────────────────────────────────────────────────────
+# Filenames under /assets carry a content hash, so a change produces a new
+# filename — they can be cached indefinitely. index.html must never be cached
+# or visitors keep loading the old bundle after an update.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 6 months"
+  ExpiresByType image/png               "access plus 6 months"
+  ExpiresByType image/webp              "access plus 6 months"
+  ExpiresByType image/svg+xml           "access plus 6 months"
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # ── Security headers ──────────────────────────────────────────────────
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(self), geolocation=()"
+  # microphone=(self) is deliberate — the AI advisor offers voice input.
+</IfModule>
+
+# ── Character encoding ──────────────────────────────────────────────────
+# The content is Japanese; a host defaulting to Latin-1 would mojibake it.
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .css .js .json .svg
+</IfModule>
+
+# ── Don't serve dotfiles ────────────────────────────────────────────────
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
