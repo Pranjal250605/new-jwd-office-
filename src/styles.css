@@ -775,7 +775,11 @@
   align-items:center;margin:14px 0;white-space:normal}
 .cmp-solo{grid-template-columns:1fr}
 .cmp+.cmp{margin-top:10px}
-.cmp-k{font-weight:600;color:var(--navy-ink);font-size:15px;line-height:1.65}
+/* 09.07 sheet items ②–⑥ and ⑧: everything inside a comparison box reads as
+   regular weight. The bracket label was semibold, and the ** marks in the
+   authored copy became <strong> — the client wants neither set bold here. */
+.cmp-k{font-weight:400;color:var(--navy-ink);font-size:15px;line-height:1.65}
+.cmp strong{font-weight:400}
 .cmp-v{display:flex;flex-direction:column;gap:9px;min-width:0;
   padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;
   box-shadow:0 1px 2px rgba(32,33,37,.05)}
