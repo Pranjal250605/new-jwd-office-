@@ -837,32 +837,26 @@
 .petal-s{font-size:clamp(8.5px,1.05vw,10px);color:var(--navy-ink);opacity:.5;margin-top:6px;
   letter-spacing:.18em;text-transform:uppercase;font-weight:500}
 /* Labels are pushed into the outer half of each ellipse, clear of the core. */
-.petal-fo  {--petal:var(--fo-wash);  --petal-bd:var(--fo-line);  width:62%;height:50%;left:19%;top:0;    padding-bottom:30%}
-.petal-luna{--petal:var(--luna-wash);--petal-bd:var(--luna-line);width:62%;height:50%;left:19%;bottom:0; padding-top:30%}
-.petal-inv {--petal:var(--inv-wash); --petal-bd:var(--inv-line); width:60%;height:47%;left:0;  top:26.5%;padding-right:34%}
-.petal-ana {--petal:var(--ana-wash); --petal-bd:var(--ana-line); width:60%;height:47%;right:0; top:26.5%;padding-left:34%}
-.petal:hover{filter:saturate(1.25);transform:scale(1.015)}
-/* A round, quiet core: a soft halo lifts it off the petals without the hard
-   card edge cutting through the blend. */
-.flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
-  width:27%;min-width:150px;aspect-ratio:1;border-radius:50%;background:#fff;
-  border:1px solid rgba(184,145,47,.28);
-  box-shadow:0 0 0 9px rgba(255,255,255,.62), 0 26px 60px -30px rgba(32,33,37,.42)}
-.flower-core img{height:34px;width:auto;flex:none}
-.flower-core-tx{display:flex;flex-direction:column;align-items:center;line-height:1;text-align:center}
-.flower-core-tx b{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:700;
-  color:var(--navy-ink);letter-spacing:.10em}
-.flower-core-tx small{font-size:7.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
-  margin-top:5px;white-space:nowrap}
-/* On small screens keep the same flower proportions — just scale the core so
-   it doesn't dominate; petals scale down with their percentages. */
+.petal-fo  {width:50%;height:52%;left:25%;top:0;     background:rgba(228,220,196,.55);border:1px solid rgba(184,145,47,.3);align-items:center;justify-content:flex-start;padding-top:5%}
+.petal-inv {width:50%;height:52%;left:1%; top:21%;    background:rgba(185,215,225,.55);border:1px solid rgba(90,160,180,.3);align-items:center;justify-content:center;padding-right:16%;padding-bottom:6%}
+.petal-edify{width:50%;height:52%;left:10%;bottom:1%;  background:rgba(175,185,225,.55);border:1px solid rgba(110,125,195,.3);align-items:center;justify-content:center;padding-right:12%;padding-top:10%}
+.petal-luna{width:50%;height:52%;right:10%;bottom:1%; background:rgba(235,205,215,.55);border:1px solid rgba(200,145,170,.3);align-items:center;justify-content:center;padding-left:12%;padding-top:10%}
+.petal-ana {width:50%;height:52%;right:1%;top:21%;    background:rgba(200,195,220,.55);border:1px solid rgba(150,140,185,.3);align-items:center;justify-content:center;padding-left:16%;padding-bottom:6%}
+
+.petal:hover{filter:brightness(0.96)}
+.flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:4px;
+  justify-content:center;width:32%;min-width:150px;aspect-ratio:1/1;background:#fff;border:3px solid #e2e4e8;
+  border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;padding:10px}
+.flower-core img{height:36px;width:auto;flex:none;margin-bottom:2px}
+.flower-core-tx{display:flex;flex-direction:column;align-items:center;line-height:1}
+.flower-core-tx b{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--navy-ink);letter-spacing:.02em}
+.flower-core-tx small{font-size:7.5px;letter-spacing:.05em;color:var(--muted);margin-top:3px;white-space:nowrap;font-weight:600}
 @media(max-width:560px){
-  .flower{max-width:none;margin-top:28px}
-  .flower-core{width:34%;min-width:112px;gap:5px;box-shadow:0 0 0 6px rgba(255,255,255,.62), 0 18px 40px -24px rgba(32,33,37,.42)}
-  .flower-core img{height:22px}
-  .flower-core-tx b{font-size:14px;letter-spacing:.08em}
-  .flower-core-tx small{font-size:6px;letter-spacing:.1em}
+  .flower{max-width:none}
+  .flower-core{width:36%;min-width:0;padding:6px;gap:2px}
+  .flower-core img{height:24px}
+  .flower-core-tx b{font-size:14px}
+  .flower-core-tx small{font-size:5.5px}
 }
 @media(max-width:560px){
   .hoe-info{padding:22px}.hoe-stats{gap:26px}
