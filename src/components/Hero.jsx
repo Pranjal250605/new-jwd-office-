@@ -121,7 +121,7 @@ export function Concerns() {
 }
 
 export function Hero() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section className="hero" id="top">
       <div className="wrap">
@@ -131,7 +131,11 @@ export function Hero() {
                 the trailing 。 The <br> is Japanese-only — the English reads
                 as one sentence and wraps on its own. */}
             {t('Protect, grow, and ', '一族の資産を、守り、育て、')}
-            {t('', <br />)}
+            {/* 09.09 sheet: break after 「育て、」 so 「次世代へ」 is never split
+                mid-phrase — at the narrower desktop widths it wrapped as
+                「…育て、次 / 世代へ」. Japanese only; the English is a different
+                sentence and wraps on its own. */}
+            {lang === 'ja' && <br />}
             <em>{t('pass on', '次世代へ')}</em>
             {t(" your family's wealth.", '')}
           </h1>
