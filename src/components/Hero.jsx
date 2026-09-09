@@ -127,8 +127,12 @@ export function Hero() {
       <div className="wrap">
         <div>
           <h1>
+            {/* 09.09 sheet: the Japanese heading breaks after 育て、 and drops
+                the trailing 。 The <br> is Japanese-only — the English reads
+                as one sentence and wraps on its own. */}
             {t('Protect, grow, and ', '一族の資産を、守り、育て、')}
-            <em>{t('pass on', '次世代へ。')}</em>
+            {t('', <br />)}
+            <em>{t('pass on', '次世代へ')}</em>
             {t(" your family's wealth.", '')}
           </h1>
           <p className="sub">{t(
