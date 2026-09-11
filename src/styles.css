@@ -128,6 +128,10 @@
      on the page. */
   html[lang="ja"] .hero h1{font-family:'Noto Serif JP',serif;font-weight:600;letter-spacing:.005em}
   .hero p.sub{font-size:16px;color:var(--muted);font-weight:300;max-width:480px;margin-bottom:22px;line-height:1.8}
+  /* 09.10 sheet ⑦: 「ファミリーオフィス」 set apart inside the paragraph.
+     600 rather than a full 700 — the paragraph runs at 300, and bold against
+     that weight shouts; this reads as emphasis. */
+  .hero p.sub b{font-weight:600;color:var(--navy-ink)}
   .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
   .hero .assure{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
   .hero .assure b{color:var(--navy)}
@@ -178,7 +182,28 @@
   .prez-sign{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
   .prez-sign span{font-size:13px;letter-spacing:.05em;color:var(--muted)}
   .prez-sign b{font-size:16px;color:var(--navy-ink);font-weight:600}
-  @media(max-width:860px){
+  
+  /* ── News (09.10 sheet ⑦) ──────────────────────────────────────────────
+     A dated list, not cards: two entries today, and the client will add more.
+     The row is a three-column grid on desktop and stacks on a phone, so a
+     long Japanese paragraph never squeezes the date or the button. */
+  .news-list{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--line)}
+  .news-row{display:grid;grid-template-columns:118px 1fr auto;gap:24px;align-items:start;
+    padding:26px 0;border-bottom:1px solid var(--line)}
+  .news-meta{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+  .news-tag{display:inline-block;background:var(--gold);color:#fff;font-size:12.5px;font-weight:700;
+    letter-spacing:.08em;padding:4px 12px;border-radius:4px;line-height:1.45}
+  .news-date{font-size:13.5px;color:var(--muted);letter-spacing:.02em}
+  .news-body{font-size:16px;line-height:1.95;color:var(--ink);font-weight:300;margin:0;max-width:62ch}
+  .news-body b{font-weight:700;color:var(--navy-ink)}
+  .news-cta{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;align-self:center;
+    background:var(--gold);color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.03em;
+    padding:9px 18px;border-radius:6px;text-decoration:none;transition:background .25s}
+  /* white on --gold is 2.96:1 at body size, so the label is small-bold on a
+     solid fill and darkens on hover rather than lightening. */
+  .news-cta:hover{background:#9a7826}
+
+@media(max-width:860px){
     .prez-grid{grid-template-columns:1fr;gap:32px}
     .prez-photo{position:static;max-width:400px;margin:0 auto}
   }
@@ -955,6 +980,9 @@
   .hero h1{font-size:1.9rem}
   h2.sec{font-size:1.5rem}
   .lead{font-size:16px}
+  .news-row{grid-template-columns:1fr;gap:14px;padding:22px 0}
+  .news-meta{flex-direction:row;align-items:center;gap:12px}
+  .news-cta{align-self:flex-start}
   .stats .wrap{grid-template-columns:1fr 1fr;gap:18px}
   .stats .s{padding:0 6px}
   .stats .s .n{font-size:30px}

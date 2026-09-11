@@ -7,6 +7,7 @@ import { Simulator } from './components/Simulator.jsx';
 import { President, License, NextGeneration, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights, EcosystemFlower, Jewelry } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
+import News from './components/News.jsx';
 
 export default function App() {
   useSmoothScroll();
@@ -18,6 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <VideoPromo />
+        <News /> {/* 09.10 sheet ⑦: sits between the videos and the concern tiles */}
         <Concerns /> {/* the seven entry points the hero question leads to */}
         <QuickTiles />
         <Simulator />

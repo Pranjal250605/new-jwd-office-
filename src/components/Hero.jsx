@@ -139,9 +139,15 @@ export function Hero() {
             <em>{t('pass on', '次世代へ')}</em>
             {t(" your family's wealth.", '')}
           </h1>
-          <p className="sub">{t(
-            "For Japan's affluent families and business owners — a Dubai-based family office that answers one question first: how do you keep what you've built, across generations?",
-            '日本の富裕層とオーナー経営者のために。「築いた資産を、いかに世代を超えて守り抜くか」——その問いにまず答える、ドバイ拠点のファミリーオフィスです。',
+          {/* 09.10 sheet ⑦: 「ファミリーオフィス」 is set bold inside the
+              paragraph — it is what the company *is*, and the sentence runs
+              past it otherwise. Split rather than dangerouslySetInnerHTML. */}
+          <p className="sub">{lang === 'ja' ? (
+            <>
+              日本の富裕層とオーナー経営者のために。「築いた資産を、いかに世代を超えて守り抜くか」——その問いにまず答える、ドバイ拠点の<b>ファミリーオフィス</b>です。
+            </>
+          ) : (
+            "For Japan's affluent families and business owners — a Dubai-based family office that answers one question first: how do you keep what you've built, across generations?"
           )}</p>
           {/* Japanese-language support reassurance (2026.08.11). */}
           <p className="hero-jp">{t(

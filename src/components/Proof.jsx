@@ -162,6 +162,12 @@ export function Ecosystem() {
             'すべてのご縁は、このファミリーオフィス（Japan Worldlink DWC-LLC）から始まります。ここを中核拠点（ハブ）として、お客様の戦略に必要な各専門会社への橋渡しを行います。各グループ会社はそれぞれ独立したライセンスを保有する専門法人です。私たちは単なる紹介窓口ではありません。当局の規制に準拠した強固な基盤の上に、最適なストラクチャーを構築いたします。',
           )}</p>
         </div>
+        {/* 09.10 sheet ⑧: the three specialist cards were href="#" placeholders
+            and now open the group sites. The sheet lists worldlink-dwc.com,
+            jwd-investment.com and dubai-trip.ae "respectively", which would send
+            the Investment card to this very site and the ANAWAK card to the
+            Investment site — read as a slip in the sheet, so each card links to
+            its own company. Worth confirming with the client. */}
         <div className="eco-grid">
           <div className="pill hubme">
             <span className="badge" style={{ background: 'var(--fo-solid)' }}>{t('TOP · You are here', 'TOP · 現在地')}</span>
@@ -170,20 +176,20 @@ export function Ecosystem() {
                   'Japan Worldlink DWC-LLC — 相続、承継、税務戦略、資産保護、ウェルスコンサルティング。')}</p>
             <span className="go">{t('The central hub', '中核ハブ')}</span>
           </div>
-          <a className="pill" href="#" target="_blank" rel="noreferrer">
+          <a className="pill" href="https://jwd-investment.com/" target="_blank" rel="noreferrer">
             <span className="badge" style={{ background: 'var(--inv-solid)' }}>Investment</span>
             <h3>{t('JWD Investment', 'JWDインベストメント')}</h3>
             <p>{t('Wealth management & advisory — Equiti and AIX investment platforms.',
                   '資産運用・アドバイザリー — Equiti・AIX投資プラットフォーム。')}</p>
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
           </a>
-          <a className="pill" href="#" target="_blank" rel="noreferrer">
+          <a className="pill" href="https://www.jwd-anawak.com/" target="_blank" rel="noreferrer">
             <span className="badge" style={{ background: 'var(--ana-solid)' }}>Real Estate</span>
             <h3>ANAWAK Real Estate L.L.C</h3>
             <p>{t('Dubai property investment, acquisition and management.', 'ドバイ不動産の投資・取得・管理。')}</p>
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
           </a>
-          <a className="pill" href="#" target="_blank" rel="noreferrer">
+          <a className="pill" href="https://www.dubai-trip.ae/" target="_blank" rel="noreferrer">
             <span className="badge" style={{ background: 'var(--luna-solid)' }}>Travel</span>
             <h3>JWD Luna Travel &amp; Tourism LLC</h3>
             <p>{t("Licensed by Dubai's Department of Economy & Tourism — property tours, investment tours, luxury travel.",
