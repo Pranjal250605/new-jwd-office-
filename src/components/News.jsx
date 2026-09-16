@@ -4,11 +4,11 @@ import { useLang } from '../i18n.jsx';
  * ニュース — added by the 09.10 sheet ⑦, which places it between the video
  * band and 貴方のお悩みは何ですか？.
  *
- * The Japanese is the client's, reproduced verbatim from the sheet. Two things
- * in it are theirs and look like slips rather than ours to fix silently:
- * 「Heart of Island」 (the development is the Heart of Europe elsewhere on this
- * site) and the space before 「をはじめ」. Both are left as written — see the
- * commit message.
+ * The Japanese is the client's, reproduced verbatim from the sheet. The 09.16
+ * sheet ② rewrites the ANAWAK entry: 「JWD ANAWAK」→「ANAWAK」,「Heart of Island」
+ * →「Heart of Europe」(the slip we flagged on 09.10, now corrected by them) and
+ * 12物件 → 13物件. The stray space in 「はじめ, Portofino」 is still theirs and is
+ * still left as written.
  *
  * The English is ours and is a draft pending approval, as always.
  *
@@ -29,8 +29,8 @@ const ITEMS = [
   {
     date: { en: 'Sept. 2026', ja: '2026 Sept.' },
     body: {
-      ja: ['JWD ANAWAKは、家賃保証付き（年間4%×12年間）で、Dubai, Heart of IslandのSeahorseをはじめ, Portofino, Germany Island, Cote d’Azur内の12物件の販売を開始。'],
-      en: ['JWD ANAWAK has opened sales on twelve properties — the Seahorse at Dubai, Heart of Island, along with Portofino, Germany Island and Cote d’Azur — each with a rental guarantee of 4% a year for twelve years.'],
+      ja: ['ANAWAKは、家賃保証付き（年間4%×12年間）で、Dubai, Heart of EuropeのSeahorseをはじめ, Portofino, Germany Island, Cote d’Azur内の13物件の販売を開始。'],
+      en: ['ANAWAK has opened sales on thirteen properties — the Seahorse at Dubai, Heart of Europe, along with Portofino, Germany Island and Cote d’Azur — each with a rental guarantee of 4% a year for twelve years.'],
     },
     cta: { en: 'Properties', ja: '物件情報' },
     // The sheet asks for "the Seahorse cover page in jwd-anawak.com". That page

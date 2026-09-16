@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLang } from '../i18n.jsx';
+import { GROUP } from '../groupSites.js';
 import { imgUrl } from '../deploy.js';
 
 export function ContactForm() {
@@ -77,9 +78,9 @@ export function UtilBar() {
         <div className="eco">
           <span className="brand">{t('JWD Group:', 'JWDグループ：')}</span>
           <a href="#ecosystem"><b>{t('Family Office', 'ファミリーオフィス')}</b></a>
-          <a href="#ecosystem">{t('JWD Investment', 'JWDインベストメント')}</a>
-          <a href="#ecosystem">{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
-          <a href="#ecosystem">{t('Luna Travel', 'ルナトラベル')}</a>
+          <a href={GROUP.investment} target="_blank" rel="noreferrer">{t('JWD Investment', 'JWDインベストメント')}</a>
+          <a href={GROUP.anawak} target="_blank" rel="noreferrer">{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
+          <a href={GROUP.luna} target="_blank" rel="noreferrer">{t('Luna Travel', 'ルナトラベル')}</a>
         </div>
         <div className="lang">
           <a className={lang === 'en' ? 'on' : ''} onClick={() => setLang('en')} role="button">EN</a>·
@@ -159,9 +160,9 @@ export function Header() {
             <div className="mmenu-group">
               <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>
               <a href="#ecosystem" onClick={() => setOpen(false)}>{t('Family Office', 'ファミリーオフィス')}</a>
-              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('JWD Investment', 'JWDインベストメント')}</a>
-              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
-              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('Luna Travel', 'ルナトラベル')}</a>
+              <a href={GROUP.investment} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>{t('JWD Investment', 'JWDインベストメント')}</a>
+              <a href={GROUP.anawak} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
+              <a href={GROUP.luna} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>{t('Luna Travel', 'ルナトラベル')}</a>
             </div>
 
             <div className="mmenu-lang">

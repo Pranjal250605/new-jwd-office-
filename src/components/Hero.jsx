@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
+import { GROUP } from '../groupSites.js';
 import { CONCERN_ANSWERS } from '../concernAnswers.js';
 import { FlagJP, FlagAE } from './Flags.jsx';
 import { parseAnswer, stripMark } from '../concernBoxes.js';
@@ -175,9 +176,9 @@ export function Hero() {
           </a>
           <div className="portals">
             <span className="plab">{t('Group sites', 'グループサイト')}</span>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--inv-solid)' }} />JWD Investment ↗</a>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--ana-solid)' }} />{t('ANAWAK Real Estate', 'ANAWAK不動産')} ↗</a>
-            <a className="portal" href="#ecosystem"><span className="swatch" style={{ background: 'var(--luna-solid)' }} />{t('Luna Travel', 'ルナトラベル')} ↗</a>
+            <a className="portal" href={GROUP.investment} target="_blank" rel="noreferrer"><span className="swatch" style={{ background: 'var(--inv-solid)' }} />JWD Investment ↗</a>
+            <a className="portal" href={GROUP.anawak} target="_blank" rel="noreferrer"><span className="swatch" style={{ background: 'var(--ana-solid)' }} />{t('ANAWAK Real Estate', 'ANAWAK不動産')} ↗</a>
+            <a className="portal" href={GROUP.luna} target="_blank" rel="noreferrer"><span className="swatch" style={{ background: 'var(--luna-solid)' }} />{t('Luna Travel', 'ルナトラベル')} ↗</a>
           </div>
         </div>
         <div className="hcard">
