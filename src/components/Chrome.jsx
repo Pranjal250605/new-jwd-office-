@@ -95,12 +95,22 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [coOpen, setCoOpen] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 10);
     on();
     addEventListener('scroll', on, { passive: true });
     return () => removeEventListener('scroll', on);
   }, []);
+  // a tap-opened dropdown should not survive a scroll or an outside click
+  useEffect(() => {
+    if (!coOpen) return;
+    const off = () => setCoOpen(false);
+    addEventListener('scroll', off, { passive: true });
+    addEventListener('click', off);
+    return () => { removeEventListener('scroll', off); removeEventListener('click', off); };
+  }, [coOpen]);
+
   // lock body scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -108,7 +118,6 @@ export function Header() {
   }, [open]);
 
   const links = [
-    ['#ecosystem', 'Company', '会社概要'],
     ['#clients', 'Clients', '顧客層'],
     ['#services', 'Services', 'サービス'],
     ['#approach', 'Approach', 'アプローチ'],
@@ -130,6 +139,22 @@ export function Header() {
             </span>
           </a>
           <div className="navlinks">
+            {/* 09.17 sheet: 会社概要 is a two-step tag — touching it opens a pull
+                down of 代表挨拶 / 企業情報, and each of those jumps to its section.
+                Hover opens it on a pointer; the button keeps it reachable by
+                tap and by keyboard, which hover alone would not. */}
+            <div className={'navdrop' + (coOpen ? ' on' : '')}
+                 onMouseEnter={() => setCoOpen(true)}
+                 onMouseLeave={() => setCoOpen(false)}>
+              <button type="button" className="navdrop-tag" aria-expanded={coOpen}
+                      onClick={() => setCoOpen((v) => !v)}>
+                {t('Company', '会社概要')}<i aria-hidden="true" />
+              </button>
+              <div className="navdrop-menu" role="menu">
+                <a href="#message" role="menuitem" onClick={() => setCoOpen(false)}>{t('Message', '代表挨拶')}</a>
+                <a href="#license" role="menuitem" onClick={() => setCoOpen(false)}>{t('Company Profile', '企業情報')}</a>
+              </div>
+            </div>
             {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
           </div>
           <div className="navcta">
@@ -156,6 +181,12 @@ export function Header() {
                 <a key={href} href={href} onClick={() => setOpen(false)}>{t(en, ja)}</a>
               ))}
             </nav>
+
+            <div className="mmenu-group">
+              <span className="mmenu-cap">{t('Company', '会社概要')}</span>
+              <a href="#message" onClick={() => setOpen(false)}>{t('Message', '代表挨拶')}</a>
+              <a href="#license" onClick={() => setOpen(false)}>{t('Company Profile', '企業情報')}</a>
+            </div>
 
             <div className="mmenu-group">
               <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>

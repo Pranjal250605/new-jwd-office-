@@ -203,6 +203,65 @@
      solid fill and darkens on hover rather than lightening. */
   .news-cta:hover{background:#9a7826}
 
+
+  /* ── ＜会長挨拶＞ (09.16 additional sheet) ─────────────────────────────
+     Sits directly under the CEO message. That section is tinted and the
+     licence plate below is plain, so this one is plain with the message on a
+     tinted card — it reads as its own block against both neighbours, which is
+     how the sheet draws it. The message is long, so the portrait is sticky
+     alongside it rather than stacked at the end. */
+  .chair-card{background:var(--tint);border:1px solid var(--line);border-radius:22px;
+    padding:46px 48px 44px;box-shadow:0 20px 56px -40px rgba(32,33,37,.35)}
+  .chair-head{margin-bottom:34px}
+  .chair-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;
+    color:var(--navy-ink);font-size:clamp(22px,2.6vw,33px);line-height:1.5;letter-spacing:.01em}
+  /* the sheet sets this headline in Mincho, as it does the hero one — same
+     lang scope and same face the 09.09 sheet already loaded for that. */
+  html[lang="ja"] .chair-title{font-family:'Noto Serif JP',serif;letter-spacing:.005em}
+  .chair-ey{margin-top:10px;font-size:14px;color:var(--muted);letter-spacing:.06em}
+  .chair-grid{display:grid;grid-template-columns:1.6fr .72fr;gap:48px;align-items:start}
+  .chair-body p{color:var(--ink);font-size:15.5px;line-height:2.05;margin-bottom:22px;font-weight:300}
+  .chair-body p:last-child{margin-bottom:0}
+  .chair-photo{position:sticky;top:96px;margin:0}
+  .chair-photo>img{width:100%;border-radius:14px;display:block;border:1px solid var(--line);
+    box-shadow:var(--shadow)}
+  .chair-photo figcaption{margin-top:14px;display:flex;flex-direction:column;gap:3px}
+  .chair-photo figcaption span{font-size:12.5px;color:var(--muted);letter-spacing:.03em}
+  .chair-photo figcaption b{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;color:var(--navy-ink)}
+  /* keyed to transparency, so it sits on the card rather than in a blue box */
+  .chair-sign{display:block;width:156px;max-width:60%;height:auto;margin-top:16px;opacity:.92}
+
+  /* ── 会社概要 pull-down (09.17 sheet) ─────────────────────────────────── */
+  .navdrop{position:relative}
+  .navdrop-tag{background:none;border:0;padding:4px 0;cursor:pointer;font:inherit;
+    font-size:13.5px;font-weight:500;color:#4a4d54;display:inline-flex;align-items:center;gap:5px;
+    white-space:nowrap;position:relative}
+  .navdrop-tag::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;
+    background:var(--gold);transition:.3s}
+  .navdrop.on .navdrop-tag,.navdrop-tag:hover{color:var(--navy)}
+  .navdrop.on .navdrop-tag::after,.navdrop-tag:hover::after{width:100%}
+  .navdrop-tag i{width:0;height:0;border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+    border-top:4px solid currentColor;transition:transform .25s}
+  .navdrop.on .navdrop-tag i{transform:rotate(180deg)}
+  .navdrop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);
+    min-width:148px;background:#fff;border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 20px 44px -22px rgba(32,33,37,.42);padding:6px;display:flex;flex-direction:column;
+    opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+  .navdrop.on .navdrop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  /* a hover bridge, so the pointer can cross the gap without the menu closing */
+  .navdrop-menu::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}
+  .navdrop-menu a{padding:9px 14px;border-radius:6px;font-size:13.5px;font-weight:500;
+    color:#4a4d54;white-space:nowrap;text-align:center}
+  .navdrop-menu a::after{display:none}
+  .navdrop-menu a:hover{background:var(--tint);color:var(--navy-ink)}
+
+@media(max-width:980px){
+    .chair-card{padding:34px 26px 32px}
+    .chair-grid{grid-template-columns:1fr;gap:34px}
+    .chair-photo{position:static;max-width:360px}
+    .chair-sign{max-width:none}
+  }
+
 @media(max-width:860px){
     .prez-grid{grid-template-columns:1fr;gap:32px}
     .prez-photo{position:static;max-width:400px;margin:0 auto}

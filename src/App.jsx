@@ -4,7 +4,7 @@ import { useSmoothScroll } from './smoothScroll.jsx';
 import { UtilBar, Header, ContactForm, Footer } from './components/Chrome.jsx';
 import { Hero, Concerns, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
-import { President, License, NextGeneration, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
+import { President, Chairman, License, NextGeneration, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights, EcosystemFlower, Jewelry } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 import News from './components/News.jsx';
@@ -26,6 +26,7 @@ export default function App() {
         <StatBand />
         <Question />
         <President />
+        <Chairman /> {/* 09.16 additional sheet: ＜会長挨拶＞ sits directly below the CEO message */}
         <License />
         <NextGeneration /> {/* sits between 会社概要 and the group explanation */}
         {/* 会社概要 — the hub-and-three-companies card set, then the group

@@ -69,6 +69,89 @@ export function President() {
   );
 }
 
+/**
+ * ＜会長挨拶＞ — the chairman's message, added by the "jwd_additional Work_09.16"
+ * sheet, which places it directly below the CEO message section.
+ *
+ * The Japanese is the client's, reproduced from their msg.txt and checked
+ * character-for-character against the sheet's text layer — the two are
+ * identical apart from the slide chrome. One correction: the source has
+ * 「挑は戦してまいります」 in the closing paragraph, an IME slip for 「挑戦して
+ * まいります」, corrected here and called out in the commit message.
+ *
+ * The client's line breaks inside each paragraph are not reproduced: they are
+ * breaks for a fixed-width slide, and forcing them would wreck the wrap on
+ * narrow screens. Paragraph grouping is theirs.
+ *
+ * The English is ours and is a draft pending approval, as always.
+ */
+export function Chairman() {
+  const { t } = useLang();
+  const paras = [
+    t('The thirty-five years and more that we have lived through were a time of vast change in world history. The Gulf War of 1990, the bombing of Iraq in 1998, the Iraq War of 2003. Then the collapse of Lehman Brothers in 2008, the Dubai shock of 2009, the Great East Japan Earthquake and the bombing of Libya in 2011, the strikes on Syria in 2017. In 2020 came the COVID-19 pandemic that turned the world upside down, and since then the war between Russia and Ukraine, the Israeli-Palestinian question, and the tensions surrounding the Middle East have continued.',
+      '私たちが生きてきたこの35年余りは、世界の歴史が大きく変化した時代でした。1990年の湾岸戦争、1998年のイラク空爆、2003年のイラク戦争。そして2008年のリーマンショック、2009年のドバイショック、2011年の東日本大震災とリビア空爆、2017年のシリア空爆。さらに、2020年には世界を一変させた新型コロナウイルスのパンデミックが発生し、その後もロシア・ウクライナ戦争、イスラエル・パレスチナ問題、そして中東をめぐる緊張は続いています。'),
+
+    t('Since 2006 I have been based in Dubai, in the Middle East — arguably the centre of that turbulence — and for twenty years I have watched the world change from the ground. Looking back, our path was never a level one. The coronavirus pandemic of 2020 in particular was fundamentally unlike any economic crisis we had faced before. When a setback comes from your own judgement or your own failure of management, you can analyse the cause, change the strategy, and rebuild through effort. But people the world over stopped moving at once, borders closed, no one could travel, and business activity itself came to a halt.',
+      '私は、その激動の中心ともいえる中東・ドバイに2006年から拠点を置き、20年間、世界の変化を現地で見続けてきました。振り返れば、私たちの歩みは決して平坦なものではありませんでした。特に、2020年のコロナ・パンデミックは、それまで経験してきた経済危機とは本質的に異なるものでした。自らの判断や経営の失敗であれば、原因を分析し、戦略を変え、努力によって立て直すことができます。しかし、世界中の人々が同時に動きを止め、国境が閉ざされ、人が移動できず、企業活動そのものが停止する。'),
+
+    t('This was a crisis of another order entirely, one that no amount of management effort could solve. Dubai went into lockdown, and in our hotel and lodging business the bookings we had built up were cancelled one after another. Restrictions on going out, on trading, on how many staff could come in. Money invested in a business that could not be recovered. Construction halted on property bought off-plan. Receivables that could not be collected because a client had gone under. Staff numbers falling, layoffs and repatriations forced on us. A struggle even to service the bank borrowing.',
+      'これは、経営努力だけでは解決できない、まったく別次元の危機でした。ドバイではロックダウンが行われ、ホテル・民泊事業では、それまで積み上げてきた宿泊予約が次々とキャンセルとなりました。外出規制、営業規制、出社人数の制限。投資した事業から資金を回収できない。オフプランで投資した不動産の建設が止まる。取引先の倒産によって売掛金が回収できない。社員が減少し、解雇や帰国を余儀なくされる。銀行借入の返済にも苦しむ。'),
+
+    t('Food and drink, tourism, hotels — the industries that stood on people moving were all struck hard at much the same moment. And at that time we believed in Dubai\u2019s future and were investing heavily towards EXPO 2020. Then EXPO 2020 itself was postponed by a year and economic activity worldwide stopped. “Get everyone together and let us push through this as one” — even that most ordinary act of management was beyond us. We could not gather people. There were no sales. The business stopped.',
+      '飲食、観光、ホテル――人の移動によって成り立っていた産業は、ほぼ同時に大きな打撃を受けました。そして、私たちは当時、ドバイの未来を信じ、EXPO 2020に向けて大きな投資を行っていました。しかし、EXPO 2020そのものが1年間延期され、世界中の経済活動が停止。「社員を集めて、みんなで一気に頑張ろう」そんな当たり前の経営すらできない。人を集めることができない。売上が立たない。事業が止まる。'),
+
+    t('In the end we had no choice but to abandon the plan we had been advancing towards a listing on NASDAQ Dubai. That experience was a great setback for me. Yet it was also the period in which I learned the most important thing there is to learn, as a manager and as an investor: that generating profit is not the whole of management. Building something that survives whatever crisis arrives — that is what management truly is.',
+      '最終的には、NASDAQ Dubaiへの上場を目指して進めていた計画も断念せざるを得ませんでした。あの経験は、私にとって大きな挫折でした。しかし同時に、経営者として、そして投資家として、最も重要なことを学んだ時期でもありました。それは、「利益を生み出すこと」だけが経営ではない。「どのような危機が訪れても、生き残れる仕組みをつくること」こそが、本当の経営である。ということです。'),
+
+    t('And so we move to the next stage. The world will keep changing. War, financial crisis, pandemic, inflation, currency swings, geopolitical risk — none of these can be avoided entirely. That is precisely why we believe we must not depend on a single country, a single business or a single asset, but take a global view and manage assets, businesses, people, information and networks as a whole. Our answer to that is what we are working towards: a family office that can compete anywhere in the world. Not merely an asset-preservation company. Real estate, finance, business investment, overseas investment, asset management, business succession, inheritance, next-generation education, a global network. We are bringing these together on one platform, to become an organisation to which company owners, high-net-worth families and their households can entrust their future with confidence over the long term. And we will take up again the NASDAQ listing we once had to abandon. The listing is not itself the goal. It is one waypoint — a way of proving to the world that this is a company that has accumulated this much history and experience, and that will deliver this much value to society.',
+      'そして、私たちは次のステージへ進みます。世界はこれからも変わり続けます。戦争、金融危機、パンデミック、インフレーション、為替変動、地政学的リスク。これらを完全に避けることはできません。だからこそ、私たちは一つの国、一つの事業、一つの資産だけに依存するのではなく、世界を俯瞰しながら、資産・事業・人・情報・ネットワークを総合的にマネジメントする必要があると考えています。その答えとして、私たちが目指すのが、「世界で戦えるファミリーオフィス」です。単なる資産保全会社ではありません。不動産、金融、事業投資、海外投資、資産管理、事業承継、相続、次世代教育、グローバルネットワーク。これらを一つのプラットフォームに集約し、企業オーナーや富裕層、そしてそのご家族が、長期的に安心して未来を託すことのできる存在を目指します。そして私たちは、過去に一度断念したNASDAQ上場という目標にも、改めて挑戦します。ただし、上場そのものがゴールではありません。上場は、私たちが世界に対して、「この会社は、これだけの歴史と経験を積み重ね、これだけの価値を社会に提供していく会社である」と証明するための一つの通過点です。'),
+
+    t('Thirty-five years of experience, carried into the next hundred. I have known a great many failures in my life. But there are things I understood only because I failed. Harder than building a large fortune is protecting it, growing it, and passing it correctly to the next generation. And a company of real worth, I believe, is not one in which a single manager succeeds, but one in which the philosophy and the values are handed on to the next generation after that manager is gone.',
+      '35年間の経験を、次の100年へ。私は、これまでの人生で数多くの失敗を経験してきました。しかし、失敗したからこそ分かったことがあります。大きな資産を築くことよりも難しいのは、その資産を守り、育て、次の世代へ正しく引き継いでいくこと。そして、本当の意味で価値のある企業とは、一人の経営者が成功する会社ではなく、経営者がいなくなった後も、理念と価値が次の世代へ受け継がれていく会社なのだと思います。'),
+
+    t('The experience, the failures, the successes, the relationships and the networks we have built across the world over these thirty-five years — we want to leave all of it for the next generation. From Dubai, the world\u2019s crossroads, we connect Asia, Japan and the world. Not only protecting assets, but turning assets into future value. Connecting company to company, person to person, country to country, and creating new business and new value. That is our mission from here. “Experience of past crises, turned into the power to create the future.” However much the world changes, we will not stand still. If anything, we believe it is within change that new opportunity lies. The challenge of Dubai, begun in 2006 from nothing but desert. A global financial crisis. The Dubai shock.',
+      '私たちは、これまでの35年間で得た経験、失敗、成功、人脈、そして世界各国で築いてきたネットワークを、次の世代のために残していきたい。ドバイという世界の交差点から、アジア、日本、そして世界をつなぐ。資産を守るだけではなく、資産を未来の価値へ変えていく。企業と企業、人と人、国と国をつなぎ、新しいビジネスと新しい価値を創造する。それが、これからの私たちの使命です。「過去の危機を乗り越えた経験を、未来を創る力へ。」世界情勢がどれほど変化しても、私たちは立ち止まりません。むしろ、変化の中にこそ新しい機会があると考えています。2006年、何もない砂漠から始まったドバイの挑戦。世界的な金融危機。ドバイショック。'),
+
+    t('And then the pandemic that nobody could have predicted. We have lived through every one of them. That is why, from here, we will use the experience of the past not for defence but as the power to create the future. Towards a family office recognised across the world. Towards a company the world trusts. And towards a group of companies we can hand to the next generation with pride.',
+      'そして、誰も予測できなかったパンデミック。私たちは、その一つひとつを経験してきました。だからこそ、これからは過去の経験を「守り」に使うのではなく、「未来を創る力」に変えていきます。世界で認められるファミリーオフィスへ。世界から信頼されるカンパニーへ。そして、次世代へ誇りを持って引き継ぐことのできる企業グループへ。'),
+
+    t('We begin our challenge to the world market once again. With the NASDAQ listing beyond it held up as one great objective, we will keep walking — through the next ten years, the next twenty, and the future beyond them — and we will keep taking on the challenge.',
+      '私たちは、再び世界市場への挑戦を始めます。その先にあるNASDAQ上場を一つの大きな目標として掲げ、これからの10年、20年、そしてその先の未来へ向けて、歩みを止めることなく挑戦してまいります。'),
+
+    t('Thirty-five years of experience, as the foundation of the next hundred. Together with all of you, we hope to create a new era.',
+      '過去35年の経験を、次の100年の礎へ。皆様とともに、新しい時代を創っていきたいと考えております。'),
+  ];
+
+  return (
+    <section className="blk chair" id="chairman">
+      <div className="wrap">
+        <div className="chair-card">
+          <div className="chair-head">
+            <h2 className="chair-title">{t('Living through an era of upheaval. And creating the era that follows.',
+                                             '激動の時代を、生き抜く。そして、次の時代を創る。')}</h2>
+            <div className="chair-ey">{t('＜Message from the Chairman＞', '＜会長挨拶＞')}</div>
+          </div>
+          <div className="chair-grid">
+            <div className="chair-body">
+              {paras.map((para, i) => <p key={i}>{para}</p>)}
+            </div>
+            <figure className="chair-photo">
+              <img src={imgUrl('/img/chairman.jpg')} alt={t('Tomoyuki Kawana, Chairman', '代表取締役会長（Chairman）川名 智之')} loading="lazy" />
+              <figcaption>
+                <span>{t('Chairman', '代表取締役会長（Chairman）')}</span>
+                <b>{t('Tomoyuki Kawana', '川名 智之')}</b>
+              </figcaption>
+              {/* Lifted off the sheet and keyed to transparency — the sheet asks
+                  for the pale blue block behind it to go. */}
+              <img className="chair-sign" src={imgUrl('/img/chairman-signature.png')} alt="" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function License() {
   const { t } = useLang();
   const rows = [
@@ -76,6 +159,8 @@ export function License() {
     ['Registration no.', '登録番号', '937'],
     ['Legal form', '法的形態', 'DWC-LLC'],
     ['License valid until', 'ライセンス有効期限', t('25 March 2027', '2027年3月25日')],
+    // 09.17 sheet: added between the licence expiry and the representative.
+    ['Capital', '資本金', '800,000 USD'],
     ['Representative', '代表者', t('Hamit Gurbuz', 'ハミット・ギュルビュズ（Hamit Gurbuz）')],
   ];
   return (
