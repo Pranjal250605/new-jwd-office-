@@ -403,6 +403,10 @@ export function Jewelry() {
     ['/img/jewelry-hall-2.jpg', t('Display halls', '展示ホール'), 'wide'],
     ['/img/jewelry-building.jpg', t('The building, Dubai', 'ドバイの店舗ビル'), 'tall'],
     ['/img/jewelry-hall-3.jpg', t('Display halls', '展示ホール'), 'wide'],
+    // 09.17-3 sheet: three more, in the order the sheet lays them out.
+    ['/img/jewelry-lobby.jpg', t('The showroom lobby', 'ショールームのロビー'), 'tall'],
+    ['/img/jewelry-storefront.jpg', t('The showroom storefront', 'ショールームの店構え'), 'tall'],
+    ['/img/jewelry-logo.jpg', t('JWD Jewelry', 'JWDジュエリー'), 'wide'],
   ];
   return (
     <section className="blk jewelry" id="jewelry">
