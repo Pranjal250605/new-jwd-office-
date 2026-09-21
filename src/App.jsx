@@ -5,7 +5,7 @@ import { UtilBar, Header, ContactForm, Footer } from './components/Chrome.jsx';
 import { Hero, Concerns, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
 import { President, Chairman, License, NextGeneration, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
-import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights, EcosystemFlower, Jewelry } from './components/Proof.jsx';
+import { Strategies, Compare, Cases, Banks, Ecosystem, HeartOfEurope, Insights, EcosystemFlower, GroupBanner, Jewelry } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 import News from './components/News.jsx';
 
@@ -33,6 +33,7 @@ export default function App() {
             flower directly after it, per the 2026.08.03 revision points. */}
         <Ecosystem />
         <EcosystemFlower />
+        <GroupBanner /> {/* 09.21 sheet P2: banner directly below the group flower */}
         <GenerationalWealth />
         <WhoWeServe />
         <Services />
@@ -40,6 +41,7 @@ export default function App() {
         <Strategies />
         <Compare />
         <Cases />
+        <Banks /> {/* 09.21 sheet P1: overseas bank accounts, between the cases and HoE */}
         <HeartOfEurope />
         <Insights />
         <Jewelry /> {/* last section before the CTA */}

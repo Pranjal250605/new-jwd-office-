@@ -1,6 +1,7 @@
+import { useEffect, useRef } from 'react';
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
-import { FlagJP, FlagAE } from './Flags.jsx';
+import { FlagJP, FlagAE, FlagLA } from './Flags.jsx';
 import { GROUP } from '../groupSites.js';
 import { imgUrl } from '../deploy.js';
 
@@ -203,6 +204,100 @@ export function Ecosystem() {
 
 // Core educational library — the five priority videos from the 13-July meeting.
 // [ videoId, image, kickerEn, kickerJa, dur, titleEn, titleJa ]
+/* ── Overseas bank accounts (09.21 DWC sheet, P1) ────────────────────────────
+   Sits between the case studies and Heart of Europe, as the sheet marks it.
+   Japanese copy is the client's, verbatim from the supplied .pptx; the English
+   is ours and is a draft pending approval.
+
+   NOTE: the source gives the sixth merit heading — 《富裕層向けプライベート
+   バンキングの充実》 — with no body paragraph. Reproduced as supplied and
+   flagged back to the client rather than written for them, since these are
+   financial claims. */
+const BANKS = [
+  ['Emirates NBD Bank', 'エミレーツNBD銀行'],
+  ['NBF Bank', 'NBF銀行'],
+  ['JDB Bank (SAKURA PAY)', 'JDB銀行（SAKURA PAY）'],
+];
+
+const BANK_MERITS = [
+  ['Attractive tax advantages', '魅力的な税制メリット',
+   'Personal income in the UAE is in principle untaxed, and corporate tax is subject to certain reliefs where a free zone or similar structure is used. Profits from investment and from business can be protected efficiently and carried to their maximum.',
+   'UAEでは個人の所得税が基本非課税となっており、法人税についてもフリーゾーン等を活用することで一定の優遇措置を受けられます。資産運用やビジネスで得た利益を効率的に守り、最大化することが可能です。'],
+  ['Multi-currency handling, major currencies included', '主要通貨をはじめとするマルチカレンシー対応',
+   'Not only the UAE dirham (AED) but the US dollar (USD), the euro (EUR), the British pound (GBP) and other major international currencies can be held and managed easily within a single account. The convenience of moving funds globally and of international transfers rises dramatically.',
+   'UAEディルハム（AED）だけでなく、米ドル（USD）、ユーロ（EUR）、イギリスポンド（GBP）など、主要な国際通貨を一つの口座内で簡単に保有・管理できます。グローバルな資金移動や国際送金の利便性が飛躍的に高まります。'],
+  ['High-grade security and asset protection', '高水準のセキュリティと資産保全',
+   "Dubai's financial sector operates under strict central bank regulation and is notable for world-standard security and stability. Seen from the standpoint of political and economic risk diversification — hedging country risk — it is an excellent safe harbour for assets.",
+   'ドバイの金融セクターは厳格な中央銀行の規制のもとで運営されており、世界水準の高度なセキュリティと安定性を誇ります。政治的・経済的なリスク分散（カントリーリスクのヘッジ）の観点からも、安全な資産の逃避先として優れています。'],
+  ['Excellent international access and remote management', '優れた国際アクセスとリモート管理',
+   'Many UAE banks offer English and Arabic as a matter of course, along with highly digitalised online and mobile banking. Balances can be checked and international transfers arranged around the clock, from anywhere in the world.',
+   '多くのUAEの銀行では、英語・アラビア語はもちろん、高度にデジタル化されたオンライン・モバイルバンキングを提供しています。世界中どこからでも24時間体制で口座残高の確認や国際送金の手続きが行えます。'],
+  ['A stronger base for international business', '国際的なビジネス展開の基盤強化',
+   'When incorporating or trading from a Dubai base, holding a local business account raises your standing with counterparties. Smooth settlement within the UAE, and the lending and financial services particular to a local entity, also become available.',
+   'ドバイを拠点とした法人設立や貿易を行う際、現地のビジネス口座があることで取引先からの信用力が向上します。UAE国内でのスムーズな決済や、現地法人特有の融資・金融サービスの利用も可能になります。'],
+  ['A full private-banking offering for high-net-worth clients', '富裕層向けプライベートバンキングの充実', null, null],
+];
+
+/** Overseas bank account opening — UAE and Laos. The CTA hands off to the
+ *  JWD Investment site's consent gate, per the sheet's "Link to" note. */
+export function Banks() {
+  const { t } = useLang();
+  return (
+    <section className="blk banks-sec" id="banks">
+      <div className="wrap">
+        <div className="head banks-head">
+          <h2 className="sec">{t('Opening an overseas bank account', '海外銀行口座開設')}</h2>
+          <ul className="banks-countries">
+            <li><FlagAE size={17} />{t('United Arab Emirates', 'アラブ首長国連邦')}</li>
+            <li><FlagLA size={17} />{t("Lao People's Democratic Republic", 'ラオス人民民主共和国')}</li>
+          </ul>
+        </div>
+
+        <div className="banks-top">
+          <ul className="banks-list">
+            {BANKS.map(([en, ja]) => <li key={en}>{t(en, ja)}</li>)}
+          </ul>
+          <div className="banks-note">
+            <p>{t(
+              'World-leading international financial institutions and major local banks provide sophisticated asset management for high-net-worth clients, specialist advisory, and dedicated lifestyle benefits.',
+              '世界トップクラスの国際金融機関や現地大手銀行が、富裕層向けの高度な資産運用サービスや専門的なアドバイザリー、専用のライフスタイル特典などを提供しています。',
+            )}</p>
+            <p>{t(
+              'The documents required and the review criteria applied differ from bank to bank. Please feel free to consult us about choosing the bank best suited to your purpose, and about a smooth opening procedure.',
+              '口座開設にあたっては、求められる必要書類や審査基準が銀行によって異なります。ご自身の目的に合わせた最適な銀行選びや、スムーズな開設手続きについてはお気軽にご相談ください。',
+            )}</p>
+          </div>
+        </div>
+
+        <h3 className="banks-mh">{t(
+          '[The advantages of opening a bank account in Dubai (UAE)]',
+          '【ドバイ（UAE）に銀行口座を開設するメリット】',
+        )}</h3>
+        <p className="lead banks-intro">{t(
+          'One of the world’s foremost financial hubs, Dubai draws the attention of high-net-worth individuals and companies worldwide for its tax advantages and its ease of doing business. Holding a local bank account brings a great many benefits, including the following.',
+          '世界有数の金融ハブであり、税制優遇やビジネスのしやすさから世界中の富裕層や企業に注目されているドバイ。現地の銀行口座を保有することで、以下のような多くのメリットが得られます。',
+        )}</p>
+
+        <ul className="banks-merits">
+          {BANK_MERITS.map(([hEn, hJa, bEn, bJa]) => (
+            <li key={hJa}>
+              <h4>{t(`《${hEn}》`, `《${hJa}》`)}</h4>
+              {bJa && <p>{t(bEn, bJa)}</p>}
+            </li>
+          ))}
+        </ul>
+
+        <div className="banks-cta">
+          <a className="btn btn-gold" href="https://jwd-insurance.vercel.app/#/consent"
+            target="_blank" rel="noopener noreferrer">
+            {t('Open an account here', '口座開設はこちらから')}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function HeartOfEurope() {
   const { t } = useLang();
   const stats = [
@@ -345,6 +440,45 @@ export function Insights() {
 }
 
 /** The JWD group as a hub-and-petals flower — Family Office at the centre. */
+/* ── Group banner (09.21 DWC sheet, P2) ──────────────────────────────────────
+   Sits directly under the group flower. The sheet asks for a banner "with
+   responsive motion", warning twice not to ruin the site's tonality — so the
+   movement is a slow scale on the artwork plus a one-shot rise on the line,
+   not a carousel or an autoplay video. Both are held behind an
+   IntersectionObserver so nothing animates off-screen, and behind
+   prefers-reduced-motion. */
+export function GroupBanner() {
+  const { t } = useLang();
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      ([e]) => e.isIntersecting && (el.classList.add('is-in'), io.disconnect()),
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <section className="gbanner" ref={ref} aria-label={t('Japan Worldlink DWC Group', 'Japan Worldlink DWC グループ')}>
+      <div className="wrap">
+        <div className="gbanner-in">
+          <img className="gbanner-img" src={imgUrl('/img/group-banner.jpg')} loading="lazy" decoding="async"
+            alt={t('Japan Worldlink DWC Group — JWD Investment, ANAWAK ONE, ANAWAK Real Estate, Japan Worldlink DWC, JWD Travel & Tourism, EDIFY Japan and JWD Jewelry, over the flags of Japan and the UAE.',
+                   'Japan Worldlink DWC グループ — JWD Investment、ANAWAK ONE、ANAWAK Real Estate、Japan Worldlink DWC、JWD Travel & Tourism、EDIFY Japan、JWD Jewelry。日本とUAEの国旗を背景に。')} />
+          <p className="gbanner-tx">{t(
+            "The promise of the UAE, for Japan's future",
+            'UAEの可能性を、日本人の未来へ',
+          )}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function EcosystemFlower() {
   const { t } = useLang();
   return (

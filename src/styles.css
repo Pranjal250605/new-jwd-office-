@@ -1053,3 +1053,56 @@
   .adv-fab-label{display:none}
   .hero .assure span{width:100%}
 }
+
+/* ── overseas bank accounts (09.21 sheet P1) ───────────────────────────────
+   Off-white block to match the sections either side of it; dark text on
+   --gold-bright for the CTA (white on --gold is 2.96:1 and fails). */
+.banks-sec{background:var(--tint)}
+.banks-head{max-width:none}
+.banks-countries{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:18px;list-style:none;padding:0}
+.banks-countries li{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:600;color:var(--navy-ink)}
+.banks-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;align-items:start;margin-bottom:46px}
+.banks-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.banks-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 22px;
+  font-size:19px;font-weight:600;color:var(--navy-ink)}
+.banks-note{background:var(--tint-2);border-radius:14px;padding:24px 26px}
+.banks-note p{font-size:15.5px;line-height:1.85;color:var(--muted)}
+.banks-note p + p{margin-top:14px}
+.banks-mh{font-weight:600;font-size:18px;color:var(--navy-ink);margin-bottom:14px}
+.banks-intro{max-width:none;margin-bottom:34px}
+.banks-merits{list-style:none;padding:0;margin:0;display:grid;gap:26px}
+.banks-merits h4{position:relative;padding-left:22px;font-size:17px;font-weight:600;color:var(--navy-ink)}
+.banks-merits h4::before{content:'';position:absolute;left:0;top:.52em;width:9px;height:9px;
+  border-radius:50%;background:var(--gold)}
+.banks-merits p{margin-top:8px;padding-left:22px;font-size:15.5px;line-height:1.9;color:var(--muted)}
+.banks-cta{margin-top:42px;text-align:center}
+
+/* ── group banner (09.21 sheet P2) ─────────────────────────────────────────
+   "Responsive motion" kept deliberately quiet: a slow scale on the artwork and
+   a single rise on the line, both triggered on entry by .is-in. */
+.gbanner{padding:0 0 92px;background:var(--tint)}
+.gbanner-in{position:relative;overflow:hidden;border-radius:16px;
+  box-shadow:0 26px 60px -34px rgba(32,33,37,.5)}
+.gbanner-img{display:block;width:100%;height:auto;transform:scale(1.06);
+  transition:transform 1.5s cubic-bezier(.22,.61,.36,1)}
+.gbanner.is-in .gbanner-img{transform:scale(1)}
+.gbanner-tx{position:absolute;left:0;right:0;bottom:0;margin:0;padding:64px 32px 26px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:#fff;text-align:center;
+  font-size:clamp(1.05rem,2.4vw,1.75rem);letter-spacing:.04em;
+  text-shadow:0 2px 18px rgba(0,0,0,.55);
+  background:linear-gradient(to top,rgba(20,20,22,.72),rgba(20,20,22,0));
+  opacity:0;transform:translateY(14px);
+  transition:opacity .8s ease .35s,transform .8s cubic-bezier(.22,.61,.36,1) .35s}
+.gbanner.is-in .gbanner-tx{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .gbanner-img,.gbanner.is-in .gbanner-img{transform:none;transition:none}
+  .gbanner-tx{opacity:1;transform:none;transition:none}
+}
+
+@media(max-width:860px){
+  .banks-top{grid-template-columns:1fr;gap:22px}
+  .banks-list li{font-size:17px;padding:14px 18px}
+  .gbanner{padding-bottom:56px}
+  .gbanner-tx{padding:44px 18px 18px}
+}

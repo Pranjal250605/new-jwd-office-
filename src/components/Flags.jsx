@@ -29,3 +29,17 @@ export function FlagAE({ size = 15 }) {
     </svg>
   );
 }
+
+/* Laos — red/blue/red with a white disc, added for the 09.21 sheet's overseas
+   bank-account section (JDB Bank sits in Vientiane). Same reasoning as above:
+   the client supplied a JPEG, but an SVG stays sharp beside the bank names. */
+export function FlagLA({ size = 15 }) {
+  return (
+    <svg className="flag" viewBox="0 0 30 20" width={size * 1.5} height={size}
+      aria-hidden="true" focusable="false">
+      <rect width="30" height="20" fill="#ce1126" />
+      <rect y="5" width="30" height="10" fill="#002868" />
+      <circle cx="15" cy="10" r="4" fill="#fff" />
+    </svg>
+  );
+}
