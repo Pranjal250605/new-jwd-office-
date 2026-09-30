@@ -288,7 +288,7 @@ export function Banks() {
         </ul>
 
         <div className="banks-cta">
-          <a className="btn btn-gold" href="https://jwd-insurance.vercel.app/#/consent"
+          <a className="btn btn-gold" href={`${GROUP.investment}#/consent`}
             target="_blank" rel="noopener noreferrer">
             {t('Open an account here', '口座開設はこちらから')}
           </a>

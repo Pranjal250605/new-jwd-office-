@@ -11,16 +11,32 @@
 # ── Serve index.html for the site root ──────────────────────────────────
 DirectoryIndex index.html
 
-# ── HTTPS ───────────────────────────────────────────────────────────────
-# Most hosts terminate TLS upstream, so test before relying on this: if the
-# host already redirects, this is harmless; if it double-redirects, comment
-# it out.
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</IfModule>
+# ── HTTPS — DISABLED UNTIL THE CERTIFICATE IS ISSUED ────────────────────
+#
+# This block is why worldlink-dwc.com (the previous domain) was unreachable
+# on 2026-09-09. The files were uploaded correctly and Apache was reading this
+# .htaccess (the live 301 carried the Permissions-Policy set below, which
+# exists nowhere else), but onamae had not yet issued a certificate for the
+# domain: port 443 presented onamae's default *.onamaeweb.jp certificate and
+# answered every request with an nginx 503. This rule sent all http traffic
+# there, so the site was 100% unreachable over both protocols.
+#
+# TO RE-ENABLE — do this and only this once SSL is live:
+#   1. お名前.com コントロールパネル → SSL → 無料SSL(Let's Encrypt) → 設定する
+#      for worldlinkdwc.com AND www.worldlinkdwc.com.
+#   2. Wait for issuance (usually 15–60 minutes; the panel shows 設定済).
+#   3. Verify from a terminal — this must print the domain, not *.onamaeweb.jp:
+#        echo | openssl s_client -connect worldlinkdwc.com:443 \
+#          -servername worldlinkdwc.com 2>/dev/null \
+#          | openssl x509 -noout -subject
+#   4. Only then delete the four leading '#' below and re-upload this file.
+#
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>
 
 # ── Compression ─────────────────────────────────────────────────────────
 # The JS bundle is ~248 KB raw and ~82 KB gzipped, so this matters more than
