@@ -95,7 +95,8 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [coOpen, setCoOpen] = useState(false);
+  // which nav pull-down is open: 'company', 'banks' or null — one at a time
+  const [drop, setDrop] = useState(null);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 10);
     on();
@@ -104,12 +105,45 @@ export function Header() {
   }, []);
   // a tap-opened dropdown should not survive a scroll or an outside click
   useEffect(() => {
-    if (!coOpen) return;
-    const off = () => setCoOpen(false);
+    if (!drop) return;
+    const off = () => setDrop(null);
     addEventListener('scroll', off, { passive: true });
     addEventListener('click', off);
     return () => { removeEventListener('scroll', off); removeEventListener('click', off); };
-  }, [coOpen]);
+  }, [drop]);
+
+  /* One pull-down tag. Hover opens it on a pointer; the button keeps it
+     reachable by tap and by keyboard, which hover alone would not. A click
+     only ever opens: on a mouse, hover has already opened it, and a toggle
+     would shut it again under the pointer. Leaving, an outside click, a
+     scroll or picking an item closes it. */
+  const navDrop = (id, label, items) => (
+    <div className={'navdrop' + (drop === id ? ' on' : '')}
+         onMouseEnter={() => setDrop(id)}
+         onMouseLeave={() => setDrop(null)}>
+      <button type="button" className="navdrop-tag" aria-expanded={drop === id}
+              onClick={(e) => { e.stopPropagation(); setDrop(id); }}>
+        {label}<i aria-hidden="true" />
+      </button>
+      <div className="navdrop-menu" role="menu">
+        {items.map(([href, text]) => (
+          <a key={text} href={href} role="menuitem" onClick={() => setDrop(null)}>{text}</a>
+        ))}
+      </div>
+    </div>
+  );
+
+  const companyItems = [
+    ['#message', t('Message', '代表挨拶')],
+    ['#license', t('Company Profile', '企業情報')],
+  ];
+  // 10.05 request: 海外口座開設 tag listing the three banks; each opens the
+  // 海外銀行口座開設 section (#banks), which names them in the same order.
+  const bankItems = [
+    ['#banks', t('Emirates NBD Bank', 'エミレーツNBD銀行')],
+    ['#banks', t('NBF Bank', 'NBF銀行')],
+    ['#banks', t('JDB Bank (SAKURA PAY)', 'JDB銀行（SAKURA PAY）')],
+  ];
 
   // lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -141,20 +175,9 @@ export function Header() {
           <div className="navlinks">
             {/* 09.17 sheet: 会社概要 is a two-step tag — touching it opens a pull
                 down of 代表挨拶 / 企業情報, and each of those jumps to its section.
-                Hover opens it on a pointer; the button keeps it reachable by
-                tap and by keyboard, which hover alone would not. */}
-            <div className={'navdrop' + (coOpen ? ' on' : '')}
-                 onMouseEnter={() => setCoOpen(true)}
-                 onMouseLeave={() => setCoOpen(false)}>
-              <button type="button" className="navdrop-tag" aria-expanded={coOpen}
-                      onClick={() => setCoOpen((v) => !v)}>
-                {t('Company', '会社概要')}<i aria-hidden="true" />
-              </button>
-              <div className="navdrop-menu" role="menu">
-                <a href="#message" role="menuitem" onClick={() => setCoOpen(false)}>{t('Message', '代表挨拶')}</a>
-                <a href="#license" role="menuitem" onClick={() => setCoOpen(false)}>{t('Company Profile', '企業情報')}</a>
-              </div>
-            </div>
+                10.05: 海外口座開設 follows it, the same way, with the banks. */}
+            {navDrop('company', t('Company', '会社概要'), companyItems)}
+            {navDrop('banks', t('Bank Accounts', '海外口座開設'), bankItems)}
             {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
           </div>
           <div className="navcta">
@@ -186,6 +209,13 @@ export function Header() {
               <span className="mmenu-cap">{t('Company', '会社概要')}</span>
               <a href="#message" onClick={() => setOpen(false)}>{t('Message', '代表挨拶')}</a>
               <a href="#license" onClick={() => setOpen(false)}>{t('Company Profile', '企業情報')}</a>
+            </div>
+
+            <div className="mmenu-group">
+              <span className="mmenu-cap">{t('Overseas Bank Accounts', '海外口座開設')}</span>
+              {bankItems.map(([href, text]) => (
+                <a key={text} href={href} onClick={() => setOpen(false)}>{text}</a>
+              ))}
             </div>
 
             <div className="mmenu-group">
