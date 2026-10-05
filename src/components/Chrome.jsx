@@ -189,6 +189,33 @@ export function Header() {
         </nav>
       </div>
 
+      {/* 10.05 request: between 901 and 1279px the nav no longer collapses to
+          the hamburger — the same items stand in a column down the right of
+          the screen, under the header. Inside the sticky header so it stays
+          put while the page scrolls; CSS shows it only in that band and moves
+          the page content clear of it. Phones keep the hamburger. */}
+      <aside className="navrail" aria-label={t('Site menu', 'サイトメニュー')}>
+        <div className="navrail-group">
+          <span className="mmenu-cap">{t('Company', '会社概要')}</span>
+          {companyItems.map(([href, text]) => <a key={text} href={href}>{text}</a>)}
+        </div>
+        <div className="navrail-group">
+          <span className="mmenu-cap">{t('Overseas Bank Accounts', '海外口座開設')}</span>
+          {bankItems.map(([href, text]) => <a key={text} href={href}>{text}</a>)}
+        </div>
+        <div className="navrail-group">
+          <span className="mmenu-cap">{t('Menu', 'メニュー')}</span>
+          {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
+        </div>
+        <div className="navrail-group">
+          <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>
+          <a href="#ecosystem">{t('Family Office', 'ファミリーオフィス')}</a>
+          <a href={GROUP.investment} target="_blank" rel="noreferrer">{t('JWD Investment', 'JWDインベストメント')}</a>
+          <a href={GROUP.anawak} target="_blank" rel="noreferrer">{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
+          <a href={GROUP.luna} target="_blank" rel="noreferrer">{t('Luna Travel', 'ルナトラベル')}</a>
+        </div>
+      </aside>
+
       {/* ── mobile menu ── rendered on <body> so it isn't clipped to the
           header's box (header's backdrop-filter becomes the containing block
           for position:fixed descendants). */}

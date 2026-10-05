@@ -1110,3 +1110,44 @@
   .gbanner{padding-bottom:56px}
   .gbanner-tx{padding:44px 18px 18px}
 }
+
+/* ── right-hand nav column (10.05 request) ──────────────────────────────────
+   901–1279px: instead of the hamburger, the nav items stand in a column down
+   the right edge, under the sticky header (it lives inside the header, so
+   top:100% tracks the header). The page content and footer step 240px left
+   so nothing sits underneath it; the AI advisor button moves with them. */
+.navrail{display:none}
+@media(min-width:901px) and (max-width:1279px){
+  .navrail{display:flex;flex-direction:column;position:absolute;top:100%;right:0;width:240px;
+    height:calc(100vh - 74px);overflow-y:auto;overscroll-behavior:contain;padding:6px 22px 28px;
+    background:var(--tint-2);border-left:1px solid var(--line)}
+  .navrail-group{display:flex;flex-direction:column;padding:16px 0 10px;border-bottom:1px solid var(--line)}
+  .navrail-group:last-child{border-bottom:0}
+  .navrail-group a{padding:7px 2px;font-size:14px;font-weight:500;color:#4a4d54;transition:color .2s}
+  .navrail-group a:hover{color:var(--navy)}
+  .menu-btn{display:none}
+  .navcta-book{display:inline-flex}
+  main{margin-right:240px}
+  footer{padding-right:240px}
+  .adv-fab{right:264px}
+}
+
+/* With the nav column taking 240px, the page content is 240px narrower than
+   the window, so the content breakpoints above would fire 240px too late.
+   These repeat them, shifted by the column's width, for the 901–1279px band.
+   (The 820px phone-chrome block is deliberately not repeated.) */
+@media(min-width:901px) and (max-width:1220px){.chair-card{padding:34px 26px 32px} .chair-grid{grid-template-columns:1fr;gap:34px} .chair-photo{position:static;max-width:360px} .chair-sign{max-width:none}}
+@media(min-width:901px) and (max-width:1100px){.prez-grid{grid-template-columns:1fr;gap:32px} .prez-photo{position:static;max-width:400px;margin:0 auto}}
+@media(min-width:901px) and (max-width:1060px){.lic-intro{grid-template-columns:1fr;gap:24px;margin-bottom:30px}.lic-photo{justify-self:stretch;max-width:none}}
+@media(min-width:901px) and (max-width:1240px){.lic{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1240px){.feature .wrap{grid-template-columns:1fr;gap:36px}.feature .ph{max-width:440px}}
+@media(min-width:901px) and (max-width:1240px){.quick .wrap{grid-template-columns:1fr 1fr}.quick a{border-left:none;border-top:1px solid var(--line)}}
+@media(min-width:901px) and (max-width:1240px){.sim .wrap2{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:960px){.ins-featured{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1240px){.hero .wrap{grid-template-columns:1fr;gap:40px} .hcard{max-width:440px} .stats .wrap{grid-template-columns:repeat(2,1fr);gap:26px} .g3,.ins,.eco-grid,.steps{grid-template-columns:1fr 1fr} .steps::before{display:none} .fcols{grid-template-columns:1fr 1fr}}
+@media(min-width:901px) and (max-width:1240px){.ins.ins5{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:901px) and (max-width:1060px){.explain-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:901px) and (max-width:1060px){.concern-grid{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1060px){.lic-intro{grid-template-columns:1fr 1fr} .lic-intro .lead{grid-column:1/-1} .lic-shot-lead{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:16/9}}
+@media(min-width:901px) and (max-width:1140px){.jewel-grid{grid-template-columns:repeat(2,1fr)} .jewel-tall{grid-row:span 2}}
+@media(min-width:901px) and (max-width:1100px){.banks-top{grid-template-columns:1fr;gap:22px} .banks-list li{font-size:17px;padding:14px 18px} .gbanner{padding-bottom:56px} .gbanner-tx{padding:44px 18px 18px}}
