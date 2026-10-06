@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { useLang } from '../i18n.jsx';
 import { GROUP } from '../groupSites.js';
 import { imgUrl } from '../deploy.js';
+import { BANK_COUNTRIES, BANK_PAGES, BANK_ROUTE } from './BankPages.jsx';
 
 const CONTACT_TO = 'shiraishi.t@gene-sis.jp';
 
@@ -118,7 +119,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  // which nav pull-down is open: 'company', 'banks' or null — one at a time
+  // which nav pull-down is open (a group id) or null — one at a time
   const [drop, setDrop] = useState(null);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 10);
@@ -140,7 +141,7 @@ export function Header() {
      only ever opens: on a mouse, hover has already opened it, and a toggle
      would shut it again under the pointer. Leaving, an outside click, a
      scroll or picking an item closes it. */
-  const navDrop = (id, label, items) => (
+  const navDrop = ({ id, label, items }) => (
     <div className={'navdrop' + (drop === id ? ' on' : '')}
          onMouseEnter={() => setDrop(id)}
          onMouseLeave={() => setDrop(null)}>
@@ -149,24 +150,15 @@ export function Header() {
         {label}<i aria-hidden="true" />
       </button>
       <div className="navdrop-menu" role="menu">
-        {items.map(([href, text]) => (
-          <a key={text} href={href} role="menuitem" onClick={() => setDrop(null)}>{text}</a>
-        ))}
+        {items.map((it) => (it.cap ? (
+          <span key={it.cap} className="navdrop-cap">{it.Flag && <it.Flag size={14} />}{it.cap}</span>
+        ) : (
+          <a key={it.href + it.text} href={it.href} role="menuitem" className={it.sub ? 'sub' : undefined}
+             onClick={() => setDrop(null)}>{it.text}</a>
+        )))}
       </div>
     </div>
   );
-
-  const companyItems = [
-    ['#message', t('Message', '代表挨拶')],
-    ['#license', t('Company Profile', '企業情報')],
-  ];
-  // 10.05 request: 海外口座開設 tag listing the three banks; each opens the
-  // 海外銀行口座開設 section (#banks), which names them in the same order.
-  const bankItems = [
-    ['#banks', t('Emirates NBD Bank', 'エミレーツNBD銀行')],
-    ['#banks', t('NBF Bank', 'NBF銀行')],
-    ['#banks', t('JDB Bank (SAKURA PAY)', 'JDB銀行（SAKURA PAY）')],
-  ];
 
   // lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -174,16 +166,54 @@ export function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  const links = [
-    ['#clients', 'Clients', '顧客層'],
-    ['#services', 'Services', 'サービス'],
-    ['#approach', 'Approach', 'アプローチ'],
-    ['#strategies', 'Strategies', '戦略'],
-    ['#simulator', 'Simulator', 'シュミレーター'],
-    ['#cases', 'Cases', '事例'],
-    ['#heart-of-europe', 'Properties', '物件'],
-    ['#insights', 'Videos', 'ビデオ解説'],
+  /* 10.06: the ten top-level items were too many for one row, so they are
+     grouped into five pull-downs (agreed with the client). The same groups
+     drive the desktop row, the 901–1279px right-hand column and the phone
+     menu, so the three never disagree. Items: { href, text, sub? } links and
+     { cap, Flag? } captions. */
+  const L = (href, en, ja, sub) => ({ href, text: t(en, ja), sub });
+  // 海外口座開設 lists the country pages from the 海外銀行口座開設 section, by country
+  const bankItems = [
+    L('#banks', 'Overview', '海外銀行口座開設 一覧'),
+    ...BANK_COUNTRIES.flatMap((c) => [
+      { cap: t(c.en, c.ja), Flag: c.Flag },
+      ...BANK_PAGES.filter((p) => p.country === c.id)
+        .map((p) => L(`${BANK_ROUTE}${p.slug}`, p.en, p.ja, Boolean(p.parent))),
+    ]),
   ];
+  const groups = [
+    { id: 'company', label: t('Company', '会社概要'), items: [
+      L('#message', 'Message', '代表挨拶'),
+      L('#license', 'Company Profile', '企業情報'),
+    ] },
+    { id: 'services', label: t('Services', 'サービス'), items: [
+      L('#clients', 'Who We Serve', '顧客層'),
+      L('#services', 'Services', 'サービス'),
+      L('#approach', 'Approach', 'アプローチ'),
+      L('#strategies', 'Strategies', '戦略'),
+    ] },
+    { id: 'banks', label: t('Bank Accounts', '海外口座開設'), items: bankItems },
+    { id: 'results', label: t('Cases & Properties', '実績・物件'), items: [
+      L('#cases', 'Case Studies', '事例'),
+      L('#heart-of-europe', 'Properties', '物件'),
+    ] },
+    { id: 'tools', label: t('Tools', 'ツール'), items: [
+      L('#simulator', 'Simulator', 'シミュレーター'),
+      L('#insights', 'Video Guides', 'ビデオ解説'),
+    ] },
+  ];
+
+  // one group as a captioned list — the right-hand column and the phone menu
+  const groupList = (g, cls, onPick) => (
+    <div key={g.id} className={cls}>
+      <span className="mmenu-cap">{g.label}</span>
+      {g.items.map((it) => (it.cap ? (
+        <span key={it.cap} className="menu-subcap">{it.Flag && <it.Flag size={13} />}{it.cap}</span>
+      ) : (
+        <a key={it.href + it.text} href={it.href} className={it.sub ? 'sub' : undefined} onClick={onPick}>{it.text}</a>
+      )))}
+    </div>
+  );
 
   return (
     <header id="hd" className={scrolled ? 'scrolled' : ''}>
@@ -196,12 +226,9 @@ export function Header() {
             </span>
           </a>
           <div className="navlinks">
-            {/* 09.17 sheet: 会社概要 is a two-step tag — touching it opens a pull
-                down of 代表挨拶 / 企業情報, and each of those jumps to its section.
-                10.05: 海外口座開設 follows it, the same way, with the banks. */}
-            {navDrop('company', t('Company', '会社概要'), companyItems)}
-            {navDrop('banks', t('Bank Accounts', '海外口座開設'), bankItems)}
-            {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
+            {/* each group is a two-step tag (09.17 sheet): touching it opens its
+                pull-down, and each item there jumps to its section or page */}
+            {groups.map(navDrop)}
           </div>
           <div className="navcta">
             <a href="#contact" className="btn btn-primary navcta-book">{t('Book a Consultation', '無料相談を予約')}</a>
@@ -218,18 +245,7 @@ export function Header() {
           put while the page scrolls; CSS shows it only in that band and moves
           the page content clear of it. Phones keep the hamburger. */}
       <aside className="navrail" aria-label={t('Site menu', 'サイトメニュー')}>
-        <div className="navrail-group">
-          <span className="mmenu-cap">{t('Company', '会社概要')}</span>
-          {companyItems.map(([href, text]) => <a key={text} href={href}>{text}</a>)}
-        </div>
-        <div className="navrail-group">
-          <span className="mmenu-cap">{t('Overseas Bank Accounts', '海外口座開設')}</span>
-          {bankItems.map(([href, text]) => <a key={text} href={href}>{text}</a>)}
-        </div>
-        <div className="navrail-group">
-          <span className="mmenu-cap">{t('Menu', 'メニュー')}</span>
-          {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
-        </div>
+        {groups.map((g) => groupList(g, 'navrail-group'))}
         <div className="navrail-group">
           <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>
           <a href="#ecosystem">{t('Family Office', 'ファミリーオフィス')}</a>
@@ -249,24 +265,7 @@ export function Header() {
               <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
               <button className="mmenu-x" aria-label={t('Close', '閉じる')} onClick={() => setOpen(false)}>✕</button>
             </div>
-            <nav className="mmenu-links">
-              {links.map(([href, en, ja]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)}>{t(en, ja)}</a>
-              ))}
-            </nav>
-
-            <div className="mmenu-group">
-              <span className="mmenu-cap">{t('Company', '会社概要')}</span>
-              <a href="#message" onClick={() => setOpen(false)}>{t('Message', '代表挨拶')}</a>
-              <a href="#license" onClick={() => setOpen(false)}>{t('Company Profile', '企業情報')}</a>
-            </div>
-
-            <div className="mmenu-group">
-              <span className="mmenu-cap">{t('Overseas Bank Accounts', '海外口座開設')}</span>
-              {bankItems.map(([href, text]) => (
-                <a key={text} href={href} onClick={() => setOpen(false)}>{text}</a>
-              ))}
-            </div>
+            {groups.map((g) => groupList(g, 'mmenu-group', () => setOpen(false)))}
 
             <div className="mmenu-group">
               <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>

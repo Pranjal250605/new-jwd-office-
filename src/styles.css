@@ -98,11 +98,11 @@
   .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:23.5px;color:var(--navy);letter-spacing:0;white-space:nowrap}
   .logo .mk b{color:var(--gold)}
   .logo .sb{font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-  .navlinks{display:flex;gap:9px;align-items:center;justify-content:center;flex:1 1 auto;min-width:0}
-  /* 10.05: the 海外口座開設 tag made ten items — 9px gaps fit JA in the row at
-     1280px; EN labels run wider, so they also drop a size. */
-  html[lang="en"] .navlinks a,html[lang="en"] .navdrop-tag{font-size:12px}
-  html[lang="en"] .navlinks{gap:7px}
+  /* 10.06: five grouped pull-downs instead of ten items, so the row has room
+     again — wider gaps and a size up from the old squeezed 13.5/12px. */
+  .navlinks{display:flex;gap:22px;align-items:center;justify-content:center;flex:1 1 auto;min-width:0}
+  html[lang="en"] .navdrop-tag{font-size:14.5px}
+  html[lang="en"] .navlinks{gap:18px}
   .navlinks a{font-size:13.5px;font-weight:500;color:#4a4d54;position:relative;padding:4px 0;white-space:nowrap}
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--gold);transition:.3s}
   .navlinks a:hover{color:var(--navy)}
@@ -238,7 +238,7 @@
   /* ── 会社概要 pull-down (09.17 sheet) ─────────────────────────────────── */
   .navdrop{position:relative}
   .navdrop-tag{background:none;border:0;padding:4px 0;cursor:pointer;font:inherit;
-    font-size:13.5px;font-weight:500;color:#4a4d54;display:inline-flex;align-items:center;gap:5px;
+    font-size:15px;font-weight:500;color:#4a4d54;display:inline-flex;align-items:center;gap:6px;
     white-space:nowrap;position:relative}
   .navdrop-tag::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;
     background:var(--gold);transition:.3s}
@@ -254,8 +254,18 @@
   .navdrop.on .navdrop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
   /* a hover bridge, so the pointer can cross the gap without the menu closing */
   .navdrop-menu::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}
-  .navdrop-menu a{padding:9px 14px;border-radius:6px;font-size:13.5px;font-weight:500;
-    color:#4a4d54;white-space:nowrap;text-align:center}
+  .navdrop-menu a{padding:9px 14px;border-radius:6px;font-size:14px;font-weight:500;
+    color:#4a4d54;white-space:nowrap;text-align:left}
+  /* the English bank page titles are long — wrap them rather than let the
+     panel run wide */
+  .navdrop-menu{max-width:320px}
+  html[lang="en"] .navdrop-menu a{white-space:normal;min-width:200px}
+  .navdrop-menu a.sub{padding-left:28px;font-size:13.5px}
+  .navdrop-menu a.sub::before{content:'└';position:absolute;left:14px;color:#a0a3aa}
+  .navdrop-menu a{position:relative}
+  /* country captions inside the 海外口座開設 pull-down */
+  .navdrop-cap{display:flex;align-items:center;gap:7px;margin:8px 14px 2px;padding-top:8px;
+    border-top:1px solid var(--line);font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--gold)}
   .navdrop-menu a::after{display:none}
   .navdrop-menu a:hover{background:var(--tint);color:var(--navy-ink)}
 
@@ -1198,3 +1208,9 @@
   .bkbtn{font-size:15.5px;padding:15px 18px}
   .bkbtn-sub{margin-left:16px;font-size:14.5px}
 }
+
+/* captions and sub-items in the right-hand column and the phone menu (10.06) */
+.menu-subcap{display:flex;align-items:center;gap:7px;margin:10px 0 2px;font-size:12px;font-weight:700;color:var(--navy-ink)}
+.navrail-group a.sub,.mmenu-group a.sub{padding-left:18px;position:relative}
+.navrail-group a.sub::before,.mmenu-group a.sub::before{content:'└';position:absolute;left:2px;color:#a0a3aa}
+
