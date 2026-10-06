@@ -4,21 +4,34 @@ import { useLang } from '../i18n.jsx';
 import { GROUP } from '../groupSites.js';
 import { imgUrl } from '../deploy.js';
 
+const CONTACT_TO = 'shiraishi.t@gene-sis.jp';
+
 export function ContactForm() {
-  const { t } = useLang();
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', assets: '', message: '' });
+  const { lang, t } = useLang();
+  // idle → sending → sent | failed
+  const [state, setState] = useState('idle');
+  const [form, setForm] = useState({ name: '', email: '', assets: '', message: '', website: '' });
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const submit = (e) => {
+  /* Posts to contact.php beside index.html, which mails the enquiry from the
+     server — the visitor no longer needs a mail app, and "thank you" only
+     shows once the server says it went. On a failure the visitor is told,
+     and given the address to write to instead. */
+  const submit = async (e) => {
     e.preventDefault();
-    // No backend yet — open a pre-filled email so nothing is lost, then thank.
-    const subject = encodeURIComponent('Consultation request — JWD Family Office');
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nAsset range: ${form.assets}\n\n${form.message}`,
-    );
-    window.location.href = `mailto:shiraishi.t@gene-sis.jp?subject=${subject}&body=${body}`;
-    setSent(true);
+    setState('sending');
+    try {
+      const res = await fetch(imgUrl('/contact.php'), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ ...form, name: form.name.trim(), email: form.email.trim(), lang }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(String(res.status));
+      setState('sent');
+    } catch {
+      setState('failed');
+    }
   };
 
   const ASSETS = ['〜¥1億', '¥1〜5億', '¥5〜20億', '¥20億+'];
@@ -32,13 +45,16 @@ export function ContactForm() {
             "Understand your position, then design the structure that carries your family's wealth to its next horizon.",
             '現状を正しく把握し、一族の資産を次の地平へ運ぶストラクチャーを設計しましょう。',
           )}</p>
-          {sent ? (
+          {state === 'sent' ? (
             <div className="cform-done">
               <span className="cform-check">✓</span>
               <p>{t('Thank you — we will be in touch shortly.', 'ありがとうございます。追ってご連絡いたします。')}</p>
             </div>
           ) : (
             <form className="cform" onSubmit={submit}>
+              {/* left empty by people; bots fill it and are quietly dropped */}
+              <input className="cform-hp" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                value={form.website} onChange={set('website')} name="website" />
               <div className="cform-row">
                 <input required value={form.name} onChange={set('name')}
                   placeholder={t('Full name', 'お名前')} />
@@ -55,9 +71,16 @@ export function ContactForm() {
               </div>
               <textarea rows={3} value={form.message} onChange={set('message')}
                 placeholder={t('How can we help? (optional)', 'ご相談内容（任意）')} />
-              <button type="submit" className="btn btn-gold cform-submit">
-                {t('Request a consultation', '相談を申し込む')}
+              <button type="submit" className="btn btn-gold cform-submit" disabled={state === 'sending'}>
+                {state === 'sending' ? t('Sending…', '送信中…') : t('Request a consultation', '相談を申し込む')}
               </button>
+              {state === 'failed' && (
+                <p className="cform-error" role="alert">
+                  {t('Sorry — your request could not be sent. Please try again in a moment, or email us at ',
+                     '送信できませんでした。恐れ入りますが、時間をおいて再度お試しいただくか、こちらまでメールでご連絡ください：')}
+                  <a href={`mailto:${CONTACT_TO}`}>{CONTACT_TO}</a>
+                </p>
+              )}
               <p className="cform-note">{t(
                 'Japanese-language advisory · Dubai (DIFC) & Tokyo · replies within 1 business day.',
                 '日本語対応 · ドバイ（DIFC）／東京 · 1営業日以内にご返信します。',
@@ -281,7 +304,7 @@ export function CtaBand() {
             '現状を正しく把握し、一族の資産を次の地平へ運ぶストラクチャーを設計しましょう。',
           )}</p>
           <div className="cta">
-            <a href="mailto:shiraishi.t@gene-sis.jp" className="btn btn-gold">{t('Book a Consultation', '無料相談を予約')}</a>
+            <a href="#contact" className="btn btn-gold">{t('Book a Consultation', '無料相談を予約')}</a>
             <a href="#services" className="btn btn-ghost">
               {t('Explore services', 'サービスを見る')}
             </a>

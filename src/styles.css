@@ -720,6 +720,10 @@
 .cform-tag.on{background:var(--gold-bright);border-color:var(--gold-bright);color:#1a1405;font-weight:600}
 .cform-submit{align-self:flex-start;margin-top:4px}
 .cform-note{color:var(--muted);font-size:13px;margin-top:2px}
+.cform-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.cform-submit:disabled{opacity:.6;cursor:wait}
+.cform-error{color:#b42318;font-size:14px;line-height:1.7}
+.cform-error a{color:inherit;text-decoration:underline;font-weight:600}
 .cform-done{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:24px;color:var(--navy-ink)}
 .cform-check{width:52px;height:52px;border-radius:50%;background:var(--gold-bright);color:#1a1405;display:grid;place-items:center;font-size:24px;font-weight:800}
 
