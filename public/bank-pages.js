@@ -14,7 +14,11 @@
 window.__BANK_PAGES__ = {
 
   /* アラブ首長国連邦 */
-  'uae-nonresident': [],   // UAE非居住者口座の現状と弊社ご案内
+  // UAE非居住者口座の現状と弊社ご案内 — ① then ② (10.07, from Ohkubo-san)
+  'uae-nonresident': [
+    { src: 'uae-nonresident-1.webp', alt: 'UAE非居住者口座の現実と弊社の特別ルート' },
+    { src: 'uae-nonresident-2.webp', alt: 'Emirates NBD 非居住者口座開設のご案内' },
+  ],
   'uae-accounts': [],      // 各種銀行口座開設
 
   /* ラオス */
