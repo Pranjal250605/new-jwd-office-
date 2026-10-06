@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useLang } from '../i18n.jsx';
 import { useVideo } from '../videos.jsx';
-import { FlagJP, FlagAE, FlagLA } from './Flags.jsx';
+import { FlagJP, FlagAE } from './Flags.jsx';
 import { GROUP } from '../groupSites.js';
+import { BankButtons } from './BankPages.jsx';
 import { imgUrl } from '../deploy.js';
 
 const STRATEGIES = [
@@ -247,11 +248,12 @@ export function Banks() {
       <div className="wrap">
         <div className="head banks-head">
           <h2 className="sec">{t('Opening an overseas bank account', '海外銀行口座開設')}</h2>
-          <ul className="banks-countries">
-            <li><FlagAE size={17} />{t('United Arab Emirates', 'アラブ首長国連邦')}</li>
-            <li><FlagLA size={17} />{t("Lao People's Democratic Republic", 'ラオス人民民主共和国')}</li>
-          </ul>
         </div>
+
+        {/* 10.06 request: the two country buttons, and under each the buttons
+            to its pages. They replace the plain UAE / Laos labels that sat
+            here. */}
+        <BankButtons />
 
         <div className="banks-top">
           <ul className="banks-list">

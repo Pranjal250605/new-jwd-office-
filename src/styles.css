@@ -1151,3 +1151,46 @@
 @media(min-width:901px) and (max-width:1060px){.lic-intro{grid-template-columns:1fr 1fr} .lic-intro .lead{grid-column:1/-1} .lic-shot-lead{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:16/9}}
 @media(min-width:901px) and (max-width:1140px){.jewel-grid{grid-template-columns:repeat(2,1fr)} .jewel-tall{grid-row:span 2}}
 @media(min-width:901px) and (max-width:1100px){.banks-top{grid-template-columns:1fr;gap:22px} .banks-list li{font-size:17px;padding:14px 18px} .gbanner{padding-bottom:56px} .gbanner-tx{padding:44px 18px 18px}}
+
+/* ── 海外銀行口座開設: country buttons + bank pages (10.06 request) ── */
+.bknav{margin:-14px 0 40px;padding-bottom:38px;border-bottom:1px solid var(--line)}
+.bknav-countries{display:flex;flex-wrap:wrap;gap:12px}
+.bknav-country{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;
+  border:1.5px solid var(--line);background:#fff;font:inherit;font-size:16px;font-weight:600;color:var(--navy-ink);
+  cursor:pointer;transition:.25s}
+.bknav-country:hover{border-color:var(--gold)}
+.bknav-country.on{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 10px 24px -16px rgba(184,145,47,.7)}
+.bknav-pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px;margin-top:18px}
+.bknav-item{display:flex;flex-direction:column;gap:10px}
+.bkbtn{display:flex;align-items:center;gap:10px;padding:17px 22px;border-radius:12px;background:#fff;
+  border:1px solid var(--line);font-size:16.5px;font-weight:600;color:var(--navy-ink);line-height:1.5;
+  box-shadow:0 8px 22px -16px rgba(32,33,37,.38);transition:.25s}
+.bkbtn:hover{border-color:var(--gold);transform:translateY(-1px);box-shadow:var(--shadow)}
+.bkbtn-arrow{margin-left:auto;color:var(--gold);flex:none;transition:transform .25s}
+.bkbtn:hover .bkbtn-arrow{transform:translateX(3px)}
+.bkbtn-sub{margin-left:26px;padding:13px 20px;font-size:15px;font-weight:500;background:var(--tint-2);box-shadow:none}
+.bkbtn-branch{color:var(--muted);font-weight:400;flex:none}
+
+.bkpage{background:var(--tint);min-height:70vh}
+.bkpage-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13.5px;color:var(--muted);margin-bottom:30px}
+.bkpage-crumbs a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.bkpage-crumbs a:hover{color:var(--gold)}
+.bkpage-country{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--gold);letter-spacing:.04em}
+.bkpage-title{font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif;font-weight:700;color:var(--navy-ink);
+  font-size:clamp(26px,3.4vw,40px);line-height:1.35;margin:12px 0 30px}
+.bkpage-kids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-bottom:34px}
+.bkpage-body{display:flex;flex-direction:column;gap:28px;min-height:120px}
+.bkpage-soon{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:46px 24px;text-align:center;
+  font-size:16px;color:var(--muted)}
+.bkpage-fig{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bkpage-fig img{display:block;width:100%;height:auto}
+.bkpage-fig figcaption{padding:12px 18px;font-size:14px;color:var(--muted)}
+.bkpage-more{margin-top:52px;padding-top:30px;border-top:1px solid var(--line)}
+.bkpage-more-h{font-size:17px;font-weight:600;color:var(--navy-ink);margin-bottom:16px}
+.bkpage-more-list{display:flex;flex-direction:column;gap:10px;max-width:640px}
+.bkpage-back{margin-top:40px}
+@media(max-width:620px){
+  .bknav-country{flex:1 1 auto;justify-content:center;padding:12px 16px;font-size:15px}
+  .bkbtn{font-size:15.5px;padding:15px 18px}
+  .bkbtn-sub{margin-left:16px;font-size:14.5px}
+}
