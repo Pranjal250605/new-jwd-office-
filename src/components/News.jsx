@@ -33,12 +33,10 @@ const ITEMS = [
       en: ['ANAWAK has opened sales on thirteen properties — the Seahorse at Dubai, Heart of Europe, along with Portofino, Germany Island and Cote d’Azur — each with a rental guarantee of 4% a year for twelve years.'],
     },
     cta: { en: 'Properties', ja: '物件情報' },
-    // The sheet asks for "the Seahorse cover page in jwd-anawak.com". That page
-    // is /heart-of-europe/seahorse, but every deep path on that host currently
-    // returns a server 404 — the SPA has no rewrite rule — so linking it would
-    // ship a dead link. This is the anchor ANAWAK's own navigation uses, and it
-    // lands on the Heart of Europe section where the Seahorse sits.
-    href: 'https://www.jwd-anawak.com/#heart-of-europe',
+    // jwd-anawak.com, which the sheet named, no longer answers (10.07). ANAWAK's
+    // Heart of Europe site — the one announcing these 13 properties — is
+    // anawak-dubai.com.
+    href: 'https://anawak-dubai.com/',
   },
 ];
 

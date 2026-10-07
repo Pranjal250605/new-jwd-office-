@@ -25,6 +25,7 @@ export const BANK_PAGES = [
   ['jdb', 'laos', 'JDB Bank (SAKURA PAY)', 'JDB銀行（SAKURA PAY）', null],
   ['jdb-merits', 'laos', 'Advantages of a JDB Bank account', 'JDB銀行口座開設のメリット', 'jdb'],
   ['sakura-pay', 'laos', 'About SAKURA PAY', 'SAKURA PAYについて', 'jdb'],
+  ['jdb-open', 'laos', 'How to open an account', '口座開設方法', 'jdb'],  // 10.07
 ].map(([slug, country, en, ja, parent]) => ({ slug, country, en, ja, parent }));
 
 export const BANK_ROUTE = '#/banks/';
@@ -140,9 +141,11 @@ export function BankPage({ slug }) {
           ) : (
             diagrams.map((d, i) => {
               const item = typeof d === 'string' ? { src: d } : d;
+              const img = <img src={imgUrl(`/img/banks/${item.src}`)} alt={item.alt || t(page.en, page.ja)} loading="lazy" />;
+              // an entry with href makes the whole diagram a link (opens in a new tab)
               return (
                 <figure key={item.src + i} className="bkpage-fig">
-                  <img src={imgUrl(`/img/banks/${item.src}`)} alt={item.alt || t(page.en, page.ja)} loading="lazy" />
+                  {item.href ? <a href={item.href} target="_blank" rel="noopener noreferrer">{img}</a> : img}
                   {item.caption && <figcaption>{item.caption}</figcaption>}
                 </figure>
               );
