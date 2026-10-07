@@ -8,7 +8,7 @@ export function President() {
     [t('Comprehensive Expertise', '総合的な専門性'),
      t('We work closely with a trusted network of tax professionals, attorneys, financial institutions, and other specialists to develop the most effective solutions tailored to your circumstances.',
        '税理士、弁護士、金融機関などの各分野のプロフェッショナルと強固に連携し、最適な方法を導き出します。')],
-    [t('Tailor-Made Family Solutions', 'オーダーメイドの伴走体制'),
+    [t('Tailor-Made Family Solutions', 'オーダーメイドのサポート体制'),
      t('Every family has its own history, priorities, and aspirations. We design customized wealth-preservation and succession strategies that reflect your unique background and future vision.',
        '一族の背景や将来のビジョンに合わせた、オーダーメイドの資産防衛・承継プランを構築します。')],
     [t('A Long-Term Partnership', '長期的な信頼関係'),

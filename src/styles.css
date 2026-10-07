@@ -944,12 +944,27 @@
   font-size:clamp(11px,1.5vw,14.5px);line-height:1.35;max-width:14ch;text-wrap:balance}
 .petal-s{font-size:clamp(8.5px,1.05vw,10px);color:var(--navy-ink);opacity:.5;margin-top:6px;
   letter-spacing:.18em;text-transform:uppercase;font-weight:500}
-/* Labels are pushed into the outer half of each ellipse, clear of the core. */
-.petal-fo  {width:50%;height:52%;left:25%;top:0;     background:rgba(228,220,196,.55);border:1px solid rgba(184,145,47,.3);align-items:center;justify-content:flex-start;padding-top:5%}
-.petal-inv {width:50%;height:52%;left:1%; top:21%;    background:rgba(185,215,225,.55);border:1px solid rgba(90,160,180,.3);align-items:center;justify-content:center;padding-right:16%;padding-bottom:6%}
-.petal-edify{width:50%;height:52%;left:10%;bottom:1%;  background:rgba(175,185,225,.55);border:1px solid rgba(110,125,195,.3);align-items:center;justify-content:center;padding-right:12%;padding-top:10%}
-.petal-luna{width:50%;height:52%;right:10%;bottom:1%; background:rgba(235,205,215,.55);border:1px solid rgba(200,145,170,.3);align-items:center;justify-content:center;padding-left:12%;padding-top:10%}
-.petal-ana {width:50%;height:52%;right:1%;top:21%;    background:rgba(200,195,220,.55);border:1px solid rgba(150,140,185,.3);align-items:center;justify-content:center;padding-left:16%;padding-bottom:6%}
+/* 10.07: six circular petals, 60° apart around the core (centres 27% of the
+   width out, each 46% wide). Each label sits in the petal's outer half, clear
+   of the core: --x/--y place it, as a % of the petal box. */
+.flower{aspect-ratio:1/1}
+.petal{width:46%;height:46%}
+.petal-tx{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;width:max-content;max-width:62%}
+.petal-fo   {left:27%;  top:0;     --x:50%;  --y:34%; background:rgba(228,220,196,.55);border-color:rgba(184,145,47,.3)}
+.petal-ana  {left:50.4%;top:13.5%; --x:64%;  --y:42%; background:rgba(200,195,220,.55);border-color:rgba(150,140,185,.3)}
+.petal-luna {left:50.4%;top:40.5%; --x:64%;  --y:58%; background:rgba(235,205,215,.55);border-color:rgba(200,145,170,.3)}
+.petal-jewel{left:27%;  top:54%;   --x:50%;  --y:66%; background:rgba(240,214,160,.55);border-color:rgba(190,150,60,.35)}
+.petal-edify{left:3.6%; top:40.5%; --x:36%;  --y:58%; background:rgba(175,185,225,.55);border-color:rgba(110,125,195,.3)}
+.petal-inv  {left:3.6%; top:13.5%; --x:36%;  --y:42%; background:rgba(185,215,225,.55);border-color:rgba(90,160,180,.3)}
+/* phones: the side labels move further out and down a size, clear of the core */
+@media(max-width:560px){
+  .petal-ana,.petal-luna{--x:71%}
+  .petal-edify,.petal-inv{--x:29%}
+  .petal-tx{max-width:56%}
+  .petal-l{font-size:10px}
+  .petal-s{font-size:7.5px;letter-spacing:.1em}
+}
 
 .petal:hover{filter:brightness(0.96)}
 .flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:4px;
@@ -1219,4 +1234,13 @@
 .menu-subcap{display:flex;align-items:center;gap:7px;margin:10px 0 2px;font-size:12px;font-weight:700;color:var(--navy-ink)}
 .navrail-group a.sub,.mmenu-group a.sub{padding-left:18px;position:relative}
 .navrail-group a.sub::before,.mmenu-group a.sub::before{content:'└';position:absolute;left:2px;color:#a0a3aa}
+
+/* 10.07: items in the right-hand column and the phone menu read as buttons */
+.navrail-group a,.mmenu-group a{display:block;margin-top:6px;padding:9px 14px;background:#fff;
+  border:1px solid var(--line);border-radius:10px;line-height:1.45;color:#4a4d54;
+  box-shadow:0 2px 6px -4px rgba(32,33,37,.25);transition:border-color .2s,color .2s,transform .2s}
+.navrail-group a:hover,.mmenu-group a:hover{border-color:var(--gold);color:var(--navy-ink);transform:translateY(-1px)}
+.navrail-group a.sub,.mmenu-group a.sub{margin-left:18px;padding-left:14px}
+.navrail-group a.sub::before,.mmenu-group a.sub::before{left:-15px;top:9px}
+.menu-subcap{margin:12px 0 0}
 

@@ -490,34 +490,51 @@ export function EcosystemFlower() {
           <div className="ey">{t('The JWD Group', 'JWDグループ')}</div>
           <h2 className="sec">{t('One group, moving as one', 'ひとつのグループとして')}</h2>
           <p className="lead center brk">{t(
-            'The Family Office sits at the hub — investment, real estate, AI technology and travel companies working together around it.',
-            'ファミリーオフィスを中核に、投資・不動産・旅行の各社が\nひとつのグループとして連携します。',
+            'The Family Office sits at the hub — investment, real estate, AI technology, travel and jewelry companies working together around it.',
+            'ファミリーオフィスを中核に、投資・不動産・旅行・ジュエリーの各社が\nひとつのグループとして連携します。',
           )}</p>
         </div>
 
-        {/* Petals carry each company's formal name, per the revision points. */}
+        {/* Petals carry each company's formal name, per the revision points.
+            10.07: six petals, 60° apart — JWD Jewelry added at the bottom. */}
         <div className="flower" role="img"
-          aria-label={t('JWD Group: Japan Worldlink DWC-LLC at the centre, with JWD INVESTMENT, EDIFY Japan, ANAWAK Real Estate L.L.C and JWD Luna Travel & Tourism LLC.',
-                        'JWDグループ：Japan Worldlink DWC-LLC を中心に、JWD INVESTMENT、EDIFY Japan、ANAWAK Real Estate L.L.C、JWD Luna Travel & Tourism LLC。')}>
+          aria-label={t('JWD Group: Japan Worldlink DWC-LLC at the centre, with JWD INVESTMENT, ANAWAK Real Estate L.L.C, JWD Luna Travel & Tourism LLC, JWD Jewelry and EDIFY Japan.',
+                        'JWDグループ：Japan Worldlink DWC-LLC を中心に、JWD INVESTMENT、ANAWAK Real Estate L.L.C、JWD Luna Travel & Tourism LLC、JWD Jewelry、EDIFY Japan。')}>
           <div className="petal petal-fo">
-            <span className="petal-l">Japan Worldlink<br/>DWC-LLC</span>
-            <span className="petal-s">{t('Family Office', 'ファミリーオフィス')}</span>
-          </div>
-          <div className="petal petal-inv">
-            <span className="petal-l">JWD INVESTMENT</span>
-            <span className="petal-s">{t('Investment', 'インベストメント')}</span>
-          </div>
-          <div className="petal petal-edify">
-            <span className="petal-l">EDIFY Japan</span>
-            <span className="petal-s">{t('AI Technology', 'AI テクノロジー')}</span>
-          </div>
-          <div className="petal petal-luna">
-            <span className="petal-l">JWD Luna Travel<br/>&amp; Tourism LLC</span>
-            <span className="petal-s">{t('Travel', 'トラベル')}</span>
+            <span className="petal-tx">
+              <span className="petal-l">Japan Worldlink<br/>DWC-LLC</span>
+              <span className="petal-s">{t('Family Office', 'ファミリーオフィス')}</span>
+            </span>
           </div>
           <div className="petal petal-ana">
-            <span className="petal-l">ANAWAK Real<br/>Estate L.L.C</span>
-            <span className="petal-s">{t('Real Estate', '不動産')}</span>
+            <span className="petal-tx">
+              <span className="petal-l">ANAWAK Real<br/>Estate L.L.C</span>
+              <span className="petal-s">{t('Real Estate', '不動産')}</span>
+            </span>
+          </div>
+          <div className="petal petal-luna">
+            <span className="petal-tx">
+              <span className="petal-l">JWD Luna Travel<br/>&amp; Tourism LLC</span>
+              <span className="petal-s">{t('Travel', 'トラベル')}</span>
+            </span>
+          </div>
+          <div className="petal petal-jewel">
+            <span className="petal-tx">
+              <span className="petal-l">JWD Jewelry</span>
+              <span className="petal-s">{t('Jewelry', 'ジュエリー')}</span>
+            </span>
+          </div>
+          <div className="petal petal-edify">
+            <span className="petal-tx">
+              <span className="petal-l">EDIFY Japan</span>
+              <span className="petal-s">{t('AI Technology', 'AI テクノロジー')}</span>
+            </span>
+          </div>
+          <div className="petal petal-inv">
+            <span className="petal-tx">
+              <span className="petal-l">JWD INVESTMENT</span>
+              <span className="petal-s">{t('Investment', 'インベストメント')}</span>
+            </span>
           </div>
           <div className="flower-core">
             <img src={imgUrl('/img/jwd-star.png')} alt="JWD" />

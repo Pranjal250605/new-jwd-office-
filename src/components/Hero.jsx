@@ -250,7 +250,7 @@ export function QuickTiles() {
 export function StatBand() {
   const { t } = useLang();
   const stats = [
-    ['¥1,400T', 'Japanese household wealth in transfer', '移転期にある日本の家計金融資産'],
+    [t('¥1,400T', '1,400兆円'), 'Japanese household wealth in transfer', '移転期にある日本の家計金融資産'],
     ['55%', 'Maximum Japanese inheritance tax', '日本の相続税 最高税率'],
     ['0%', 'UAE income · inheritance · capital gains', 'UAEの所得税・相続税・譲渡益税'],
     ['6,700', 'HNW individuals moved to the UAE in 2024', '2024年にUAEへ移住した富裕層'],
