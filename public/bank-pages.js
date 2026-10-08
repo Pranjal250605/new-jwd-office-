@@ -21,7 +21,10 @@ window.__BANK_PAGES__ = {
     { src: 'uae-nonresident-1.webp', alt: 'UAE非居住者口座の現実と弊社の特別ルート' },
     { src: 'uae-nonresident-2.webp', alt: 'Emirates NBD 非居住者口座開設のご案内' },
   ],
-  'uae-accounts': [],      // 各種銀行口座開設
+  // 各種銀行口座開設 (10.08)
+  'uae-accounts': [
+    { src: 'uae-accounts-1.jpg', alt: '非居住者向け 銀行口座開設 条件・必要書類・手続きの流れ（Emirates NBD・NBF）' },
+  ],
 
   /* ラオス */
   'jdb': [],               // JDB銀行（SAKURA PAY）
@@ -29,6 +32,8 @@ window.__BANK_PAGES__ = {
   // └ JDB銀行口座開設のメリット (10.07)
   'jdb-merits': [
     { src: 'jdb-merits-1.jpg', alt: 'JDB銀行口座開設のメリット' },
+    // 2枚目 (10.08) — the same image as on SAKURA PAYについて, as requested
+    { src: 'sakura-pay-1.jpg', alt: 'JDB銀行 × SAKURAPAY 日本とアジアをつなぐ新しい決済サービス' },
   ],
 
   // └ SAKURA PAYについて (10.07)
