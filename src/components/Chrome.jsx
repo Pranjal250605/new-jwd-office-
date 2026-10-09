@@ -83,8 +83,8 @@ export function ContactForm() {
                 </p>
               )}
               <p className="cform-note">{t(
-                'Japanese-language advisory · Dubai (DIFC) & Tokyo · replies within 1 business day.',
-                '日本語対応 · ドバイ（DIFC）／東京 · 1営業日以内にご返信します。',
+                'Japanese-language advisory · Dubai (DIFC) · replies within 1 business day.',
+                '日本語対応 · ドバイ（DIFC） · 1営業日以内にご返信します。',
               )}</p>
             </form>
           )}
@@ -353,7 +353,6 @@ export function Footer() {
             <ul>
               <li><a href="#contact">{t('Book a consultation', '無料相談を予約')}</a></li>
               <li><a href="#">{t('Dubai (DIFC)', 'ドバイ（DIFC）')}</a></li>
-              <li><a href="#">{t('Tokyo', '東京')}</a></li>
             </ul>
           </div>
         </div>
