@@ -219,10 +219,10 @@ export function Header() {
     <header id="hd" className={scrolled ? 'scrolled' : ''}>
       <div className="wrap">
         <nav className="main">
-          <a href="#top" className="logo">
+          <a href="#top" className="logo notranslate" translate="no">
             <img src={imgUrl('/img/jwd-star.png')} alt="JWD" className="logo-star" />
             <span className="logo-txt">
-              <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
+              <span className="mk notranslate" translate="no">Japan Worldlink <b>DWC-LLC</b></span>
             </span>
           </a>
           <div className="navlinks">
@@ -262,7 +262,7 @@ export function Header() {
         <div className="mmenu" onClick={() => setOpen(false)}>
           <div className="mmenu-panel" onClick={(e) => e.stopPropagation()}>
             <div className="mmenu-top">
-              <span className="mk">Japan Worldlink <b>DWC-LLC</b></span>
+              <span className="mk notranslate" translate="no">Japan Worldlink <b>DWC-LLC</b></span>
               <button className="mmenu-x" aria-label={t('Close', '閉じる')} onClick={() => setOpen(false)}>✕</button>
             </div>
             {groups.map((g) => groupList(g, 'mmenu-group', () => setOpen(false)))}
@@ -323,7 +323,7 @@ export function Footer() {
           <div>
             <div className="fmark">
               <img src={imgUrl('/img/jwd-star.png')} alt="JWD" className="fmark-star" />
-              <div className="mk">Japan Worldlink <b>DWC-LLC</b></div>
+              <div className="mk notranslate" translate="no">Japan Worldlink <b>DWC-LLC</b></div>
             </div>
             <p style={{ marginTop: 14, maxWidth: 300 }}>{t(
               'The bridge between Japan and Dubai — protecting and transferring family wealth across generations. Japan WorldLink DWC.',
@@ -357,7 +357,7 @@ export function Footer() {
           </div>
         </div>
         {/* Registered addresses, as supplied by the client 2026.08.07. */}
-        <div className="faddr">
+        <div className="faddr notranslate" translate="no">
           <div>
             <h5>Japan Worldlink DWC-LLC</h5>
             <address>
@@ -372,12 +372,12 @@ export function Footer() {
             <address>
               Property Investment Office 4 - G01<br />
               Dubai investment park first 516-0<br />
-              P.O. Box 676-598 Dubai, U.A.E.
+              P.O. Box 24649 Dubai, U.A.E.
             </address>
           </div>
         </div>
         <div className="bottom">
-          <span>© {new Date().getFullYear()} JWD Family Office · Japan WorldLink DWC</span>
+          <span className="notranslate" translate="no">© {new Date().getFullYear()} JWD Family Office · Japan WorldLink DWC</span>
           <span className="disc">{t(
             '※ Illustrative content for demonstration. Figures and strategies are not investment or tax advice; consult a licensed professional.',
             '※ 本サイトはデモ用の説明コンテンツです。数値・戦略は投資助言・税務助言ではありません。専門家にご相談ください。',

@@ -497,7 +497,7 @@ export function EcosystemFlower() {
 
         {/* Petals carry each company's formal name, per the revision points.
             10.07: six petals, 60° apart — JWD Jewelry added at the bottom. */}
-        <div className="flower" role="img"
+        <div className="flower notranslate" translate="no" role="img"
           aria-label={t('JWD Group: Japan Worldlink DWC-LLC at the centre, with JWD INVESTMENT, ANAWAK Real Estate L.L.C, JWD Luna Travel & Tourism LLC, JWD Jewelry and EDIFY Japan.',
                         'JWDグループ：Japan Worldlink DWC-LLC を中心に、JWD INVESTMENT、ANAWAK Real Estate L.L.C、JWD Luna Travel & Tourism LLC、JWD Jewelry、EDIFY Japan。')}>
           <div className="petal petal-fo">

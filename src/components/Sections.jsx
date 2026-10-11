@@ -198,7 +198,7 @@ export function License() {
             {/* Registered address, as supplied by the client 2026.08.07. */}
             <div className="lic-addr">
               <span className="k2">{t('Registered address', '所在地')} <small>{t('所在地', 'Registered address')}</small></span>
-              <address>
+              <address className="notranslate" translate="no">
                 DWC Business Center, Level -3, Building - A3,<br />
                 Dubai South Business Park, P.O. Box 390667 Dubai, U.A.E.
               </address>
