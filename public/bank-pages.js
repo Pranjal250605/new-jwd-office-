@@ -32,8 +32,6 @@ window.__BANK_PAGES__ = {
   // └ JDB銀行口座開設のメリット (10.07)
   'jdb-merits': [
     { src: 'jdb-merits-1.jpg', alt: 'JDB銀行口座開設のメリット' },
-    // 2枚目 (10.08) — the same image as on SAKURA PAYについて, as requested
-    { src: 'sakura-pay-1.jpg', alt: 'JDB銀行 × SAKURAPAY 日本とアジアをつなぐ新しい決済サービス' },
   ],
 
   // └ SAKURA PAYについて (10.07)
