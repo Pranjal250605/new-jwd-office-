@@ -154,14 +154,16 @@ export function Chairman() {
 
 export function License() {
   const { t } = useLang();
+  // 10.12: the licence plate reads in English on both languages, as on the
+  // licence itself; the small Japanese label stays under each English one.
   const rows = [
-    ['Business activity', '事業内容', t('Management Consultancies', '経営コンサルティング')],
+    ['Business activity', '事業内容', 'Management Consultancies'],
     ['Registration no.', '登録番号', '937'],
     ['Legal form', '法的形態', 'DWC-LLC'],
-    ['License valid until', 'ライセンス有効期限', t('25 March 2027', '2027年3月25日')],
+    ['License valid until', 'ライセンス有効期限', '25 March 2027'],
     // 09.17 sheet: added between the licence expiry and the representative.
     ['Capital', '資本金', '800,000 USD'],
-    ['Representative', '代表者', t('Hamit Gurbuz', 'ハミット・ギュルビュズ（Hamit Gurbuz）')],
+    ['Representative', '代表者', 'Hamit Gurbuz'],
   ];
   return (
     <section className="blk" id="license">
@@ -186,18 +188,18 @@ export function License() {
           </figure>
         </div>
         <div className="lic">
-          <div className="main2">
+          <div className="main2 notranslate" lang="en" translate="no">
             <div className="co">Japan Worldlink DWC-LLC</div>
-            <div className="sub2">Dubai Aviation City Corporation — {t('Licensed Entity', '公認ライセンス法人')}</div>
+            <div className="sub2">Dubai Aviation City Corporation — Licensed Entity</div>
             {rows.map(([en, ja, v]) => (
               <div className="rowli" key={en}>
-                <span className="k2">{t(en, ja)} <small>{t(ja, en)}</small></span>
+                <span className="k2">{en} <small lang="ja">{ja}</small></span>
                 <span className="v2">{v}</span>
               </div>
             ))}
             {/* Registered address, as supplied by the client 2026.08.07. */}
             <div className="lic-addr">
-              <span className="k2">{t('Registered address', '所在地')} <small>{t('所在地', 'Registered address')}</small></span>
+              <span className="k2">Registered address <small lang="ja">所在地</small></span>
               <address className="notranslate" translate="no">
                 DWC Business Center, Level -3, Building - A3,<br />
                 Dubai South Business Park, P.O. Box 390667 Dubai, U.A.E.
@@ -206,11 +208,10 @@ export function License() {
           </div>
           <aside>
             <div className="seal">DACC<br />LICENSE</div>
-            <h4>{t('Official license — Dubai Aviation City Corporation', 'ドバイ航空都市公社 発行の公式ライセンス')}</h4>
-            <p>{t('Dubai Aviation City — Business Center, Building A3, Floor 3 · P.O. Box 282807',
-                  'ドバイ航空都市 ビジネスセンター Building A3, Floor 3 · P.O. Box 282807')}</p>
-            <span className="ok"><i />{t('License active — issued March 2013, valid to March 2027',
-                                          'ライセンス有効中 — 2013年3月発行 → 2027年3月まで有効')}</span>
+            {/* 10.12: English on both languages, like the plate beside it */}
+            <h4 lang="en" translate="no" className="notranslate">Official license — Dubai Aviation City Corporation</h4>
+            <p lang="en" translate="no" className="notranslate">Dubai Aviation City — Business Center, Building A3, Floor 3 · P.O. Box 282807</p>
+            <span className="ok notranslate" lang="en" translate="no"><i />License active — issued March 2013, valid to March 2027</span>
           </aside>
         </div>
       </div>
