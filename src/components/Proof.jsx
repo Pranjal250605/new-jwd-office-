@@ -471,11 +471,12 @@ export function GroupBanner() {
           <img className="gbanner-img" src={imgUrl('/img/group-banner.jpg')} loading="lazy" decoding="async"
             alt={t('Japan Worldlink DWC Group — JWD Investment, ANAWAK ONE, ANAWAK Real Estate, Japan Worldlink DWC, JWD Travel & Tourism, EDIFY Japan and JWD Jewelry, over the flags of Japan and the UAE.',
                    'Japan Worldlink DWC グループ — JWD Investment、ANAWAK ONE、ANAWAK Real Estate、Japan Worldlink DWC、JWD Travel & Tourism、EDIFY Japan、JWD Jewelry。日本とUAEの国旗を背景に。')} />
-          <p className="gbanner-tx">{t(
-            "The promise of the UAE, for Japan's future",
-            'UAEの可能性を、日本人の未来へ',
-          )}</p>
         </div>
+        {/* 10.12: below the artwork, not over it — the overlay hid the logos */}
+        <p className="gbanner-tx">{t(
+          "The promise of the UAE, for Japan's future",
+          'UAEの可能性を、日本人の未来へ',
+        )}</p>
       </div>
     </section>
   );

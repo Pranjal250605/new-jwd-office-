@@ -1112,18 +1112,19 @@
 
 /* ── group banner (09.21 sheet P2) ─────────────────────────────────────────
    "Responsive motion" kept deliberately quiet: a slow scale on the artwork and
-   a single rise on the line, both triggered on entry by .is-in. */
+   a single rise on the line, both triggered on entry by .is-in.
+   10.12: the line sits under the artwork (it used to overlay the logos, on a
+   dark gradient that also dimmed them). */
 .gbanner{padding:0 0 92px;background:var(--tint)}
 .gbanner-in{position:relative;overflow:hidden;border-radius:16px;
   box-shadow:0 26px 60px -34px rgba(32,33,37,.5)}
 .gbanner-img{display:block;width:100%;height:auto;transform:scale(1.06);
   transition:transform 1.5s cubic-bezier(.22,.61,.36,1)}
 .gbanner.is-in .gbanner-img{transform:scale(1)}
-.gbanner-tx{position:absolute;left:0;right:0;bottom:0;margin:0;padding:64px 32px 26px;
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:#fff;text-align:center;
-  font-size:clamp(1.05rem,2.4vw,1.75rem);letter-spacing:.04em;
-  text-shadow:0 2px 18px rgba(0,0,0,.55);
-  background:linear-gradient(to top,rgba(20,20,22,.72),rgba(20,20,22,0));
+html[lang="ja"] .gbanner-tx{font-family:'Noto Serif JP',serif}
+.gbanner-tx{margin:30px 0 0;padding:0 16px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--navy-ink);text-align:center;
+  font-size:clamp(1.15rem,2.4vw,1.75rem);letter-spacing:.04em;
   opacity:0;transform:translateY(14px);
   transition:opacity .8s ease .35s,transform .8s cubic-bezier(.22,.61,.36,1) .35s}
 .gbanner.is-in .gbanner-tx{opacity:1;transform:none}
@@ -1137,7 +1138,7 @@
   .banks-top{grid-template-columns:1fr;gap:22px}
   .banks-list li{font-size:17px;padding:14px 18px}
   .gbanner{padding-bottom:56px}
-  .gbanner-tx{padding:44px 18px 18px}
+  .gbanner-tx{margin-top:22px}
 }
 
 /* ── right-hand nav column (10.05 request) ──────────────────────────────────
@@ -1179,7 +1180,7 @@
 @media(min-width:901px) and (max-width:1060px){.concern-grid{grid-template-columns:1fr}}
 @media(min-width:901px) and (max-width:1060px){.lic-intro{grid-template-columns:1fr 1fr} .lic-intro .lead{grid-column:1/-1} .lic-shot-lead{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:16/9}}
 @media(min-width:901px) and (max-width:1140px){.jewel-grid{grid-template-columns:repeat(2,1fr)} .jewel-tall{grid-row:span 2}}
-@media(min-width:901px) and (max-width:1100px){.banks-top{grid-template-columns:1fr;gap:22px} .banks-list li{font-size:17px;padding:14px 18px} .gbanner{padding-bottom:56px} .gbanner-tx{padding:44px 18px 18px}}
+@media(min-width:901px) and (max-width:1100px){.banks-top{grid-template-columns:1fr;gap:22px} .banks-list li{font-size:17px;padding:14px 18px} .gbanner{padding-bottom:56px} .gbanner-tx{margin-top:22px}}
 
 /* ── 海外銀行口座開設: country buttons + bank pages (10.06 request) ── */
 .bknav{margin:-14px 0 40px;padding-bottom:38px;border-bottom:1px solid var(--line)}
