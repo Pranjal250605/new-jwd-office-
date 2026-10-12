@@ -468,7 +468,7 @@ export function GroupBanner() {
     <section className="gbanner" ref={ref} aria-label={t('Japan Worldlink DWC Group', 'Japan Worldlink DWC グループ')}>
       <div className="wrap">
         <div className="gbanner-in">
-          <img className="gbanner-img" src={imgUrl('/img/group-banner.jpg')} loading="lazy" decoding="async"
+          <img className="gbanner-img" src={imgUrl('/img/group-banner-1012.jpg')} /* new name per artwork change: images are cached 180 days */ loading="lazy" decoding="async"
             alt={t('Japan Worldlink DWC Group — JWD Investment, ANAWAK ONE, ANAWAK Real Estate, Japan Worldlink DWC, JWD Travel & Tourism, EDIFY Japan and JWD Jewelry, over the flags of Japan and the UAE.',
                    'Japan Worldlink DWC グループ — JWD Investment、ANAWAK ONE、ANAWAK Real Estate、Japan Worldlink DWC、JWD Travel & Tourism、EDIFY Japan、JWD Jewelry。日本とUAEの国旗を背景に。')} />
         </div>
