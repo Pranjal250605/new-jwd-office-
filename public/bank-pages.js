@@ -8,6 +8,8 @@
       show one under another, in the order listed.
         'uae-nonresident': ['uae-status-1.png', 'uae-status-2.png'],
    3. Reload the page (Cmd+Shift+R on a Mac, Ctrl+F5 on Windows).
+      To REPLACE an image, give the new one a new file name (e.g. -2.jpg):
+      browsers keep images for months, so the same name shows the old one.
 
    To make an image a link, write it as
         { src: 'banner.jpg', href: 'https://…' }
@@ -36,7 +38,8 @@ window.__BANK_PAGES__ = {
 
   // └ SAKURA PAYについて (10.07)
   'sakura-pay': [
-    { src: 'sakura-pay-1.jpg', alt: 'JDB銀行 × SAKURAPAY 日本とアジアをつなぐ新しい決済サービス' },
+    // 10.13: updated diagram — a new file name, so no browser shows the cached old one
+    { src: 'sakura-pay-2.jpg', alt: 'JDB銀行 × SAKURAPAY 日本とアジアをつなぐ新しい決済サービス' },
   ],
 
   // └ 口座開設方法 (10.07). An entry with  href  makes the whole image a link
